@@ -1,3 +1,4 @@
+import { conductivityLabel, qualitativeRecord } from './conductivity-feedback.js';
 import { conductivity, speciate, solutions, indicator, neutralize, precipitate, crystallize, fmt, sci, bounded, ionInfo } from './core.js';
 import { ionsView, phScale, label, svg } from './art.js';
 import { conductScene, phScene, neutralScene, precipScene, crystalScene } from './apparatus.js';
@@ -22,7 +23,7 @@ export function cleanLab(type,raw){
   else if(typeof d[k]==='string'&&enums[k]?.includes(raw[k]))d[k]=raw[k];
  }
  d.records=Array.isArray(raw.records)?raw.records.filter(x=>x&&typeof x==='object'&&typeof x.text==='string').slice(-20).map(x=>({text:x.text.slice(0,350),category:typeof x.category==='string'?x.category.slice(0,25):''})):[];
- if(type==='conduct'){d.loaded=true;d.immersed=true;}
+ if(type==='conduct'){d.loaded=true;d.immersed=true;d.records=d.records.map(qualitativeRecord);}
  if(type==='indicator'&&d.sample==='solid')d.sample='hcl';
  if(type==='crystal'&&!d.pooled){d.evap=0;d.separated=false;}
  return d;
@@ -47,7 +48,7 @@ export function mountLab(root,type,ctx){
  const save=()=>{ctx.save(s);};
  const guide=t=>{if($('.lab-guide').textContent!==t)$('.lab-guide').textContent=t;};
  const record=(text,category='')=>{s.records.push({text,category});s.records=s.records.slice(-20);save();drawRecords();};
- function drawRecords(){$('.record-list').innerHTML=s.records.length?s.records.map((r,i)=>'<p><span>'+String(i+1).padStart(2,'0')+'</span>'+escapeHTML(r.text)+'</p>').join(''):'<p class="muted">'+(type==='conduct'?'選取樣本並開啟電源，檢測結果會自動記錄在這裡。':'還沒有紀錄。完成一次操作，再把證據記下來。')+'</p>';}
+ function drawRecords(){const list=$('.record-list'),open=!!list.querySelector('details[open]'),row=(r,i)=>'<p><span>'+String(i+1).padStart(2,'0')+'</span>'+escapeHTML(r.text)+'</p>',older=s.records.slice(0,-2),recent=s.records.slice(-2);list.innerHTML=s.records.length?(older.length?'<details class="record-history" '+(open?'open':'')+'><summary>查看先前 '+older.length+' 筆紀錄</summary>'+older.map(row).join('')+'</details>':'')+'<div class="recent-records"><span class="record-caption">最近兩次觀察 · 放在一起比較</span>'+recent.map((r,i)=>row(r,older.length+i)).join('')+'</div>':'<p class="muted">'+(type==='conduct'?'選取樣本並接通刀閘開關，結果會自動記錄在這裡。':'還沒有紀錄。完成一次操作，再把證據記下來。')+'</p>';}
  function bind(onChange){
   changeHandler=onChange;
 
@@ -69,20 +70,20 @@ export function mountLab(root,type,ctx){
  const opts=ids=>ids.map(id=>[id,solutions[id].name+' · '+solutions[id].formula]);
  let draw,act;
  if(type==='conduct'){
-  labFrame(root,'鹽場工作台 / 導電比較',select('sample','選擇樣品',opts(['water','nacl','sugar','acetic','hcl','naoh','solid']),s.sample)+field('C','溶質濃度',s.C,.000001,.1,.001,'mol/L')+buttons([['power','開啟電源','primary']]),'導電分數為教學模型：Σ（濃度 × 電荷絕對值 × 相對遷移能力），再壓縮到 0～100；不是實測電導率或安培。燈亮度與讀數同步；微量導電未必足以使燈可見地發亮。粒子數量為示意，不按顆數讀濃度；不模擬電極反應。');
+  labFrame(root,'鹽場工作台 / 導電比較',select('sample','選擇樣品',opts(['water','nacl','sugar','acetic','hcl','naoh','solid']),s.sample)+field('C','溶質濃度',s.C,.000001,.1,.001,'mol/L')+buttons([['power','開啟電源','primary']]),'低電壓電路的教學模擬。點擊刀閘開關，接通或斷開電路。結果只呈現導電狀態；蒸餾水與糖水仍可能有微量導電，但未必足以讓燈泡發亮。粒子數量為示意，不模擬電極反應。');
   draw=()=>{
    const r=conductivity(s.sample,s.C,s.loaded&&s.immersed,s.powered);
    $('.salt-scene').innerHTML=conductScene(r,{...s,id:'conductor'});
-   $('.readouts').innerHTML=metric('導電比較分數',s.powered?fmt(r.score,r.score>=1?2:4):'尚未開電源',s.powered?'/ 100':'')+metric('樣品',s.loaded?solutions[s.sample].formula:'尚未放入')+metric('溶質形成離子比例',s.loaded&&r.mobile?fmt(r.alpha*100):'—','%');
+   $('.readouts').innerHTML=metric('導電結果',conductivityLabel(r,s.powered))+metric('樣品',solutions[s.sample].formula);
    $('.micro-view').innerHTML=ionsView(s.sample==='solid'?[{label:'Na⁺',charge:1,c:1},{label:'Cl⁻',charge:-1,c:1}]:r.ions,{solid:s.sample==='solid',on:s.loaded&&s.immersed&&s.powered,id:'conduct-micro',neutral:s.sample==='sugar'?'糖仍以中性分子存在，微量 H⁺、OH⁻ 來自水':s.sample==='acetic'?'多數醋酸分子仍未游離；圖中粒子數不按比例':''});
    if(!s.loaded)$('.micro-view').innerHTML='<p>先放入樣品，再觀察其中的粒子。</p>';
    $('[data-action="power"]').setAttribute('aria-pressed',String(s.powered));
    $('[data-num="C"]').disabled=['water','solid'].includes(s.sample);$('[data-range="C"]').disabled=['water','solid'].includes(s.sample);
-   guide(s.powered?'觀察讀數與燈亮度，結果已自動記錄。':'選取樣本，再開啟電源，看看能不能導電。');
+   guide(s.powered?'觀察導電結果與燈泡反應，結果已自動記錄。':'選取樣本，點擊刀閘開關，看看能不能導電。');
   };
   act=a=>{if(a==='power'){
    s.powered=!s.powered;
-   if(s.powered){const r=conductivity(s.sample,s.C);record(solutions[s.sample].name+'｜'+(s.sample==='solid'?'固態':s.sample==='water'?'純水':s.C+' mol/L')+'｜導電分數 '+fmt(r.score,r.score>=1?2:4),s.sample);if(new Set(s.records.map(x=>x.category)).size>=2)ctx.mark();}
+   if(s.powered){const r=conductivity(s.sample,s.C);record(solutions[s.sample].name+'｜'+(s.sample==='solid'?'固態':s.sample==='water'?'純水':s.C+' mol/L')+'｜'+conductivityLabel(r),s.sample);if(new Set(s.records.map(x=>x.category)).size>=2)ctx.mark();}
   }draw();};
   bind(k=>{if(k==='sample'){s.loaded=true;s.immersed=true;s.powered=false;}draw();});
  }

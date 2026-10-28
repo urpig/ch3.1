@@ -1,3 +1,4 @@
+import { conductivityLabel } from './conductivity-feedback.js';
 import { svg, beaker, label } from './art.js';
 import { fmt, indicator, solutions } from './core.js';
 
@@ -7,19 +8,22 @@ function shadow(x,y,w){return '<ellipse cx="'+x+'" cy="'+y+'" rx="'+w+'" ry="10"
 function meter(x,y,w,title,value,sub){return shadow(x+w/2,y+101,w*.5)+'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="99" rx="12" fill="#345c4b" stroke="#254638"/><path d="M'+(x+8)+' '+(y+9)+'h'+(w-16)+'" stroke="#a6c1a3" opacity=".3"/><rect x="'+(x+13)+'" y="'+(y+17)+'" width="'+(w-26)+'" height="48" rx="4" fill="#e4eccd"/>'+label(x+w/2,y+10,title,9,'#cedac5')+label(x+w/2,y+49,value,25,'#304e3a')+label(x+w/2,y+84,sub,10,'#d8e1cd');}
 
 export function conductScene(r,{loaded=false,immersed=false,powered=false,sample='nacl',id='conduct'}={}){
- const angle=(-70+r.score*1.4)*Math.PI/180,x=150+65*Math.sin(angle),y=144-65*Math.cos(angle),ey=immersed?160:100;
- let body='<rect x="36" y="43" width="222" height="157" rx="14" fill="#f9f7ec" stroke="#b8c6b2" filter="url(#'+id+'-shadow)"/><rect x="48" y="55" width="198" height="109" rx="8" fill="#e8eddd"/>'+label(150,67,'導電比較計',12);
- body+='<path d="M78 141A72 72 0 0 1 222 141" fill="none" stroke="#c5d3ba" stroke-width="9"/>';
- for(let i=0;i<=10;i++){const a=(-70+i*14)*Math.PI/180;body+='<path d="M'+(150+61*Math.sin(a))+' '+(144-61*Math.cos(a))+'L'+(150+71*Math.sin(a))+' '+(144-71*Math.cos(a))+'" stroke="#647e60" stroke-width="'+(i%5?1:2)+'"/>';}
- body+='<path d="M150 144L'+x+' '+y+'" stroke="#ae714f" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="144" r="6" fill="#56724f"/>'+label(76,157,'0',10)+label(224,157,'100',10)+label(150,185,fmt(r.score,r.score>=1?2:4)+' / 100',17);
- body+='<path d="M258 142C294 146 286 90 320 '+ey+'M568 123C507 91 450 93 433 '+ey+'" fill="none" stroke="#354c44" stroke-width="6"/><path d="M568 123C507 91 450 93 433 '+ey+'" fill="none" stroke="#b66752" stroke-width="3"/>';
- body+=meter(559,45,153,'低電壓檢測',powered?'ON':'OFF','教學比較分數');
- body+='<circle cx="487" cy="84" r="26" fill="#d8e1ce" stroke="#bdcbb3"/><circle cx="487" cy="84" r="17" fill="'+(r.score>.1?'#efd27c':'#aab9a0')+'" opacity="'+(.4+r.lamp*.6)+'"/>'+(r.score>10?'<circle cx="487" cy="84" r="24" fill="#f8d779" opacity="'+(r.lamp*.25)+'"/>':'')+label(487,125,'指示燈',10);
- body+=beaker(id,273,190,210,157,'#9ecbbb',loaded&&sample!=='solid'?.67:0,loaded&&sample==='solid'?18:0);
- body+='<g><rect x="312" y="'+ey+'" width="18" height="125" rx="5" fill="url(#'+id+'-metal)" stroke="#799386"/><rect x="424" y="'+ey+'" width="18" height="125" rx="5" fill="url(#'+id+'-metal)" stroke="#799386"/>'+label(321,ey-10,'−',20,'#527da1')+label(433,ey-10,'＋',20,'#a46550')+'</g>';
- body+=plaque(51,266,167,loaded?solutions[sample].name:'待放入樣品',loaded?solutions[sample].formula:'選擇右側的材料瓶');
- body+=label(377,395,loaded?(sample==='solid'?'晶格中的離子不能自由移動':'兩電極接觸溶液，才形成檢測迴路'):'把樣品放進燒杯，開始找線索',12);
- return svg(body,'可操作的導電實驗桌；'+(powered?'導電分數 '+fmt(r.score,r.score>=1?2:4):'電源關閉，尚未檢測'),id);
+ const result=conductivityLabel(r,powered),lit=powered&&r.score>.1,ey=immersed?211:179;
+ let body='<defs><radialGradient id="'+id+'-glow"><stop stop-color="#ffe7a0" stop-opacity=".7"/><stop offset="1" stop-color="#ffe7a0" stop-opacity="0"/></radialGradient></defs>';
+ // The two cells, lamp, knife switch and immersed electrodes form one series circuit.
+ body+='<path d="M222 95H264Q285 95 285 126V158Q285 165 350 165M430 165H473Q495 165 495 136H546M650 136H699V218H425V'+ey+'M222 153H247V218H333V'+ey+'" fill="none" stroke="#344e47" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M222 95H264Q285 95 285 126V158Q285 165 350 165M430 165H473Q495 165 495 136H546M650 136H699V218H425V'+ey+'" fill="none" stroke="#b66e58" stroke-width="3" stroke-linejoin="round"/>';
+ body+='<g filter="url(#'+id+'-shadow)"><rect x="42" y="60" width="180" height="126" rx="13" fill="#3e514b" stroke="#2d423b"/><rect x="51" y="71" width="160" height="100" rx="8" fill="#263d35"/>';
+ for(let i=0;i<2;i++){const y=79+i*43;body+='<rect x="65" y="'+y+'" width="132" height="34" rx="8" fill="url(#'+id+'-metal)" stroke="#8b9b91"/><rect x="'+(i?159:66)+'" y="'+(y+1)+'" width="37" height="32" rx="6" fill="#b78355"/><path d="M'+(i?202:58)+' '+(y+10)+'v14" stroke="#dce2d5" stroke-width="4"/>'+label(129,y+22,'AA · 1.5 V',11,'#f5f4df')+label(i?181:81,y+22,'＋',12,'#fff6e8');}
+ body+='</g><circle cx="222" cy="95" r="6" fill="#b47155"/><circle cx="222" cy="153" r="6" fill="#253e36"/>'+label(132,43,'電池盒 · 3 V',14)+label(237,94,'＋',12,'#ad6750')+label(235,171,'−',15,'#536c64');
+ if(lit)body+='<circle cx="390" cy="103" r="65" fill="url(#'+id+'-glow)" opacity="'+(.3+r.lamp*.65)+'"/>';
+ body+='<path d="M377 128C375 113 359 112 359 92A31 31 0 1 1 421 92C421 111 406 115 403 128Z" fill="'+(lit?'#f6dfa0':'#e1ebe0')+'" fill-opacity=".78" stroke="#8d9e8e" stroke-width="2"/><path d="M375 76Q367 86 370 97" fill="none" stroke="#fffdf5" stroke-width="5" stroke-linecap="round"/><path d="M382 127V105l5-7 6 6 6-6 3 7v22" fill="none" stroke="'+(lit?'#ce873a':'#8c8a72')+'" stroke-width="2"/><rect x="376" y="127" width="28" height="22" rx="3" fill="url(#'+id+'-metal)" stroke="#8e9b8d"/><path d="M377 133h26m-26 7h26" stroke="#74877a"/><rect x="349" y="150" width="82" height="33" rx="8" fill="#eee9d8" stroke="#b8b49c"/><circle cx="350" cy="165" r="5" fill="#a28a65"/><circle cx="430" cy="165" r="5" fill="#a28a65"/>'+label(390,43,'小燈泡與燈座',14);
+ body+='<g class="physical-switch"><rect x="523" y="89" width="164" height="94" rx="10" fill="#e4d4b3" stroke="#ad9876" stroke-width="2" filter="url(#'+id+'-shadow)"/><path d="M530 98h149" stroke="#f9efd9" stroke-width="2"/>';
+ for(const x of [535,675])for(const y of [100,172])body+='<circle cx="'+x+'" cy="'+y+'" r="3" fill="#988b73"/><path d="M'+(x-2)+' '+y+'h4" stroke="#d8ccb2"/>';
+ body+='<rect x="536" y="126" width="20" height="22" rx="3" fill="#b7924b" stroke="#937334"/><rect x="640" y="126" width="20" height="22" rx="3" fill="#b7924b" stroke="#937334"/><path class="switch-lever" d="M546 136L'+(powered?'650 136':'626 105')+'" stroke="url(#'+id+'-metal)" stroke-width="9" stroke-linecap="round"/><path d="M'+(powered?'592 136h30':'582 122l29-11')+'" stroke="#436150" stroke-width="13" stroke-linecap="round"/><circle cx="546" cy="136" r="6" fill="#c6af72" stroke="#927941"/>'+label(605,77,'刀閘開關',14)+label(605,204,powered?'已接通 · 點此斷開':'點擊開關，接通電路',13,'#456b4b')+'</g>';
+ body+=beaker(id,277,247,204,134,'#9ecbbb',loaded&&sample!=='solid'?.67:0,loaded&&sample==='solid'?18:0);
+ body+='<rect x="325" y="'+ey+'" width="16" height="137" rx="4" fill="url(#'+id+'-metal)" stroke="#799386"/><rect x="417" y="'+ey+'" width="16" height="137" rx="4" fill="url(#'+id+'-metal)" stroke="#799386"/>'+label(310,246,'−',17,'#527da1')+label(449,246,'＋',17,'#ad6852');
+ body+=plaque(46,281,170,solutions[sample].name,solutions[sample].formula)+label(609,294,'導電結果',12,'#7b8a77')+label(609,324,result,22,powered&&r.score>.1?'#3c704b':'#6f7f6a')+label(379,409,'電池 → 燈泡 → 開關 → 電極與樣品 → 電池',12,'#718570');
+ return svg(body,'電池、燈泡、刀閘開關與電極串聯的導電裝置；'+result,id,435);
 }
 
 export function phScene(r,{kind='btb',dropped=false,paper=false,meter:measured=false,id='ph'}={}){

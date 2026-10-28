@@ -611,6 +611,86 @@
 .homecoming-dialogue strong{display:block;margin-bottom:5px;color:#886a3f;font-size:13px;letter-spacing:.1em}
 .homecoming-finish{text-align:center;font-size:13px;letter-spacing:.14em;color:#7a866e;margin:26px 0 8px}
 @media(max-width:620px){.homecoming-dialogue{grid-template-columns:1fr;gap:10px}.homecoming-ending figcaption{padding:12px}.homecoming-ending header{text-align:left}}
+</style><style>/* Chapter-wide refinement: legible journal, deliberate controls, generous scenes. */
+.salt-chapter{--ink:#254b40;--muted:#708075;--line:#dfe5da;--paper:#fffefb;background:#f2f4ed}
+.salt-chapter #lesson{gap:48px;padding:0 30px 64px;max-width:1520px}
+.salt-chapter .salt-card{border-radius:23px;box-shadow:0 12px 40px #29473708;overflow:clip}
+.salt-card .card-header{position:relative;padding:30px 36px 24px;background:linear-gradient(115deg,#f3f6ec,#fffefa 72%);border-bottom:0}
+.salt-card .card-header:before{content:attr(data-station);position:absolute;right:28px;top:6px;font:italic 100px/1.25 Georgia,serif;color:#44674809;pointer-events:none}
+.salt-card .card-kicker{font-size:11px;letter-spacing:.07em;margin-bottom:13px;position:relative}.salt-card .card-kicker>span:first-child{color:#9b7b4b}
+.salt-card .card-header h2{font-size:clamp(24px,2.4vw,33px);letter-spacing:.025em;max-width:850px}.salt-card .core-question{font-size:16px;line-height:1.8;color:#77836d;margin-top:9px}
+.card-journey{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #e2e8d9;border-bottom:1px solid #e2e8d9;background:#fafbf5;padding:0 26px}
+.card-journey button{display:flex;align-items:center;justify-content:center;gap:10px;min-height:49px;border:0;border-bottom:2px solid transparent;background:transparent;font-size:12px;color:#87927f}
+.card-journey button>span{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1px solid #d4ddcb;font:11px ui-monospace,monospace}
+.card-journey button[data-done=true]{color:#42684b}.card-journey button[data-done=true]>span{background:#e2ecda;border-color:#c5d7b9}.card-journey button[aria-current=step]{border-bottom-color:#42694f;color:#315941;font-weight:700}.card-journey button:hover{background:#edf3e7}
+.salt-card .card-body{padding:28px 36px 0}.salt-card .story-opening{font-size:15px;line-height:2;max-width:1080px}
+.salt-card .story-dialogue{gap:16px;margin:22px 0 26px}.salt-chapter .story-speech{padding:17px 18px;border-radius:15px;border-color:#e8e2d3;background:#fcf7ee;gap:14px;grid-template-columns:62px 1fr}.salt-chapter .story-speech--grandpa{background:#f0f5eb;border-color:#dfe7d6}.salt-chapter .story-portrait{width:62px;height:62px;box-shadow:0 3px 10px #365a3710}.salt-chapter .story-speech p{font-size:14px;line-height:1.9}.salt-chapter .story-speech b{letter-spacing:.08em;font-size:11px}
+.salt-card .term-primer{border:1px solid #e5e8dc;border-radius:13px;background:#fafbf5;padding:19px 21px}.salt-card .term-primer-heading h3{font-size:16px}.salt-card .term-primer-heading .eyebrow{font-size:10px}.salt-card .term-primer-grid{margin:14px 0 0}.salt-card .term-primer-grid>div{padding:10px 14px;border-radius:9px;background:#fffefa;border-color:#e6eadf}.salt-card .term-primer-grid dd{font-size:12px;line-height:1.85}.salt-card .term-help{font-size:11px;margin-bottom:0}
+.salt-card .prediction{border:1px solid #dfdfcd;border-radius:15px;background:#faf8ef;padding:21px;gap:10px;margin:26px 0}.salt-card .prediction legend{font-size:15px;line-height:1.8;max-width:100%;font-weight:650;color:#675d3e}.salt-card .prediction label{padding:13px 14px;min-height:54px;border-radius:10px;font-size:13px;line-height:1.7;background:#fffefa;border:1px solid #e4e4d5;gap:10px}.salt-card .prediction label:hover{border-color:#a8b699;background:#f4f7ed}.salt-card .prediction label:has(input:checked){border-color:#6f9369;background:#edf4e6;box-shadow:inset 0 0 0 1px #6f936944}.salt-card .prediction-letter{width:25px;height:25px;font-size:11px}.salt-card .prediction-status{grid-column:1/-1;padding-top:7px;color:#8a8060;font-size:12px}
+.salt-card .task{align-items:center;border:1px solid #d9e5d2;border-left:3px solid #63895d;background:linear-gradient(100deg,#edf3e6,#f5f8f0);border-radius:0 12px 12px 0;padding:17px 20px;margin:25px 0}.salt-card .task>span{font-size:11px;color:#5b7950;letter-spacing:.06em}.salt-card .task p{font-size:14px;line-height:1.85}.salt-card .card-activity{scroll-margin-top:24px}
+.salt-card .concept-panels{border-radius:14px;padding:23px 25px;background:#f5f6ee;border:1px solid #e2e7d8;margin:29px 0}.salt-card .concept-panels h3{font-size:16px;margin-bottom:10px}.salt-card .concept-panels summary{padding:15px 0;font-size:14px;line-height:1.8}.salt-card .concept-panels details[open] summary{color:#315e44}.salt-card .concept-panels details>div{font-size:14px;line-height:2.05;max-width:1000px}
+.salt-card .salt-quiz{padding:27px;border-radius:17px;background:#fafaf4;border-color:#dce3d3;scroll-margin-top:30px}.salt-card .salt-quiz legend{font-size:18px;line-height:1.8}.salt-card .salt-quiz fieldset>label{padding:15px 17px;font-size:14px;border-radius:10px;min-height:56px;margin:10px 0;background:#fffefa}.salt-card .salt-quiz fieldset>label:hover{border-color:#9caf8f}.salt-card .salt-quiz .primary{min-height:45px;border-radius:8px;padding:10px 20px}.salt-card .salt-quiz label.answer-right{border-color:#729469;background:#edf5e7}.salt-card .salt-quiz label.answer-wrong{border-color:#c29470;background:#fbf0e7}.salt-card .quiz-feedback p{line-height:1.9;padding:15px 18px}
+.salt-card .next-clue{position:relative;padding:23px 26px;border:1px solid #e2e7d9;background:#f3f6ed;border-radius:13px;margin:29px 0}.salt-card .next-clue:after{content:'↘';position:absolute;right:20px;top:15px;color:#8da17c;font-size:27px}.salt-card .next-clue p{max-width:calc(100% - 30px)}.salt-card .card-footer{background:#fafbf6;padding:20px 32px}.salt-card .card-footer .secondary{border-radius:8px;padding:10px 16px;font-size:13px}
+.salt-card .bottle-line{gap:18px}.salt-card .bottle-line button{position:relative;padding:32px 16px 21px;background:radial-gradient(ellipse at 50% 40%,#fffdf9,#edf2e7);border-radius:16px;transition:transform .18s,box-shadow .18s;min-height:237px}.salt-card .bottle-line button:hover{transform:translateY(-4px);box-shadow:0 12px 22px #34533314}.salt-card .bottle-line button.seen:after{content:'✓ 已查看';position:absolute;right:12px;top:11px;font-size:10px;color:#547545}
+.salt-card .bottle{width:77px;height:112px;border-width:1.5px;box-shadow:inset 7px 0 7px #fff8,inset -5px 0 6px #65887912,0 10px 10px #2f513818;margin-bottom:8px}.salt-card .bottle:before{left:23px;width:29px;background:repeating-linear-gradient(90deg,#b0a080 0 3px,#c7b898 3px 5px)}.salt-card .bottle i:after{content:'';position:absolute;left:8px;top:-24px;width:4px;height:51px;border-radius:5px;background:#fffa}
+.observation-result{border:1px solid #dce6d1;border-radius:12px;padding:19px 22px;background:#f0f5e7;line-height:1.95}.explore-status{font-size:12px;line-height:1.8;color:#6d8261;display:flex;align-items:center;gap:9px;margin:16px 0}.explore-status:before{content:'';width:7px;height:7px;border-radius:50%;background:#9ab485;flex-shrink:0}
+.study-selector{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 17px}.study-selector button,.state-switch button{border:1px solid #d9e2d2;background:#f8faf4;border-radius:9px;padding:11px 15px;font-size:12px;line-height:1.6;min-height:44px;color:#63785d}.study-selector button[aria-pressed=true],.state-switch button[aria-pressed=true]{background:#315e48;border-color:#315e48;color:#fffdf4;box-shadow:0 4px 9px #315e4817}.study-selector button[data-seen=true]:not([aria-pressed=true]):after{content:' ✓';color:#6c8b59}
+.study-controls{justify-content:space-between;align-items:center;padding:8px 2px}.study-controls [data-play]{margin-left:auto}.state-switch{display:flex;gap:5px;justify-content:center;margin:12px 0 20px}.state-switch button{min-width:115px;padding:8px 18px;min-height:40px}
+.salt-card .guided-content{border-radius:16px;padding:24px;background:#f6f8f0;border:1px solid #dfe6d6}.salt-card .guided-content h3{font-size:22px;color:#315840}.salt-card .reaction-plate svg{max-height:400px;border:1px solid #d9e3d5;border-radius:12px;margin:16px 0}.salt-card .reaction-plate p{font-size:14px;line-height:1.95}.salt-card .equation{font:600 19px/1.8 system-ui,sans-serif!important;letter-spacing:.02em;padding:16px;background:#eaf0e2}
+.study-bubble{animation:study-rise 2.8s ease-in-out infinite}@keyframes study-rise{0%,100%{opacity:.2;transform:translateY(6px)}50%{opacity:.9;transform:translateY(-8px)}}
+.salt-card .model-tabs{gap:8px}.salt-card .model-tabs button{border-radius:9px;min-height:43px;font-size:13px;padding:10px 16px}.micro-stage{border-radius:15px;overflow:hidden;border:1px solid #d9e3d3;box-shadow:0 8px 23px #33503708}.ion-explanation{padding:20px;border-radius:12px;line-height:1.95}.particle-key{display:flex;gap:20px;justify-content:center;margin:15px 0;font-size:12px;color:#72836a}.particle-key i{display:inline-block;width:10px;height:10px;border-radius:50%;background:#e8b68b;margin-right:7px}.particle-key span+span i{background:#a4cbd1}
+.salt-card .compare-solutions{gap:20px}.salt-card .compare-solutions section{border-radius:15px;position:relative;padding:27px;background:linear-gradient(145deg,#fffefa,#f2f5e9);box-shadow:0 6px 15px #3f603509}.salt-card .compare-solutions h4{font-size:30px;margin:15px 0}.salt-card .compare-solutions strong{font:30px ui-monospace,Consolas,monospace;color:#89683f}.salt-card .fraction-bar{height:9px;margin:22px 0 10px}
+.salt-card .salt-specimen{grid-template-columns:minmax(240px,1fr) 1.1fr;gap:30px;padding:0}.specimen-display svg{width:100%;display:block;border-radius:13px;border:1px solid #d9e4d3}.specimen-facts{display:grid;gap:11px;margin:18px 0}.specimen-facts p{margin:0;padding:12px 15px;background:#fffef8;border-left:2px solid #b6c7a5;border-radius:0 7px 7px 0;font-size:13px}.specimen-facts small{display:block;font-size:10px;color:#8a967c;letter-spacing:.08em;margin-bottom:4px}
+.salt-card .audit-review{position:relative;border-radius:15px;padding:24px;transition:border-color .2s}.salt-card .audit-review:has(details[open]){border-color:#92ab80;background:#f5f8ed}.salt-card .audit-review[data-seen=true]:before{content:'已核對';position:absolute;right:16px;top:20px;font-size:10px;background:#e5eeda;color:#6b8457;padding:3px 9px;border-radius:20px}.salt-card .audit-review h4{font-size:17px;line-height:1.8}.salt-card .audit-review summary{min-height:42px;line-height:1.8;padding:5px 0}.salt-card .final-report{border-radius:17px;padding:29px}.salt-card .report-comparison section{border-radius:13px;padding:26px}.salt-card .report-comparison h4{font-size:25px}
+.salt-card .precision-lab{margin:29px 0}.precision-lab .workbench-heading{padding-bottom:22px}.salt-chapter .precision-lab .workbench-heading h3{font-size:26px}.precision-lab .salt-workbench{grid-template-columns:minmax(0,1fr) 268px;border-radius:0 0 17px 17px;background:#fbfcf7;overflow:visible}.precision-lab .salt-stage{padding:22px}.precision-lab .salt-controls{border-radius:0 0 17px 0;background:#f3f6ed;padding:20px 16px;gap:16px}.precision-lab .salt-scene{border-radius:13px;box-shadow:0 7px 20px #365b3d10}.precision-lab .salt-scene>svg{min-height:260px;object-fit:contain}
+.precision-lab .lab-guide{background:linear-gradient(110deg,#eaf1e2,#f5f8ee);border-radius:14px 14px 0 0;min-height:67px}.precision-lab .lab-guide strong{font-size:13px}.precision-lab .apparatus-control{font-size:11px;min-height:37px;padding:8px 13px;box-shadow:0 4px 12px #2d533328}.precision-lab .apparatus-control.suggested{box-shadow:0 0 0 5px #fff9,0 6px 14px #264a3830}.precision-lab .sample-rack button{min-height:66px;border-radius:10px;padding:10px 7px}.precision-lab .sample-rack button>span{font-size:12px}.precision-lab .sample-rack small{font-size:10px}.precision-lab .salt-actions button{min-height:46px;font-size:12px;border-radius:9px}.precision-lab .salt-actions button[data-action=power]{grid-column:1/-1}
+.precision-lab .salt-metric{padding:10px 11px;border:1px solid #e1e8d9;border-radius:9px;background:#fffefa}.precision-lab .salt-metric:first-child{padding-left:11px;border-left:1px solid #e1e8d9}.precision-lab .salt-metric strong{font-size:21px;letter-spacing:-.5px}.precision-lab .salt-metric>span{font-size:11px}.precision-lab .bench-insight{background:#eef4e5;padding:15px 17px;border-radius:11px}.precision-lab .bench-insight strong{font-size:14px}.precision-lab .bench-insight small{font-size:11px}.precision-lab .lab-records{margin:21px 0 12px;border-radius:13px}.precision-lab .record-list p{padding:13px 17px}.precision-lab .record-list p:last-child:not(.muted){border-left:3px solid #8eac76;background:#f1f6e9}
+.tool-choice{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.tool-choice button{background:#fffefa;border:1px solid #d6e0cf;border-radius:7px;min-height:40px;padding:8px;font-size:11px;text-align:left}.tool-choice button[aria-pressed=true]{background:#e6efdc;border-color:#7f9c6b;color:#315a3e}.tool-choice button:last-child:nth-child(odd){grid-column:1/-1}.tool-picker>span{font-size:12px;font-weight:650}.tool-picker [hidden]{display:none!important}
+.precision-lab .disabled-reason{font-size:11px;color:#8a795a;line-height:1.8;background:#f8f3e6;border-radius:7px;padding:10px 12px;margin:0}.precision-lab .disabled-reason:empty{display:none}.precision-lab .lab-announcement{padding:11px;background:#e9f2de;border-radius:8px}
+.salt-card button:focus-visible,.salt-card summary:focus-visible,.salt-card a:focus-visible,.salt-card label:has(input:focus-visible){outline:3px solid #b89050;outline-offset:4px}
+@media(min-width:1450px){.precision-lab .salt-workbench{grid-template-columns:minmax(0,1fr) 300px}.precision-lab .salt-stage{padding:26px}.precision-lab .salt-controls{padding:24px 20px}.precision-lab .apparatus-control{font-size:12px}}
+@media(max-width:1150px){.salt-chapter #lesson{padding-left:20px;padding-right:20px}.salt-card .card-header,.salt-card .card-body{padding-left:25px;padding-right:25px}.precision-lab .salt-workbench{grid-template-columns:1fr}.precision-lab .salt-controls{display:grid;grid-template-columns:1fr 1fr;border-left:0;border-top:1px solid #dce3d4;border-radius:0 0 17px 17px}.precision-lab .controls-heading{grid-column:1/-1}.precision-lab .sample-rack{grid-row:span 3}.precision-lab .disabled-reason,.precision-lab .lab-announcement{grid-column:1/-1}.precision-lab .salt-stage{padding:22px}.salt-card .audit-reviews{grid-template-columns:1fr}}
+.precision-lab.expanded-lab .salt-workbench{grid-template-columns:1fr}
+@media(max-width:700px){.salt-card .card-header,.salt-card .card-body{padding-left:18px;padding-right:18px}.salt-card .story-dialogue,.salt-card .salt-specimen,.salt-card .compare-solutions{grid-template-columns:1fr}.card-journey{padding:0 8px}.card-journey button{gap:6px;font-size:11px}.salt-card .prediction{padding:16px}.salt-card .task{display:block;padding:16px}.salt-card .task>span{display:block;margin-bottom:5px}.study-selector button{flex:1 1 40%;padding:10px}.salt-card .salt-quiz{padding:19px}.precision-lab .salt-stage{padding:12px}.precision-lab .salt-scene>svg{min-height:0}.precision-lab .readouts,.precision-lab[data-lab=neutral] .salt-stage>.readouts,.precision-lab[data-lab=crystal] .salt-stage>.readouts{grid-template-columns:repeat(2,minmax(0,1fr))}.precision-lab .salt-metric strong{font-size:18px}.precision-lab .salt-controls{padding:15px;gap:12px}.precision-lab .apparatus-control{font-size:10px;padding:6px 9px;min-height:32px}.salt-card .card-footer{padding:18px}.salt-card .card-footer>div{gap:12px}.salt-card .bottle-line{gap:8px}.salt-card .bottle-line button{padding:35px 6px 15px;min-height:220px}.salt-card .bottle{width:61px;height:96px}.salt-card .bottle:before{left:17px;width:25px}.salt-card .bottle-line button.seen:after{font-size:9px;right:7px}.salt-card .card-kicker{flex-direction:column;gap:5px}.salt-card .report-comparison{grid-template-columns:1fr}.study-controls [data-play]{margin-left:0}.study-controls{gap:7px}.salt-card .guided-content{padding:16px}}
+@media(prefers-reduced-motion:reduce){.salt-chapter *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media print{.card-journey,.study-selector,.study-controls,.state-switch{display:none!important}}
+html:has(body.salt-chapter){scroll-behavior:auto}
+/* Click the real switch drawing; the hit target follows the board, not a floating label. */
+.precision-lab[data-lab=conduct] .apparatus-control.circuit-switch{left:79.65%;top:31.3%;width:22%;height:24%;padding:0;min-height:0;border:2px solid transparent;border-radius:11px;background:transparent;box-shadow:none;backdrop-filter:none;color:transparent;cursor:pointer;}
+.precision-lab[data-lab=conduct] .apparatus-control.circuit-switch:not(:disabled):hover{border-color:#69845b99;background:#f7f7dd12;box-shadow:0 0 0 3px #c0d6ae33;filter:none}
+.precision-lab[data-lab=conduct] .apparatus-control.circuit-switch:focus-visible{outline:3px solid #b89050;outline-offset:4px;border-color:#69845b99;}
+.precision-lab[data-lab=conduct] .salt-stage>.readouts{grid-template-columns:repeat(2,minmax(0,1fr));}
+/* Second pass: a clear next action and comfortable reading on every station. */
+.salt-chapter{--muted:#596d5c}
+.salt-card .card-header{background:radial-gradient(ellipse at 90% 0,#e5ecd950,transparent 60%),#fffefb;padding-bottom:25px}
+.salt-card .card-header h2{color:#234a3c;line-height:1.5}
+.salt-card .core-question{color:#5e725e}
+.card-route{display:flex;gap:22px;align-items:center;margin-top:24px;padding-top:20px;border-top:1px solid #e0e7d9;position:relative}
+.route-copy{flex:1;min-width:0}.route-copy strong{display:block;font-size:15px;line-height:1.7;color:#365b42}.route-copy small{display:block;font-size:12px;line-height:1.9;color:#69795e;margin-top:3px;max-width:780px}
+.salt-card .card-route .primary{flex-shrink:0;padding:12px 18px;border-radius:10px;min-height:46px;font-size:13px;background:#315d47;box-shadow:0 5px 12px #315d4718}
+.card-progress{width:80px;flex-shrink:0}.card-progress-label{font-size:11px;color:#60744e;white-space:nowrap}.card-progress-track{display:block;height:4px;border-radius:8px;background:#e0e8d7;margin-top:8px;overflow:hidden}.card-progress-track i{display:block;height:100%;background:#6c8e56;transition:width .2s}
+.salt-card[data-mastered=true] .card-header{background:linear-gradient(120deg,#f0f5e9,#fffefb)}
+.salt-card .card-journey{position:sticky;top:0;z-index:12;background:#fafcf6f5;backdrop-filter:blur(12px);box-shadow:0 2px 9px #244b3707;padding:0 22px}
+.salt-card .card-journey button{min-height:54px;font-size:13px;color:#596f55}.salt-card .card-journey button[aria-current=step]{background:#eaf1e2}.salt-card .card-journey button>span{flex-shrink:0;width:24px;height:24px}
+.salt-card .story-opening{color:#485c49}.salt-card .story-speech p{color:#4e604b;font-size:15px}.salt-card .story-speech b{color:#667c50}
+.salt-card .term-primer-grid dd{color:#566b50;font-size:13px}.salt-card .term-help{color:#697b5c}.salt-card .term-primer-heading h3{font-size:17px}
+.salt-card .prediction label{position:relative;font-size:14px;min-height:60px}.salt-card .prediction label:has(input:checked):after{content:'✓';margin-left:auto;flex-shrink:0;color:#3d6b42;font-size:15px}.salt-card .prediction-status{color:#706849}
+.salt-card .task{scroll-margin-top:72px}.salt-card .prediction,.salt-card .salt-quiz{scroll-margin-top:80px}
+.activity-checkpoint{display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid #dce5d3;border-radius:12px;background:#fafbf5;padding:18px 20px;margin:23px 0 30px}.activity-checkpoint small{display:block;color:#7b8a6b;font-size:10px;letter-spacing:.12em;margin-bottom:6px}.activity-checkpoint strong{font-size:13px;line-height:1.8;color:#7b744f}.activity-checkpoint[data-done=true]{background:#edf4e7;border-color:#cbdcbc}.activity-checkpoint[data-done=true] strong{color:#476e40}.activity-checkpoint .secondary{border-radius:8px;min-height:44px;padding:10px 15px;font-size:13px;white-space:nowrap;background:#fffef8;border:1px solid #bccfae}
+.salt-card .concept-panels{background:#fafbf5}.salt-card .concept-panels summary{display:flex;align-items:center;justify-content:space-between;list-style:none;cursor:pointer;gap:15px}.salt-card .concept-panels summary:after{content:'＋';font:18px system-ui;color:#7f946b}.salt-card .concept-panels details[open] summary:after{content:'−'}.salt-card .concept-panels details>div{padding:5px 0 18px;color:#4f634c}
+.salt-card .salt-quiz{background:linear-gradient(145deg,#f4f7ed,#fbfcf6);padding:27px}.salt-card .salt-quiz fieldset>label{position:relative;font-size:15px;line-height:1.8}.salt-card .salt-quiz label:has(input:checked){border-color:#729467;background:#edf4e5;box-shadow:inset 0 0 0 1px #72946733}.salt-card .salt-quiz label input{width:17px;height:17px;flex-shrink:0}.salt-card .salt-quiz .salt-actions{align-items:center;gap:16px}.salt-card .quiz-feedback{font-size:14px;line-height:1.9}.salt-card .quiz-feedback:empty{display:none}.salt-card .quiz-feedback:not(:empty){margin-top:18px}.salt-card .salt-quiz label.answer-wrong{border-color:#bd8d6a;background:#fbf0e8}
+.salt-card .bottle-line button[aria-pressed=true]{border-color:#6d9360;box-shadow:inset 0 0 0 1px #6d936060,0 8px 18px #3e623514;background:#eef4e6}.salt-card .bottle-line button small{font-size:12px;color:#627850}.salt-card .bottle-line button.seen:after{font-size:11px;background:#e2ecd7;padding:3px 7px;border-radius:20px}
+.salt-card .explore-status{color:#526d46;padding:11px 14px;border-radius:8px;background:#f0f5e8;font-size:13px}.salt-card .observation-result{background:#f7faf1;color:#42643d;min-height:80px}
+.salt-card .study-selector{gap:8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}.salt-card .study-selector button{position:relative;text-align:center;padding:13px 16px;font-size:13px;min-height:50px}.salt-card .study-selector button[aria-pressed=true]{box-shadow:0 4px 10px #315e4820}.salt-card .study-selector button[data-seen=true]:not([aria-pressed=true]):after{content:' ✓';font-size:11px}.salt-card .study-controls .step-counter{font:13px ui-monospace,monospace;color:#547345}.salt-card .study-controls button{min-height:44px;border-radius:8px;padding:10px 16px}.salt-card .study-controls button:disabled{opacity:.38;cursor:not-allowed}.salt-card .state-switch button[aria-pressed=false]:last-child{border-color:#75956a;color:#355e40;background:#eef5e7;font-weight:650}.salt-card .reaction-plate svg{background:#f1f5ed}
+.salt-card .model-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:16px}.salt-card .model-tabs button{position:relative;min-height:49px;text-align:center;padding:11px 13px;font-size:13px}.salt-card .model-tabs button[data-seen=true]:after{content:'·';display:inline-block;color:#7e9b68;margin-left:8px}.salt-card .model-tabs button[aria-pressed=true]{background:#315e48;color:#fff;border-color:#315e48}.salt-card .model-tabs button[aria-pressed=true]:after{color:#e3efdb}.salt-card .ion-explanation{font-size:15px;background:#f0f5e9;border:1px solid #dce6d2}.salt-card .particle-key{color:#536c4c;font-size:13px}
+.salt-card .compare-solutions section{padding:26px;border-top:3px solid #a7ba91}.salt-card .compare-solutions section>span{display:inline-block;border-radius:20px;background:#e6eddb;color:#516e42;padding:4px 12px;font-size:12px}.salt-card .compare-solutions p{font-size:14px;color:#50664a}.salt-card .compare-solutions small{color:#657b56;font-size:12px}.salt-card .calculation-steps li{line-height:2.1;padding:10px 15px;margin:8px 0;background:#fffef9;border:1px solid #e0e7d5;border-radius:9px;font-size:15px}.salt-card .calculation-steps ol{padding-left:25px}
+.salt-card .audit-review h4{padding-right:24px}.salt-card .audit-review details>div{padding:8px 0}.salt-card .audit-review .report-conclusion{background:#eaf1e0;border-radius:0 9px 9px 0;padding:13px 15px;font-size:14px}.salt-card .report-number{display:inline-grid;place-items:center;width:40px;height:40px;border:1px solid #e2d9be;background:#f9f5e9;border-radius:50%;font-size:21px}.salt-card .report-intro p{color:#5d7351}.salt-card .final-report [data-handover]{border-radius:9px;min-height:48px;padding:12px 20px}.salt-card .handover-status:not(:empty){border-left:3px solid #82a16a;padding:14px 18px;background:#eef4e6;line-height:1.95}
+.precision-lab .bench-label{font-size:12px;color:#526c4d}.precision-lab .controls-heading small{font-size:11px;color:#697f5d}.precision-lab .sample-rack button>span{font-size:13px}.precision-lab .sample-rack small{font-size:11px;color:#5f7757}.precision-lab .sample-rack button[aria-pressed=true]{background:#e4eeda;border-color:#73915f;box-shadow:inset 3px 0 #73915f}.precision-lab .sample-rack button[aria-pressed=true] .mini-vial:before{background:#527547}
+.precision-lab .tool-choice button{font-size:12px;line-height:1.7;min-height:44px;padding:10px}.precision-lab .tool-choice button[aria-pressed=true]{box-shadow:inset 3px 0 #7c996a}.precision-lab .salt-actions button{font-size:13px;min-height:48px}.precision-lab .model-assumptions,.precision-lab .model-note,.precision-lab .micro-details summary{font-size:12px;line-height:1.9;color:#647b59}.precision-lab .parameter-summary{font-size:11px;color:#647b55}.precision-lab .salt-metric>span{color:#607651;font-size:12px}.precision-lab .bench-insight small{color:#647b54;font-size:12px}.precision-lab .lab-guide strong{font-size:14px;line-height:1.9;color:#47613f}
+.precision-lab .lab-records h3{font-size:15px;color:#3c5f40;margin:0}.precision-lab .record-history summary{cursor:pointer;padding:14px 18px;font-size:13px;color:#5f7a50;border-bottom:1px solid #e0e7d8}.precision-lab .record-history[open]{background:#fafbf5}.precision-lab .recent-records{padding:14px 16px}.precision-lab .record-caption{display:block;font-size:11px;color:#6b805b;margin-bottom:10px}.precision-lab .recent-records p{border:1px solid #dce5d2;border-radius:9px;background:#fffefb;padding:13px 15px;margin:8px 0;font-size:13px}.precision-lab .record-list .recent-records p:last-child{border:1px solid #b8cca8;border-left:3px solid #73935e;background:#f1f6e9}.precision-lab .record-list p>span{color:#678054}
+@media(max-width:1100px){.card-route{flex-wrap:wrap;gap:16px}.route-copy{flex-basis:calc(100% - 110px)}.card-route .primary{width:100%}.salt-card .model-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){.salt-chapter #lesson{padding-left:12px;padding-right:12px;gap:28px}.salt-card .card-route{margin-top:18px;padding-top:16px;gap:13px}.route-copy strong{font-size:14px}.route-copy small{font-size:12px}.salt-card .card-journey{padding:0 5px}.salt-card .card-journey button{font-size:12px;gap:5px}.activity-checkpoint{display:block;padding:16px}.activity-checkpoint .secondary{width:100%;margin-top:13px}.salt-card .study-selector{grid-template-columns:repeat(2,minmax(0,1fr))}.salt-card .study-selector button{padding:11px 8px}.salt-card .bottle-line button{min-height:215px}.salt-card .salt-quiz fieldset>label{font-size:14px;padding:13px 12px}.salt-card .salt-quiz .salt-actions{align-items:stretch;flex-direction:column}.salt-card .salt-quiz .primary{width:100%}.salt-card .prediction{grid-template-columns:1fr}.precision-lab .workbench-heading{align-items:start}.precision-lab .bench-utilities{flex-direction:column;gap:5px}.precision-lab .virtual-badge{display:none}.precision-lab .salt-controls{display:flex}.precision-lab .sample-rack{grid-template-columns:repeat(2,minmax(0,1fr))}.precision-lab .tool-choice button{font-size:13px}.salt-card .card-footer>div{display:flex;flex-wrap:wrap;width:100%;justify-content:space-between}.salt-card .card-footer .reset-card{order:3;width:100%;text-align:center;min-height:40px}}
+@media print{.card-route,.activity-checkpoint{display:none!important}.salt-card .card-journey{display:none!important}.record-history{display:block}}
 </style></head>
 <body class="salt-chapter">
 <a class="skip" href="#lesson">跳到學習卡片</a>
@@ -621,9 +701,172 @@
 <div class="chapter-intro"><span class="salt-seal" aria-hidden="true">鹽</span><div><span class="eyebrow">一個任務，貫穿四幕故事</span><p><b>從看不見的離子，找到可靠的製鹽方法。</b>辨認差異 → 量測酸鹼 → 控制反應 → 檢查製鹽證據</p><small>現代儀器來自阿公的實驗箱與平台觀察視角；所有化學操作都是虛擬實驗。</small></div></div>
 <main id="lesson" tabindex="-1"></main>
 <section id="completion-banner" hidden><h2>你完成了皇帝最後的委託。</h2><p>十二站的預測、觀察與小試身手已完成。把調查紀錄帶回家，讓下一個判斷也有證據。</p></section>
-<footer class="chapter-footer"><span>Science Lab · 用手探索，用證據說明。</span><details><summary>模型假設、課綱與科學來源</summary><p>本章涵蓋 Jb-Ⅳ-1～4、Jd-Ⅳ-1～6 的相關內容。mol/L、弱酸鹼平衡與對數計算屬本章量化延伸；學生可先觀察，再展開公式。課綱中的 Jb-Ⅳ-4 另包含重量百分濃度與 ppm，放在卡 10 的質量帳中。</p><p>pH 與平衡皆採 25°C 理想稀水溶液，不含活度校正；水離子積 10⁻¹⁴、醋酸 Ka 與氨 Kb 約 1.8×10⁻⁵。導電是比較分數，非實測電導率。沉澱為忽略溶解度的理論上限。天然鹵水模式是組成與質量限制的教學示例，不能預測食品安全或完整純化效果。</p><ul><li><a href="https://ghresource.k12ea.gov.tw/uploads/1613715832381Ld8uk4KU.pdf" target="_blank" rel="noopener">教育部自然科學領域課綱</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh" target="_blank" rel="noopener">OpenStax Chemistry 2e · pH 與水離子積</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases" target="_blank" rel="noopener">OpenStax · 酸鹼強度和平衡</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/14-7-acid-base-titrations" target="_blank" rel="noopener">OpenStax · 滴定與不同等量點</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/15-1-precipitation-and-dissolution" target="_blank" rel="noopener">OpenStax · 沉澱與溶解</a></li></ul></details><details><summary>重新開始本章</summary><p>清除這一章的預測、答案與紀錄；其他章節不受影響。</p><button class="secondary" id="clear-chapter-progress">確認重設本章進度</button></details></footer>
+<footer class="chapter-footer"><span>Science Lab · 用手探索，用證據說明。</span><details><summary>模型假設、課綱與科學來源</summary><p>本章涵蓋 Jb-Ⅳ-1～4、Jd-Ⅳ-1～6 的相關內容。mol/L、弱酸鹼平衡與對數計算屬本章量化延伸；學生可先觀察，再展開公式。課綱中的 Jb-Ⅳ-4 另包含重量百分濃度與 ppm，放在卡 10 的質量帳中。</p><p>pH 與平衡皆採 25°C 理想稀水溶液，不含活度校正；水離子積 10⁻¹⁴、醋酸 Ka 與氨 Kb 約 1.8×10⁻⁵。導電以定性結果與燈泡反應呈現，非實測電導率。沉澱為忽略溶解度的理論上限。天然鹵水模式是組成與質量限制的教學示例，不能預測食品安全或完整純化效果。</p><ul><li><a href="https://ghresource.k12ea.gov.tw/uploads/1613715832381Ld8uk4KU.pdf" target="_blank" rel="noopener">教育部自然科學領域課綱</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/14-2-ph-and-poh" target="_blank" rel="noopener">OpenStax Chemistry 2e · pH 與水離子積</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/14-3-relative-strengths-of-acids-and-bases" target="_blank" rel="noopener">OpenStax · 酸鹼強度和平衡</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/14-7-acid-base-titrations" target="_blank" rel="noopener">OpenStax · 滴定與不同等量點</a></li><li><a href="https://openstax.org/books/chemistry-2e/pages/15-1-precipitation-and-dissolution" target="_blank" rel="noopener">OpenStax · 沉澱與溶解</a></li></ul></details><details><summary>重新開始本章</summary><p>清除這一章的預測、答案與紀錄；其他章節不受影響。</p><button class="secondary" id="clear-chapter-progress">確認重設本章進度</button></details></footer>
 </div><script>'use strict';
 const __modules={};
+__modules["electrolytes/learning-route.js"]=(()=>{
+// Shared navigation follows actual saved progress, including incomplete earlier steps.
+function learningRoute(card,state){
+ const prediction=state.predictions[card.id]!==undefined,observed=state.observed.includes(card.id),answered=state.answers[card.quiz.id]===card.quiz.answer;
+ if(!prediction)return{step:0,title:'先留下你的猜想',detail:'選一個想法即可；預測沒有對錯，隨時可以修正。',action:'開始預測 →'};
+ if(!observed)return{step:1,title:'帶著猜想，動手找證據',detail:card.task,action:'前往探索 →'};
+ if(!answered)return{step:2,title:'觀察完成，驗證你的想法',detail:'只要一題，用剛剛找到的證據作出判斷。',action:'回答小試身手 →'};
+ return card.id<12?{step:3,title:'這一站，你已經掌握了',detail:'預測、觀察、驗證都完成。帶著線索前往下一站。',action:'前往第 '+String(card.id+1).padStart(2,'0')+' 站 →'}:{step:2,title:'最後一站已完成',detail:'可以回看調查結果，或往下欣賞回家的故事。',action:'回看最後的判斷 →'};
+}
+
+return {learningRoute};
+})();
+__modules["electrolytes/core.js"]=(()=>{
+// Ideal dilute aqueous teaching models at 25 °C. Shared by diagrams and readouts.
+const KW=1e-14, KA=1.8e-5, KB=1.8e-5;
+function bounded(v,min,max,label='數值') {
+ if(v===''||v===null||typeof v==='boolean')throw new RangeError(label+'不可空白');
+ const n=Number(v);if(!Number.isFinite(n)||n<min||n>max)throw new RangeError(label+'需介於 '+min+'～'+max);return n;
+}
+const ionInfo={H:['H⁺',1,7],OH:['OH⁻',-1,4],Na:['Na⁺',1,1],Cl:['Cl⁻',-1,1.5],Ac:['CH₃COO⁻',-1,.8],NH4:['NH₄⁺',1,1.5],Ca:['Ca²⁺',2,1.2],CO3:['CO₃²⁻',-2,1.3],HCO3:['HCO₃⁻',-1,.9]};
+function direction(z){return z>0?'負電極':z<0?'正電極':'不定向';}
+function fromExcess(d){const r=Math.hypot(d,2*Math.sqrt(KW)),H=d>=0?(d+r)/2:2*KW/(r-d);return{H,OH:KW/H,pH:-Math.log10(H)};}
+const solutions={
+ water:{name:'蒸餾水',formula:'H₂O',kind:'極少離子',strength:'非溶質',state:'aq'},
+ nacl:{name:'食鹽水',formula:'NaCl(aq)',kind:'強電解質',strength:'強',state:'aq'},
+ sugar:{name:'糖水',formula:'C₁₂H₂₂O₁₁(aq)',kind:'非電解質',strength:'無',state:'aq'},
+ acetic:{name:'醋酸水溶液',formula:'CH₃COOH(aq)',kind:'弱酸／弱電解質',strength:'弱',state:'aq'},
+ hcl:{name:'稀鹽酸',formula:'HCl(aq)',kind:'強酸／強電解質',strength:'強',state:'aq'},
+ naoh:{name:'氫氧化鈉水溶液',formula:'NaOH(aq)',kind:'強鹼／強電解質',strength:'強',state:'aq'},
+ ammonia:{name:'氨水',formula:'NH₃(aq)',kind:'弱鹼／弱電解質',strength:'弱',state:'aq'},
+ carbonate:{name:'碳酸鈉水溶液',formula:'Na₂CO₃(aq)',kind:'鹼性的鹽類',strength:'強',state:'aq'},
+ solid:{name:'固態氯化鈉',formula:'NaCl(s)',kind:'離子位置受限',strength:'強',state:'s'}
+};
+function speciate(id,concentration=.01,dilution=1){
+ if(!solutions[id])throw new RangeError('未知樣品');
+ const C=bounded(concentration,0,1,'濃度')/bounded(dilution,1,1e8,'稀釋倍數');
+ if(id==='solid')return{id,C,pH:null,H:0,OH:0,ions:[],mobile:false,alpha:0};
+ const Na=['nacl','naoh'].includes(id)?C:id==='carbonate'?2*C:0,Cl=['nacl','hcl'].includes(id)?C:0;
+ function at(H){const OH=KW/H,Ac=id==='acetic'?C*KA/(KA+H):0,NH4=id==='ammonia'?C*H/(KW/KB+H):0,K1=4.3e-7,K2=4.7e-11,D=H*H+K1*H+K1*K2;
+ return{H,OH,Na,Cl,Ac,NH4,CO3:id==='carbonate'?C*K1*K2/D:0,HCO3:id==='carbonate'?C*K1*H/D:0};}
+ let lo=-16,hi=1;
+ for(let i=0;i<110;i++){const mid=(lo+hi)/2,s=at(10**mid),q=s.H+s.Na+s.NH4-s.OH-s.Cl-s.Ac-2*s.CO3-s.HCO3;if(q>0)hi=mid;else lo=mid;}
+ const s=at(10**((lo+hi)/2)),ions=Object.entries(s).filter(([,c])=>c>0).map(([key,c])=>({key,label:ionInfo[key][0],charge:ionInfo[key][1],mobility:ionInfo[key][2],c}));
+ return{id,C,...s,pH:-Math.log10(s.H),ions,mobile:true,alpha:C===0?0:id==='acetic'?s.Ac/C:id==='ammonia'?s.NH4/C:['water','sugar'].includes(id)?0:1};
+}
+function conductivity(id,C=.01,immersed=true,powered=true){const s=speciate(id,C),weighted=s.ions.reduce((v,i)=>v+i.c*Math.abs(i.charge)*i.mobility,0),score=immersed&&powered&&s.mobile?Math.min(100,100*Math.log1p(weighted/.002)/Math.log1p(.65/.002)):0;return{...s,weighted,score,lamp:score/100};}
+function mix(a,b,t){t=Math.max(0,Math.min(1,t));return '#'+[0,1,2].map(i=>Math.round(parseInt(a.slice(1+i*2,3+i*2),16)*(1-t)+parseInt(b.slice(1+i*2,3+i*2),16)*t).toString(16).padStart(2,'0')).join('');}
+function indicator(kind,pH){
+ bounded(pH,-2,16,'pH');
+ if(kind==='phenol')return{color:mix('#e7f4eb','#e946a0',(pH-8.2)/1.8),label:pH<8.2?'無色':pH>10?'桃紅色':'淡粉紅 → 桃紅',range:'酚酞：pH 約 8.2～10.0'};
+ if(kind==='btb')return{color:pH<=6.8?mix('#eed46b','#68b879',(pH-6)/.8):mix('#68b879','#4b8fc7',(pH-6.8)/.8),label:pH<=6?'黃色':pH>=7.6?'藍色':'黃綠／綠／藍綠',range:'BTB：pH 約 6.0～7.6'};
+ if(['red','blue'].includes(kind))return{color:kind==='red'?mix('#d06b79','#677fc5',(pH-7)/1.3):mix('#d06b79','#677fc5',(pH-4.5)/2.5),label:pH<=4.5?'紅色':pH>=8.3?'藍色':kind==='red'?'紅色至紫色（中性不變藍）':'紫色至藍色（中性不變紅）',range:'石蕊：約 4.5～8.3；中間區亦受原試紙顏色影響'};
+ const stops=[[0,'#c55f69'],[3,'#e98b60'],[5,'#e6cd64'],[7,'#71b681'],[9,'#599fc1'],[11,'#777fc2'],[14,'#9b69a9']],k=stops.findIndex(([v])=>v>=pH),n=Math.max(1,k<0?stops.length-1:k);
+ return{color:mix(stops[n-1][1],stops[n][1],(pH-stops[n-1][0])/(stops[n][0]-stops[n-1][0])),label:'對照色卡，讀取約略 pH',range:'廣用指示劑／試紙：連續色階，配方不同會略有差異'};
+}
+function neutralize(acidC,acidML,baseC,baseML){
+ const a=bounded(acidC,0,1)*bounded(acidML,0,500)/1000,b=bounded(baseC,0,1)*bounded(baseML,0,500)/1000,volume=(Number(acidML)+Number(baseML))/1000;
+ if(volume<=0)throw new RangeError('混合體積必須大於零');
+ const reacted=Math.min(a,b),delta=(a-b)/volume,Q=reacted*57300;
+ return{a,b,reacted,volume,acidLeft:Math.max(0,a-b),baseLeft:Math.max(0,b-a),...fromExcess(delta),Q,temperature:25+Q/(volume*1000*4.18),Na:b,Cl:a,waterMade:reacted,saltEquivalent:reacted,progress:Math.max(a,b)===0?0:reacted/Math.max(a,b)};
+}
+function precipitate(carbC,carbML,calciumC,calciumML,partner='calcium'){
+ const carbonate=bounded(carbC,0,1)*bounded(carbML,0,500)/1000,second=bounded(calciumC,0,1)*bounded(calciumML,0,500)/1000,calcium=partner==='calcium'?second:0,solid=Math.min(carbonate,calcium);
+ return{carbonate,calcium,solid,mass:solid*100.09,Na:2*carbonate+(partner==='nacl'?second:0),Cl:partner==='calcium'?2*second:partner==='nacl'?second:0,Ca:calcium-solid,CO3:carbonate-solid,volume:(Number(carbML)+Number(calciumML))/1000};
+}
+function crystallize({water=100,salt=30,other=0,dirt=0,evaporated=0,filtered=false,settled=false,separated=false}={}){
+ water=bounded(water,0,2000);salt=bounded(salt,0,2000);other=bounded(other,0,2000);dirt=bounded(dirt,0,2000);evaporated=bounded(evaporated,0,water);
+ const waterLeft=water-evaporated,dissolvedSalt=Math.min(salt,.36*waterLeft),crystalSalt=salt-dissolvedSalt,dissolvedOther=Math.min(other,.35*waterLeft),crystalOther=other-dissolvedOther,removedDirt=filtered?dirt:settled?dirt*.8:0,dirtLeft=dirt-removedDirt,mother=waterLeft+dissolvedSalt+dissolvedOther;
+ return{initialSolid:Math.max(0,salt-.36*water),newCrystal:Math.max(0,crystalSalt-Math.max(0,salt-.36*water)),waterLeft,evaporated,dissolvedSalt,crystalSalt,dissolvedOther,crystalOther,dirtLeft,removedDirt,mother,crystalMass:crystalSalt+crystalOther,harvest:separated?crystalSalt+crystalOther:0,total:mother+crystalSalt+crystalOther+dirtLeft+removedDirt+evaporated,initial:water+salt+other+dirt,percent:mother?dissolvedSalt/mother*100:null,ppm:mother?dissolvedSalt/mother*1e6:null,safeToEat:false};
+}
+function assessFood(e={}){return e.foodGrade===true&&e.purityTest===true&&e.contaminantTest===true&&e.processVerified===true?'需由合格品質程序判定':'證據不足，不能判定可食用';}
+function neutralEndpoint(acid,base){return acid==='hcl'&&base==='naoh'?'25°C 理想等莫耳模型約 pH 7':'需考慮生成離子與水的平衡，不能一律判為 pH 7';}
+function fmt(n,d=2){return n===null?'—':Number(n.toFixed(d)).toLocaleString('zh-TW',{maximumFractionDigits:d});}
+function sci(n){return n===0?'0':n.toExponential(2).replace('e-',' × 10^−').replace('e+',' × 10^');}
+
+
+return {KW,bounded,ionInfo,direction,fromExcess,solutions,speciate,conductivity,indicator,neutralize,precipitate,crystallize,assessFood,neutralEndpoint,fmt,sci};
+})();
+__modules["electrolytes/art.js"]=(()=>{
+const { fmt, indicator }=__modules["electrolytes/core.js"];
+function svg(body,label,id='scene',height=420){
+ return `<svg viewBox="0 0 760 ${height}" role="img" aria-label="${label}" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="${id}-wall" x2="0" y2="1"><stop stop-color="#e4eadd"/><stop offset="1" stop-color="#f6f2e5"/></linearGradient><linearGradient id="${id}-glass"><stop stop-color="#effcfa" stop-opacity=".7"/><stop offset=".4" stop-color="#ffffff" stop-opacity=".08"/><stop offset="1" stop-color="#c2d6ce" stop-opacity=".5"/></linearGradient><linearGradient id="${id}-metal"><stop stop-color="#647873"/><stop offset=".4" stop-color="#e8efea"/><stop offset="1" stop-color="#84968e"/></linearGradient><filter id="${id}-shadow"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity=".12"/></filter></defs><rect width="760" height="${height}" rx="14" fill="url(#${id}-wall)"/><path d="M0 ${height-75}H760V${height}H0Z" fill="#d6c7a9"/><path d="M0 ${height-75}H760" stroke="#b9ab90" stroke-width="3"/><path d="M0 ${height-70}H760" stroke="#f4ead6" stroke-width="2"/><path d="M32 ${height-44}H728M46 ${height-21}H711" stroke="#bdab8a" opacity=".2"/>${body}</svg>`;
+}
+function label(x,y,t,size=15,color='#365344',anchor='middle'){return `<text x="${x}" y="${y}" text-anchor="${anchor}" fill="${color}" font-size="${size}" font-family="Microsoft JhengHei,system-ui,sans-serif">${t}</text>`;}
+function beaker(id,x=235,y=150,w=230,h=195,color='#a9c9b5',fill=.62,solid=0){
+ const ly=y+h*(1-fill),marks=[.25,.5,.75].map(n=>`<path d="M${x+12} ${y+h*n}h20" stroke="#64877b" opacity=".6"/>`).join('');
+ let crystals='';for(let i=0;i<Math.min(34,Math.ceil(solid*2));i++)crystals+=`<rect x="${x+20+(i*29)%(w-42)}" y="${y+h-12-Math.floor(i/7)*8}" width="8" height="8" rx="1" fill="#fffdf3" stroke="#c6c9bd" transform="rotate(${i*17%60} ${x+20+(i*29)%(w-42)} ${y+h-12-Math.floor(i/7)*8})"/>`;
+ return `<ellipse cx="${x+w/2}" cy="${y+h+10}" rx="${w*.63}" ry="14" fill="#61715a20"/><path d="M${x} ${ly}H${x+w}V${y+h-8}Q${x+w} ${y+h} ${x+w-10} ${y+h}H${x+10}Q${x} ${y+h} ${x} ${y+h-8}Z" fill="${color}" opacity=".65"/><ellipse cx="${x+w/2}" cy="${ly}" rx="${w/2}" ry="5" fill="${color}" opacity=".7"/><path d="M${x-9} ${y-7}L${x+3} ${y+5}V${y+h-9}Q${x+3} ${y+h+3} ${x+16} ${y+h+3}H${x+w-12}Q${x+w} ${y+h+3} ${x+w} ${y+h-9}V${y}" fill="url(#${id}-glass)" stroke="#73988c" stroke-width="3"/><path d="M${x+14} ${y+12}V${y+h-18}" stroke="white" stroke-opacity=".7" stroke-width="5"/><path d="M${x+3} ${y+5}Q${x+w*.5} ${y-6} ${x+w} ${y}" stroke="#d8e9e0" stroke-width="1.5" fill="none"/><path d="M${x+w-10} ${y+16}V${y+h-20}" stroke="#f7fffa" stroke-opacity=".5" stroke-width="2"/>${marks}${crystals}`;
+}
+function ionsView(ions,{solid=false,on=false,id='ions',neutral=''}={}){
+ let rows=ions.filter(i=>i.c>1e-6); if(!rows.length&&ions.length)rows=ions.filter(i=>i.key==='H'||i.key==='OH');
+ let body=`<rect x="35" y="48" width="690" height="245" rx="15" fill="#f9fbf4" stroke="#c9d5c2"/><rect x="55" y="76" width="12" height="190" rx="4" fill="#6d92b5"/><rect x="693" y="76" width="12" height="190" rx="4" fill="#bb7565"/>${label(60,36,'− 負電極',13)}${label(697,36,'＋ 正電極',13)}`;
+ if(solid){for(let i=0;i<24;i++){const x=220+(i%6)*58,y=106+Math.floor(i/6)*47;body+=`<circle cx="${x}" cy="${y}" r="20" fill="${(i+Math.floor(i/6))%2?'#93b7bd':'#dba77f'}"/>${label(x,y+5,(i+Math.floor(i/6))%2?'Cl⁻':'Na⁺',12)}`;}}
+ else rows.forEach((ion,k)=>{for(let j=0;j<3;j++){const x=150+j*200+(k%2)*45,y=105+(k%4)*47;body+=`<g class="${on?'ion-drift':''}" style="--dx:${ion.charge>0?-60:60}px;--duration:${8/(ion.mobility||1)}s;animation-delay:-${j}s"><circle cx="${x}" cy="${y}" r="${ion.label.length>4?27:20}" fill="${ion.charge>0?'#e8b68b':'#a4cbd1'}" stroke="#fff"/>${label(x,y+4,ion.label,ion.label.length>4?10:13)}</g>`;}});
+ if(neutral){for(let j=0;j<3;j++)body+='<g><ellipse cx="'+(235+j*142)+'" cy="226" rx="55" ry="18" fill="#e7debe"/>'+label(235+j*142,230,neutral.includes('糖')?'糖分子':'CH₃COOH',12)+'</g>';body+=label(380,270,neutral,13);}
+ body+=label(380,327,solid?'晶格中的離子位置受限':on?'陽離子 ← 負極　｜　正極 → 陰離子':'電場關閉：粒子仍有熱運動，無定向漂移',14);
+ return svg(body,'微觀離子與電極示意',id,360);
+}
+function conductScene(s,{loaded=false,immersed=false,powered=false,id='conduct'}={}){
+ const angle=-70+s.score*1.4, needleX=151+61*Math.sin(angle*Math.PI/180),needleY=139-61*Math.cos(angle*Math.PI/180);
+ const body=`<rect x="45" y="47" width="216" height="130" rx="15" fill="#f7f4e8" stroke="#b3b5a2" filter="url(#${id}-shadow)"/><path d="M80 133A72 72 0 0 1 222 133" fill="none" stroke="#bcc8b0" stroke-width="12"/><path d="M151 139L${needleX} ${needleY}" stroke="#ac674d" stroke-width="3"/><circle cx="151" cy="139" r="6" fill="#566b55"/>${label(151,78,'導電比較計',14)}${label(151,164,fmt(s.score,3)+' / 100',15)}<rect x="560" y="56" width="133" height="76" rx="10" fill="#526956"/>${label(626,83,'低電壓檢測',12,'#f5f2df')}${label(626,111,powered?'ON':'OFF',21,'#fff3bd')}<path d="M260 121Q330 102 321 190M560 111Q489 97 431 190" fill="none" stroke="#796753" stroke-width="5"/><circle cx="482" cy="92" r="19" fill="${s.score>.1?'#f2d06a':'#a9b3a0'}" opacity="${.35+s.lamp*.65}"/>${beaker(id,275,190,205,160,loaded?'#b1d4c6':'#d9e3d9',loaded&&s.id!=='solid'?.66:0,loaded&&s.id==='solid'?20:0)}<g transform="translate(0 ${immersed?0:-65})"><rect x="312" y="155" width="17" height="130" rx="4" fill="url(#${id}-metal)"/><rect x="422" y="155" width="17" height="130" rx="4" fill="url(#${id}-metal)"/>${label(320,148,'−',19)}${label(431,148,'＋',19)}</g>${label(378,389,loaded?(s.id==='solid'?'固態 NaCl：離子位置固定':'樣品已放入：比較電荷如何移動'):'先點選或拖入一份樣品',15)}`;
+ return svg(body,'低電壓導電實驗，讀數 '+fmt(s.score,3),id);
+}
+function phScene(s,{kind='btb',dropped=false,paper=false,meter=false,id='ph'}={}){
+ const ind=indicator(kind,s.pH),paperInd=indicator('universal',s.pH);
+ let body=beaker(id,270,157,225,188,dropped&&!['red','blue'].includes(kind)?ind.color:'#c1d8ce',.66);
+ body+=`<path d="M180 73l47 22-17 38-47-22Z" fill="#dcc8a0" stroke="#a58c62"/><path d="M169 113l36 17-7 16-31-14Z" fill="#8e9d91"/><path d="M192 146l-6 20" stroke="#95aaa2" stroke-width="5"/>${dropped?'<circle class="drop-fall" cx="184" cy="179" r="5" fill="'+ind.color+'"/>':''}${label(166,59,'指示劑',14)}<rect x="537" y="62" width="166" height="94" rx="12" fill="#446351"/><rect x="550" y="78" width="139" height="47" rx="5" fill="#edf1cc"/>${label(619,108,meter?'pH '+fmt(s.pH):'pH —',25)}${label(618,145,'25°C 參考讀值',11,'#f2f4df')}<path d="M537 111Q476 69 458 125V${meter?280:145}" fill="none" stroke="#687d70" stroke-width="5"/><rect x="447" y="${meter?209:116}" width="21" height="81" rx="6" fill="#d8e1d7" stroke="#849d8d"/><path d="M458 ${meter?266:173}v19" stroke="#394a40" stroke-width="6"/><rect x="81" y="213" width="36" height="109" rx="3" fill="#ede1c2" stroke="#b5a68a"/><rect x="81" y="271" width="36" height="51" fill="${paper?paperInd.color:'#ede1c2'}"/>${label(100,350,'pH 試紙',13)}${label(382,388,dropped?ind.label:'滴加後，觀察顏色',15)}`;
+ if(dropped&&['red','blue'].includes(kind))body+=`<rect x="220" y="166" width="25" height="116" fill="${kind==='red'?'#d06b79':'#677fc5'}"/><rect x="220" y="235" width="25" height="47" fill="${ind.color}"/>`;
+ return svg(body,'指示劑、試紙與 pH 計同步觀察',id);
+}
+function neutralScene(s,{v=0,reverse=false,pouring=false,id='neutral'}={}){
+ const col=indicator('btb',s.pH).color;
+ return svg(`<path d="M110 336H229M168 337V42H380" fill="none" stroke="#8a998c" stroke-width="8"/><rect x="347" y="47" width="36" height="152" rx="5" fill="url(#${id}-glass)" stroke="#789b8d" stroke-width="2"/><rect x="352" y="${59+Math.min(v,100)}" width="26" height="${Math.max(5,125-Math.min(v,100))}" fill="#b2d2cc"/><path d="M364 199V229M350 205H381" stroke="#6c7f70" stroke-width="5"/>${[0,1,2,3,4].map(i=>'<path d="M347 '+(70+i*25)+'h12" stroke="#789b8d"/>').join('')}${label(438,89,reverse?'滴入 HCl':'滴入 NaOH',16)}${label(438,116,fmt(v)+' mL',17)}${beaker(id,267,248,202,106,col,.54)}${pouring?'<circle class="drop-fall" cx="365" cy="239" r="4" fill="#a3c4ba"/>':''}<rect x="537" y="184" width="168" height="113" rx="13" fill="#4a6251"/>${label(621,220,'pH '+fmt(s.pH),27,'#f8f4df')}${label(621,252,fmt(s.temperature)+' °C',21,'#e1dab2')}${label(621,281,'理想絕熱升溫',12,'#edf1df')}${label(375,392,s.acidLeft>1e-12?'酸過量':s.baseLeft>1e-12?'鹼過量':'酸鹼當量相等',18)}`,'滴定器與反應燒杯',id);
+}
+function precipScene(s,{mixed=false,filtered=false,id='precip'}={}){
+ const body=beaker(id,70,159,155,177,'#bfd7cc',mixed?0:.64)+beaker(id,280,159,155,177,mixed&&s.mass?'#edf0df':'#bdd5cb',filtered?0:.64,mixed&&!filtered?s.mass*13:0)+`<path d="M495 139H681L602 233V267H577V233Z" fill="#eff4e9" stroke="#8f9f8b" stroke-width="3"/><path d="M505 147H670L589 225Z" fill="#fffdf2"/>${filtered&&s.mass?'<ellipse cx="589" cy="175" rx="37" ry="9" fill="#d8d6bd"/>':''}${beaker(id,523,280,136,67,'#bfd7cc',filtered?.55:0)}${label(147,129,'Na₂CO₃(aq)',15)}${label(357,129,mixed?'混合後':'第二份溶液',15)}${label(589,111,filtered?'濾紙上：CaCO₃ '+fmt(s.mass,3)+' g':'濾紙與漏斗',15)}${label(147,377,mixed?'原料已移入':'反應前',13)}${label(357,377,filtered?'已倒入漏斗':mixed?'CaCO₃ '+fmt(s.mass,3)+' g':'先混合觀察',13)}${label(589,377,filtered?'濾液仍含溶解離子':'固液分離',13)}`;
+ return svg(body,'混合沉澱及過濾裝置',id);
+}
+function crystalScene(s,{mode='pure',filtered=false,settled=false,weather='sun',running=false,id='crystal'}={}){
+ let crystals='';for(let i=0;i<Math.min(65,Math.ceil(s.crystalMass*2));i++){const x=205+(i*47)%334,y=220+(i*29)%73;crystals+=`<path d="M${x} ${y}l10-5 9 5v12l-9 5-10-5Z" fill="#fffcdf" stroke="#bbc5b4"/>`;}
+ let mud='';if(s.dirtLeft)for(let i=0;i<15;i++)mud+=`<circle cx="${220+i*20}" cy="${257+(i%3)*13}" r="3" fill="#8e7655"/>`;
+ const body=`${weather==='sun'?'<circle cx="639" cy="63" r="27" fill="#e6c77a"/>':'<path d="M577 75q-15-30 20-38 20-35 50 0 40-1 36 38Z" fill="#b9c9be"/>'}<path d="M0 136Q100 56 212 134T420 124T760 140V192H0Z" fill="#c7d2bc"/><path d="M109 231L265 169H618L686 282 511 352H169Z" fill="#b7aa8d" stroke="#8f8f74" stroke-width="3"/><path d="M130 233L276 183H605L664 277 505 332H185Z" fill="#c8ded3"/><path d="M159 240L285 199H592L640 275 499 314H196Z" fill="#8eb7af" opacity="${.25+.6*s.waterLeft/Math.max(1,s.waterLeft+s.evaporated)}"/>${crystals}${mud}${running?'<g class="vapor" fill="none" stroke="#f8fff3" stroke-width="3"><path d="M308 208q-20-25 0-50t0-37M389 194q-20-25 0-50t0-37M476 204q-20-25 0-50t0-37"/></g>':''}${label(215,66,mode==='pure'?'A · 純氯化鈉水溶液':'B · 天然鹵水簡化模型',18)}${label(215,95,filtered?'已過濾懸浮物':settled?'已沉降、傾取上清液':'尚未前處理',13)}${label(384,386,'剩水 '+fmt(s.waterLeft)+' g　｜　析晶 '+fmt(s.crystalMass)+' g',18)}`;
+ return svg(body,'蒸發池與依質量守恆析出的晶體',id);
+}
+function landscape(scene='saltfield'){
+ if(scene==='saltfield')return crystalScene({waterLeft:100,evaporated:35,crystalMass:14,dirtLeft:0},{id:'hero-field'});
+ if(scene==='well')return svg('<path d="M0 160Q150 60 300 164T760 140V350H0Z" fill="#c8d0b9"/><ellipse cx="380" cy="284" rx="145" ry="42" fill="#887e69"/><path d="M235 260V319Q380 370 525 319V260" fill="#c5b595" stroke="#8a8069" stroke-width="4"/><ellipse cx="380" cy="260" rx="145" ry="42" fill="#776e5c"/><ellipse cx="380" cy="264" rx="119" ry="28" fill="#8eaea3"/><path d="M255 250V80H505V250M380 80V213" fill="none" stroke="#887351" stroke-width="13"/><path d="M347 204H411L400 253H358Z" fill="#b19e7c"/>'+label(380,389,'鹽井：成分要測量，不能靠外觀',17),'古代鹽井示意','well');
+ if(scene==='home')return svg('<path d="M150 300H610M215 300V370M547 300V370" fill="none" stroke="#826f50" stroke-width="14"/><ellipse cx="385" cy="238" rx="142" ry="89" fill="#c1d2cb" stroke="#7c9590" stroke-width="5"/><ellipse cx="385" cy="238" rx="87" ry="62" fill="#81b9c8"/><ellipse cx="385" cy="238" rx="57" ry="43" fill="#c5f3ef"/><path d="M320 162L342 197M451 163L429 197M319 311L342 278M452 311L429 278" stroke="#839893" stroke-width="10"/>'+label(380,71,'熟悉的時空裝置，再次亮起',22)+label(380,391,'承諾已兌現，帶著證據回家',16),'銀白機身與藍色核心的既有時空裝置','home');
+ return svg('<path d="M80 103L380 33 680 103H80Z" fill="#7a8467"/><path d="M120 111H640V139H120Z" fill="#b6a27e"/><path d="M151 139V337M609 139V337" stroke="#967c59" stroke-width="32"/><path d="M218 139H542V334H218Z" fill="#d8cba8"/><path d="M237 151H523V304H237Z" fill="#566b53"/><path d="M339 268V195H421V268M327 270H433" fill="#bca26e" stroke="#dec78d" stroke-width="9"/><path d="M82 346H678M61 366H699" stroke="#b8ae94" stroke-width="17"/>'+label(380,184,'信',31,'#efe2b0')+label(380,397,'皇帝的承諾，與自願留下的最後一份幫助',16),'皇宮大殿示意','palace');
+}
+function phScale(pH){return '<div class="ph-scale" aria-label="pH 色階 0 到 14"><div class="ph-colors">'+Array.from({length:15},(_,i)=>'<span style="background:'+indicator('universal',i).color+'">'+i+'</span>').join('')+'</div><i style="left:'+Math.max(0,Math.min(100,pH/14*100))+'%"></i><div class="scale-labels"><span>酸性</span><span>中性</span><span>鹼性</span></div></div>';}
+
+
+return {svg,label,beaker,ionsView,conductScene,phScene,neutralScene,precipScene,crystalScene,landscape,phScale};
+})();
+__modules["electrolytes/lesson-art.js"]=(()=>{
+const { svg, beaker, label }=__modules["electrolytes/art.js"];
+function reactionIllustration(index, reacted=true){
+ const id='reaction-study-'+index,gas=index===0?'CO₂':'H₂';
+ let body=label(54,40,'OBSERVATION / 0'+(index+1),11,'#7d8d80','start')+beaker(id,275,129,210,200,index===2&&reacted?'#e0e6d8':'#bbd8d2',.63)+label(380,165,'250 mL',11,'#6c9184');
+ if(index<2){
+  body+=index===0?'<path d="M312 316l9-25 26-12 30 10 11 27Z" fill="#dedbd0" stroke="#a9ac9a"/><path d="m321 291 29 8 18-17m-18 17 7 17" fill="none" stroke="#f9f8ef" stroke-width="3"/>':'<path d="M325 306l17-27 46 9 13 25-28 10Z" fill="url(#'+id+'-metal)" stroke="#738b81"/><path d="m342 279 8 29 38-20m-38 20 23 15" fill="none" stroke="#dbe7df" stroke-width="2"/>';
+  if(reacted)for(let i=0;i<10;i++)body+='<circle class="study-bubble" cx="'+(326+(i*31)%111)+'" cy="'+(277-(i*23)%107)+'" r="'+(3+i%4)+'" fill="#ffffff40" stroke="#79a999" style="animation-delay:-'+i*.3+'s"/>';
+  body+='<path d="M510 225h47" stroke="#a4b7a3"/>'+label(570,220,reacted?gas+' 氣泡':'尚未反應',14,'#41634e','start')+label(570,244,reacted?'氣體生成的證據':'切換反應後觀察',11,'#788775','start')+label(157,302,index===0?'石灰岩':'鋅粒',15)+label(157,324,index===0?'CaCO₃(s)':'Zn(s)',12,'#829182');
+ }else if(index===2){
+  body+='<path d="M88 249q32-14 63 0l-7 10H94Z" fill="#faf9ee" stroke="#b9c7b3"/><path d="M151 249h80" stroke="url(#'+id+'-metal)" stroke-width="8" stroke-linecap="round"/>'+label(156,293,reacted?'形成 Ca(OH)₂':'白色 CaO 固體',13)+'<rect x="558" y="104" width="25" height="175" rx="12" fill="#fffdf5" stroke="#b6c6ba"/><circle cx="570" cy="280" r="20" fill="#e9d1bd" stroke="#bbaa95"/><path d="M570 280V'+(reacted?150:231)+'" stroke="#bc795a" stroke-width="8" stroke-linecap="round"/>'+label(570,331,reacted?'放熱，溫度升高':'觀察溫度的變化',13);
+ }else{
+  body+='<rect x="91" y="145" width="76" height="155" rx="25" fill="#f8fcf766" stroke="#9ab3a6" stroke-width="2"/><rect x="110" y="132" width="38" height="17" rx="4" fill="#8f9c89"/><path d="M128 132V100H426V279" stroke="#8ea99a" stroke-width="7" fill="none"/><path d="M128 132V100H426V279" stroke="#e9f4eb" stroke-width="3" fill="none"/>'+label(128,226,'CO₂',21)+label(128,331,'二氧化碳',13);
+  if(reacted)for(let i=0;i<7;i++)body+='<circle class="study-bubble" cx="'+(420+(i%3)*7)+'" cy="'+(269-i*12)+'" r="'+(3+i%3)+'" fill="#fff8" stroke="#8fb8a5" style="animation-delay:-'+i*.4+'s"/>';
+  body+='<rect x="563" y="150" width="25" height="135" rx="3" fill="'+(reacted?'#d98991':'#91a8d0')+'" stroke="#9cab99"/>'+label(575,323,reacted?'濕潤藍石蕊變紅':'濕潤藍石蕊',12);
+ }
+ body+=label(380,377,index<2?'已知試劑的反應前後示意，不進行真實化學操作':index===2?'沒有氣體產生；溫度計只示意升溫，不表示實測數值':'部分 CO₂ 與水形成碳酸；石蕊變色為另份樣品示意',12,'#718570');
+ return svg(body,['石灰岩與稀鹽酸','鋅與稀鹽酸','生石灰與水','二氧化碳與水'][index]+(reacted?'：反應後觀察':'：反應前觀察'),id,400);
+}
+function saltSpecimen(index,name,formula){
+ const id='salt-specimen-'+index;let crystals='';
+ for(let i=0;i<27;i++){const x=290+(i*37)%180,y=251+(i*17)%55,z=5+i%6;crystals+=index===0?'<path d="M'+x+' '+y+'l'+z+' -4 '+z+' 4v'+z+'l-'+z+' 4 -'+z+' -4Z" fill="#fffef2" stroke="#c4c9bb" stroke-width=".8"/>':'<ellipse cx="'+x+'" cy="'+y+'" rx="'+z+'" ry="'+z*.55+'" fill="'+(i%2?'#f8f8ec':'#e5e7db')+'" stroke="#c7cebd" stroke-width=".5"/>';}
+ const body=label(54,40,'SPECIMEN / 0'+(index+1),11,'#7d8d80','start')+'<ellipse cx="380" cy="335" rx="143" ry="12" fill="#31533a18"/><path d="M276 94h208v209q0 22-23 22H299q-23 0-23-22Z" fill="url(#'+id+'-glass)" stroke="#8aa89b" stroke-width="2"/><rect x="267" y="66" width="226" height="38" rx="7" fill="url(#'+id+'-metal)" stroke="#7d9285"/>'+Array.from({length:23},(_,i)=>'<path d="M'+(278+i*9)+' 74v22" stroke="#7e9587"/>').join('')+'<path d="M290 256q90-27 180 0v51H290Z" fill="#e9eddf"/>'+crystals+'<rect x="300" y="131" width="160" height="95" rx="3" fill="#fffdf3" stroke="#d8ddcb"/>'+label(380,158,name,17)+label(380,190,formula,23)+label(380,211,'教學樣品 · 不可食用',10,'#9a7b52')+'<path d="M288 116v181" stroke="white" stroke-width="5" opacity=".8"/>'+label(380,373,'外觀僅作示意，應比較組成與性質',13,'#718570');
+ return svg(body,name+'的密封玻璃樣品瓶，外觀僅作示意',id,400).replace('viewBox="0 0 760 400"','viewBox="180 40 400 350"');
+}
+
+return {reactionIllustration,saltSpecimen};
+})();
 __modules["electrolytes/terminology-data.js"]=(()=>{
 const term=(id,label,aliases,chapters,definition,example,note,unit='',related=[])=>({id,label,aliases,chapters,definition,example,note,unit,related});
 const scienceTerms=[
@@ -634,7 +877,7 @@ term('aqueous','水溶液',['(aq)','（aq）'],[1,2,3,4,5,6,7,8,9,10,11,12],'以
 term('dissolve','溶解',[],[1,2,3,8,10],'物質分散到溶劑中，形成均勻溶液的過程。','糖溶進水裡，主要仍以中性糖分子存在。','溶解不等於消失，也不代表一定形成離子。','',['dissociation','ionization']),
 term('electrolyte','電解質',[],[2,3,12],'溶於水或熔融時，能因可移動的離子而導電的物質。本章主要比較水溶液。','NaCl 溶於水形成可移動的 Na⁺ 和 Cl⁻。','電解質不是「任何能導電的物質」；金屬主要靠電子導電。','',['nonelectrolyte','ion','strong-electrolyte','weak-electrolyte']),
 term('nonelectrolyte','非電解質',[],[2,3,12],'溶於水後主要以中性分子存在，不像電解質形成大量導電離子的物質。','蔗糖溶於水主要仍是糖分子，導電性極低。','不是所有可溶物都是電解質；水本身仍有微量離子。','',['electrolyte','molecule']),
-term('conductivity','導電性',['導電能力'],[2,3,11,12],'物質傳遞電荷、讓電流通過的能力。','食鹽水中的離子可移動，固態食鹽中的離子位置固定，表現不同。','導電不能證明含有 NaCl，更不能證明可食用。','本章導電比較分數不是實測電導率',['ion','mobility','electrode']),
+term('conductivity','導電性',['導電能力'],[2,3,11,12],'物質傳遞電荷、讓電流通過的能力。','食鹽水中的離子可移動，固態食鹽中的離子位置固定，表現不同。','導電不能證明含有 NaCl，更不能證明可食用。','本卡只以導電狀態與燈泡反應呈現結果',['ion','mobility','electrode']),
 term('ion','離子',[],[2,3,4,5,7,8,9,10,11,12],'原子或原子團因電子數與質子數不平衡而成為帶電粒子。','Na⁺ 帶一個單位正電；Cl⁻ 帶一個單位負電。','離子不是電子。溶液整體電中性，仍可含許多離子。','',['cation','anion','charge','neutrality']),
 term('charge','電荷',[],[2,3,8,9,12],'粒子的一種性質，分正、負；同號相斥，異號相吸。','Ca²⁺ 的電荷數是 +2，CO₃²⁻ 是 −2。','右上角的 2+ 表示電荷；右下角的 ₃ 表示原子個數。','離子電荷標在化學式右上方',['cation','anion']),
 term('cation','陽離子',['正離子'],[2,3,8,9,12],'帶正電的離子，在本章電場模型中朝負電極移動。','Na⁺、Ca²⁺、NH₄⁺ 都是陽離子。','「陽」是電荷的正負，不是它移向正極。','',['anion','electrode','ammonium']),
@@ -650,7 +893,7 @@ term('weak-electrolyte','弱電解質',[],[3,6],'在水中只部分形成離子�
 term('arrhenius','阿瑞尼斯電離說',['電離說'],[3,4],'用電解質在水中形成離子，解釋水溶液導電及酸鹼性質的觀點。','酸使水中 H⁺ 增加；鹼使水中 OH⁻ 增加。','這是本章的水溶液觀點，不能把所有導電都解釋成相同的離子。','',['electrolyte','acid','base']),
 term('electrode','電極',['正電極','負電極','正極','負極'],[2,3],'讓電路與待測材料接觸、傳遞電荷的導體。','導電實驗把兩支電極放入溶液；陽離子朝負電極移動。','本章只模擬低電壓檢測，不表示通電一定產生氣泡。','',['cation','anion','current']),
 term('current','電流',[],[2,3],'電荷有規律地移動所形成的現象。','外部金屬導線主要靠電子；溶液中主要靠離子傳遞電荷。','水中離子的移動，不能畫成所有粒子都朝同一個電極。','',['conductivity','electrode']),
-term('mobility','遷移能力',[],[2,3],'在相同電場等條件下，離子移動快慢的相對能力。','本章模型把各離子的濃度、電荷及遷移能力一起計入導電分數。','離子一樣多，導電表現仍可能不同；動畫速度不是實測值。','',['conductivity','concentration']),
+term('mobility','遷移能力',[],[2,3],'在相同電場等條件下，離子移動快慢的相對能力。','本章模型以離子濃度、電荷及遷移能力模擬燈泡反應。','離子一樣多，導電表現仍可能不同；動畫速度不是實測值。','',['conductivity','concentration']),
 term('distilled','蒸餾水',[],[2,5,9],'經蒸發、冷凝等蒸餾程序製得，通常含很少溶解雜質的水。','本章以蒸餾水作導電及酸鹼比較的對照。','水本身仍有極少量 H⁺、OH⁻；接觸空氣後也可能溶入 CO₂。','',['water-product','control']),
 term('hydrogen-ion','氫離子',['H⁺','H+'],[3,4,5,6,7,12],'本章以 H⁺ 簡寫水中水合的氫離子，是討論酸性的代表離子。','酸性水溶液中，[H⁺] 大於 [OH⁻]。','H⁺ 在水中會和水分子結合，不是裸露地單獨漂浮。','H⁺；濃度常用 [H⁺] 表示',['hydronium','hydroxide','ph']),
 term('hydronium','水合氫離子',['H₃O⁺','H3O+'],[3,4],'H⁺ 與水分子結合的簡化表示，常寫成 H₃O⁺。','HCl 和水作用可寫成 HCl + H₂O → H₃O⁺ + Cl⁻。','國中常用 H⁺ 簡寫；真實水中的水合結構比一個 H₃O⁺ 更複雜。','H₃O⁺',['hydrogen-ion']),
@@ -941,10 +1184,10 @@ const cards = [
       "先測再說",
       "糖水一定比食鹽水更導電"
     ],
-    "task": "選取樣本 → 開啟電源，觀察導電結果。換至少兩種樣本比較，結果會自動記錄。",
+    "task": "選取樣本 → 點擊刀閘開關接通電路，觀察導電結果。換至少兩種樣本比較，結果會自動記錄。",
     "panels": [
       [
-        "讀數告訴我們什麼",
+        "燈泡與導電結果告訴我們什麼",
         "電解質在水中形成可移動的離子；非電解質如糖，主要仍以中性分子存在。蒸餾水有極少 H⁺、OH⁻，導電很低但不是絕對零。"
       ],
       [
@@ -1072,7 +1315,7 @@ const cards = [
       "二氧化碳",
       "氮氣"
     ],
-    "task": "分步查看四個反應；再打開常見酸鹼的用途與危險性。",
+    "task": "切換四種試劑組合，點擊加入試劑，比較反應前後；再查看常見酸鹼的用途與危險性。",
     "panels": [
       [
         "從離子看酸與鹼",
@@ -2079,130 +2322,20 @@ const salts = [
 
 return {cards,stage,final,audit,chemicals,salts};
 })();
-__modules["electrolytes/core.js"]=(()=>{
-// Ideal dilute aqueous teaching models at 25 °C. Shared by diagrams and readouts.
-const KW=1e-14, KA=1.8e-5, KB=1.8e-5;
-function bounded(v,min,max,label='數值') {
- if(v===''||v===null||typeof v==='boolean')throw new RangeError(label+'不可空白');
- const n=Number(v);if(!Number.isFinite(n)||n<min||n>max)throw new RangeError(label+'需介於 '+min+'～'+max);return n;
+__modules["electrolytes/conductivity-feedback.js"]=(()=>{
+// Keep the numerical teaching model internal; students see qualitative observations.
+function conductivityLabel(result,powered=true){
+ if(!powered)return '尚未檢測';
+ return result.score<=0?'不能導電':result.score<.1?'導電極微弱':'能導電';
 }
-const ionInfo={H:['H⁺',1,7],OH:['OH⁻',-1,4],Na:['Na⁺',1,1],Cl:['Cl⁻',-1,1.5],Ac:['CH₃COO⁻',-1,.8],NH4:['NH₄⁺',1,1.5],Ca:['Ca²⁺',2,1.2],CO3:['CO₃²⁻',-2,1.3],HCO3:['HCO₃⁻',-1,.9]};
-function direction(z){return z>0?'負電極':z<0?'正電極':'不定向';}
-function fromExcess(d){const r=Math.hypot(d,2*Math.sqrt(KW)),H=d>=0?(d+r)/2:2*KW/(r-d);return{H,OH:KW/H,pH:-Math.log10(H)};}
-const solutions={
- water:{name:'蒸餾水',formula:'H₂O',kind:'極少離子',strength:'非溶質',state:'aq'},
- nacl:{name:'食鹽水',formula:'NaCl(aq)',kind:'強電解質',strength:'強',state:'aq'},
- sugar:{name:'糖水',formula:'C₁₂H₂₂O₁₁(aq)',kind:'非電解質',strength:'無',state:'aq'},
- acetic:{name:'醋酸水溶液',formula:'CH₃COOH(aq)',kind:'弱酸／弱電解質',strength:'弱',state:'aq'},
- hcl:{name:'稀鹽酸',formula:'HCl(aq)',kind:'強酸／強電解質',strength:'強',state:'aq'},
- naoh:{name:'氫氧化鈉水溶液',formula:'NaOH(aq)',kind:'強鹼／強電解質',strength:'強',state:'aq'},
- ammonia:{name:'氨水',formula:'NH₃(aq)',kind:'弱鹼／弱電解質',strength:'弱',state:'aq'},
- carbonate:{name:'碳酸鈉水溶液',formula:'Na₂CO₃(aq)',kind:'鹼性的鹽類',strength:'強',state:'aq'},
- solid:{name:'固態氯化鈉',formula:'NaCl(s)',kind:'離子位置受限',strength:'強',state:'s'}
-};
-function speciate(id,concentration=.01,dilution=1){
- if(!solutions[id])throw new RangeError('未知樣品');
- const C=bounded(concentration,0,1,'濃度')/bounded(dilution,1,1e8,'稀釋倍數');
- if(id==='solid')return{id,C,pH:null,H:0,OH:0,ions:[],mobile:false,alpha:0};
- const Na=['nacl','naoh'].includes(id)?C:id==='carbonate'?2*C:0,Cl=['nacl','hcl'].includes(id)?C:0;
- function at(H){const OH=KW/H,Ac=id==='acetic'?C*KA/(KA+H):0,NH4=id==='ammonia'?C*H/(KW/KB+H):0,K1=4.3e-7,K2=4.7e-11,D=H*H+K1*H+K1*K2;
- return{H,OH,Na,Cl,Ac,NH4,CO3:id==='carbonate'?C*K1*K2/D:0,HCO3:id==='carbonate'?C*K1*H/D:0};}
- let lo=-16,hi=1;
- for(let i=0;i<110;i++){const mid=(lo+hi)/2,s=at(10**mid),q=s.H+s.Na+s.NH4-s.OH-s.Cl-s.Ac-2*s.CO3-s.HCO3;if(q>0)hi=mid;else lo=mid;}
- const s=at(10**((lo+hi)/2)),ions=Object.entries(s).filter(([,c])=>c>0).map(([key,c])=>({key,label:ionInfo[key][0],charge:ionInfo[key][1],mobility:ionInfo[key][2],c}));
- return{id,C,...s,pH:-Math.log10(s.H),ions,mobile:true,alpha:C===0?0:id==='acetic'?s.Ac/C:id==='ammonia'?s.NH4/C:['water','sugar'].includes(id)?0:1};
+function qualitativeRecord(record){
+ return {...record,text:record.text.replace(/導電分數\s+([\d.]+)(?:\s*\/\s*100)?/g,(_,score)=>conductivityLabel({score:Number(score)}))};
 }
-function conductivity(id,C=.01,immersed=true,powered=true){const s=speciate(id,C),weighted=s.ions.reduce((v,i)=>v+i.c*Math.abs(i.charge)*i.mobility,0),score=immersed&&powered&&s.mobile?Math.min(100,100*Math.log1p(weighted/.002)/Math.log1p(.65/.002)):0;return{...s,weighted,score,lamp:score/100};}
-function mix(a,b,t){t=Math.max(0,Math.min(1,t));return '#'+[0,1,2].map(i=>Math.round(parseInt(a.slice(1+i*2,3+i*2),16)*(1-t)+parseInt(b.slice(1+i*2,3+i*2),16)*t).toString(16).padStart(2,'0')).join('');}
-function indicator(kind,pH){
- bounded(pH,-2,16,'pH');
- if(kind==='phenol')return{color:mix('#e7f4eb','#e946a0',(pH-8.2)/1.8),label:pH<8.2?'無色':pH>10?'桃紅色':'淡粉紅 → 桃紅',range:'酚酞：pH 約 8.2～10.0'};
- if(kind==='btb')return{color:pH<=6.8?mix('#eed46b','#68b879',(pH-6)/.8):mix('#68b879','#4b8fc7',(pH-6.8)/.8),label:pH<=6?'黃色':pH>=7.6?'藍色':'黃綠／綠／藍綠',range:'BTB：pH 約 6.0～7.6'};
- if(['red','blue'].includes(kind))return{color:kind==='red'?mix('#d06b79','#677fc5',(pH-7)/1.3):mix('#d06b79','#677fc5',(pH-4.5)/2.5),label:pH<=4.5?'紅色':pH>=8.3?'藍色':kind==='red'?'紅色至紫色（中性不變藍）':'紫色至藍色（中性不變紅）',range:'石蕊：約 4.5～8.3；中間區亦受原試紙顏色影響'};
- const stops=[[0,'#c55f69'],[3,'#e98b60'],[5,'#e6cd64'],[7,'#71b681'],[9,'#599fc1'],[11,'#777fc2'],[14,'#9b69a9']],k=stops.findIndex(([v])=>v>=pH),n=Math.max(1,k<0?stops.length-1:k);
- return{color:mix(stops[n-1][1],stops[n][1],(pH-stops[n-1][0])/(stops[n][0]-stops[n-1][0])),label:'對照色卡，讀取約略 pH',range:'廣用指示劑／試紙：連續色階，配方不同會略有差異'};
-}
-function neutralize(acidC,acidML,baseC,baseML){
- const a=bounded(acidC,0,1)*bounded(acidML,0,500)/1000,b=bounded(baseC,0,1)*bounded(baseML,0,500)/1000,volume=(Number(acidML)+Number(baseML))/1000;
- if(volume<=0)throw new RangeError('混合體積必須大於零');
- const reacted=Math.min(a,b),delta=(a-b)/volume,Q=reacted*57300;
- return{a,b,reacted,volume,acidLeft:Math.max(0,a-b),baseLeft:Math.max(0,b-a),...fromExcess(delta),Q,temperature:25+Q/(volume*1000*4.18),Na:b,Cl:a,waterMade:reacted,saltEquivalent:reacted,progress:Math.max(a,b)===0?0:reacted/Math.max(a,b)};
-}
-function precipitate(carbC,carbML,calciumC,calciumML,partner='calcium'){
- const carbonate=bounded(carbC,0,1)*bounded(carbML,0,500)/1000,second=bounded(calciumC,0,1)*bounded(calciumML,0,500)/1000,calcium=partner==='calcium'?second:0,solid=Math.min(carbonate,calcium);
- return{carbonate,calcium,solid,mass:solid*100.09,Na:2*carbonate+(partner==='nacl'?second:0),Cl:partner==='calcium'?2*second:partner==='nacl'?second:0,Ca:calcium-solid,CO3:carbonate-solid,volume:(Number(carbML)+Number(calciumML))/1000};
-}
-function crystallize({water=100,salt=30,other=0,dirt=0,evaporated=0,filtered=false,settled=false,separated=false}={}){
- water=bounded(water,0,2000);salt=bounded(salt,0,2000);other=bounded(other,0,2000);dirt=bounded(dirt,0,2000);evaporated=bounded(evaporated,0,water);
- const waterLeft=water-evaporated,dissolvedSalt=Math.min(salt,.36*waterLeft),crystalSalt=salt-dissolvedSalt,dissolvedOther=Math.min(other,.35*waterLeft),crystalOther=other-dissolvedOther,removedDirt=filtered?dirt:settled?dirt*.8:0,dirtLeft=dirt-removedDirt,mother=waterLeft+dissolvedSalt+dissolvedOther;
- return{initialSolid:Math.max(0,salt-.36*water),newCrystal:Math.max(0,crystalSalt-Math.max(0,salt-.36*water)),waterLeft,evaporated,dissolvedSalt,crystalSalt,dissolvedOther,crystalOther,dirtLeft,removedDirt,mother,crystalMass:crystalSalt+crystalOther,harvest:separated?crystalSalt+crystalOther:0,total:mother+crystalSalt+crystalOther+dirtLeft+removedDirt+evaporated,initial:water+salt+other+dirt,percent:mother?dissolvedSalt/mother*100:null,ppm:mother?dissolvedSalt/mother*1e6:null,safeToEat:false};
-}
-function assessFood(e={}){return e.foodGrade===true&&e.purityTest===true&&e.contaminantTest===true&&e.processVerified===true?'需由合格品質程序判定':'證據不足，不能判定可食用';}
-function neutralEndpoint(acid,base){return acid==='hcl'&&base==='naoh'?'25°C 理想等莫耳模型約 pH 7':'需考慮生成離子與水的平衡，不能一律判為 pH 7';}
-function fmt(n,d=2){return n===null?'—':Number(n.toFixed(d)).toLocaleString('zh-TW',{maximumFractionDigits:d});}
-function sci(n){return n===0?'0':n.toExponential(2).replace('e-',' × 10^−').replace('e+',' × 10^');}
 
-
-return {KW,bounded,ionInfo,direction,fromExcess,solutions,speciate,conductivity,indicator,neutralize,precipitate,crystallize,assessFood,neutralEndpoint,fmt,sci};
-})();
-__modules["electrolytes/art.js"]=(()=>{
-const { fmt, indicator }=__modules["electrolytes/core.js"];
-function svg(body,label,id='scene',height=420){
- return `<svg viewBox="0 0 760 ${height}" role="img" aria-label="${label}" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="${id}-wall" x2="0" y2="1"><stop stop-color="#e4eadd"/><stop offset="1" stop-color="#f6f2e5"/></linearGradient><linearGradient id="${id}-glass"><stop stop-color="#effcfa" stop-opacity=".7"/><stop offset=".4" stop-color="#ffffff" stop-opacity=".08"/><stop offset="1" stop-color="#c2d6ce" stop-opacity=".5"/></linearGradient><linearGradient id="${id}-metal"><stop stop-color="#647873"/><stop offset=".4" stop-color="#e8efea"/><stop offset="1" stop-color="#84968e"/></linearGradient><filter id="${id}-shadow"><feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity=".12"/></filter></defs><rect width="760" height="${height}" rx="14" fill="url(#${id}-wall)"/><path d="M0 ${height-75}H760V${height}H0Z" fill="#d6c7a9"/><path d="M0 ${height-75}H760" stroke="#b9ab90" stroke-width="3"/>${body}</svg>`;
-}
-function label(x,y,t,size=15,color='#365344',anchor='middle'){return `<text x="${x}" y="${y}" text-anchor="${anchor}" fill="${color}" font-size="${size}" font-family="Microsoft JhengHei,system-ui,sans-serif">${t}</text>`;}
-function beaker(id,x=235,y=150,w=230,h=195,color='#a9c9b5',fill=.62,solid=0){
- const ly=y+h*(1-fill),marks=[.25,.5,.75].map(n=>`<path d="M${x+12} ${y+h*n}h20" stroke="#64877b" opacity=".6"/>`).join('');
- let crystals='';for(let i=0;i<Math.min(34,Math.ceil(solid*2));i++)crystals+=`<rect x="${x+20+(i*29)%(w-42)}" y="${y+h-12-Math.floor(i/7)*8}" width="8" height="8" rx="1" fill="#fffdf3" stroke="#c6c9bd" transform="rotate(${i*17%60} ${x+20+(i*29)%(w-42)} ${y+h-12-Math.floor(i/7)*8})"/>`;
- return `<ellipse cx="${x+w/2}" cy="${y+h+10}" rx="${w*.63}" ry="14" fill="#61715a20"/><path d="M${x} ${ly}H${x+w}V${y+h-8}Q${x+w} ${y+h} ${x+w-10} ${y+h}H${x+10}Q${x} ${y+h} ${x} ${y+h-8}Z" fill="${color}" opacity=".65"/><ellipse cx="${x+w/2}" cy="${ly}" rx="${w/2}" ry="5" fill="${color}" opacity=".7"/><path d="M${x-9} ${y-7}L${x+3} ${y+5}V${y+h-9}Q${x+3} ${y+h+3} ${x+16} ${y+h+3}H${x+w-12}Q${x+w} ${y+h+3} ${x+w} ${y+h-9}V${y}" fill="url(#${id}-glass)" stroke="#73988c" stroke-width="3"/><path d="M${x+14} ${y+12}V${y+h-18}" stroke="white" stroke-opacity=".7" stroke-width="5"/>${marks}${crystals}`;
-}
-function ionsView(ions,{solid=false,on=false,id='ions',neutral=''}={}){
- let rows=ions.filter(i=>i.c>1e-6); if(!rows.length&&ions.length)rows=ions.filter(i=>i.key==='H'||i.key==='OH');
- let body=`<rect x="35" y="48" width="690" height="245" rx="15" fill="#f9fbf4" stroke="#c9d5c2"/><rect x="55" y="76" width="12" height="190" rx="4" fill="#bb7565"/><rect x="693" y="76" width="12" height="190" rx="4" fill="#6d92b5"/>${label(60,36,'− 負電極',13)}${label(697,36,'＋ 正電極',13)}`;
- if(solid){for(let i=0;i<24;i++){const x=220+(i%6)*58,y=106+Math.floor(i/6)*47;body+=`<circle cx="${x}" cy="${y}" r="20" fill="${i%2?'#93b7bd':'#dba77f'}"/>${label(x,y+5,i%2?'Cl⁻':'Na⁺',12)}`;}}
- else rows.forEach((ion,k)=>{for(let j=0;j<3;j++){const x=150+j*200+(k%2)*45,y=105+(k%4)*47;body+=`<g class="${on?'ion-drift':''}" style="--dx:${ion.charge>0?-60:60}px;--duration:${8/(ion.mobility||1)}s;animation-delay:-${j}s"><circle cx="${x}" cy="${y}" r="${ion.label.length>4?27:20}" fill="${ion.charge>0?'#e8b68b':'#a4cbd1'}" stroke="#fff"/>${label(x,y+4,ion.label,ion.label.length>4?10:13)}</g>`;}});
- if(neutral){for(let j=0;j<3;j++)body+='<g><ellipse cx="'+(235+j*142)+'" cy="226" rx="55" ry="18" fill="#e7debe"/>'+label(235+j*142,230,neutral.includes('糖')?'糖分子':'CH₃COOH',12)+'</g>';body+=label(380,270,neutral,13);}
- body+=label(380,327,solid?'晶格中的離子位置受限':on?'陽離子 ← 負極　｜　正極 → 陰離子':'電場關閉：粒子仍有熱運動，無定向漂移',14);
- return svg(body,'微觀離子與電極示意',id,360);
-}
-function conductScene(s,{loaded=false,immersed=false,powered=false,id='conduct'}={}){
- const angle=-70+s.score*1.4, needleX=151+61*Math.sin(angle*Math.PI/180),needleY=139-61*Math.cos(angle*Math.PI/180);
- const body=`<rect x="45" y="47" width="216" height="130" rx="15" fill="#f7f4e8" stroke="#b3b5a2" filter="url(#${id}-shadow)"/><path d="M80 133A72 72 0 0 1 222 133" fill="none" stroke="#bcc8b0" stroke-width="12"/><path d="M151 139L${needleX} ${needleY}" stroke="#ac674d" stroke-width="3"/><circle cx="151" cy="139" r="6" fill="#566b55"/>${label(151,78,'導電比較計',14)}${label(151,164,fmt(s.score,3)+' / 100',15)}<rect x="560" y="56" width="133" height="76" rx="10" fill="#526956"/>${label(626,83,'低電壓檢測',12,'#f5f2df')}${label(626,111,powered?'ON':'OFF',21,'#fff3bd')}<path d="M260 121Q330 102 321 190M560 111Q489 97 431 190" fill="none" stroke="#796753" stroke-width="5"/><circle cx="482" cy="92" r="19" fill="${s.score>.1?'#f2d06a':'#a9b3a0'}" opacity="${.35+s.lamp*.65}"/>${beaker(id,275,190,205,160,loaded?'#b1d4c6':'#d9e3d9',loaded&&s.id!=='solid'?.66:0,loaded&&s.id==='solid'?20:0)}<g transform="translate(0 ${immersed?0:-65})"><rect x="312" y="155" width="17" height="130" rx="4" fill="url(#${id}-metal)"/><rect x="422" y="155" width="17" height="130" rx="4" fill="url(#${id}-metal)"/>${label(320,148,'−',19)}${label(431,148,'＋',19)}</g>${label(378,389,loaded?(s.id==='solid'?'固態 NaCl：離子位置固定':'樣品已放入：比較電荷如何移動'):'先點選或拖入一份樣品',15)}`;
- return svg(body,'低電壓導電實驗，讀數 '+fmt(s.score,3),id);
-}
-function phScene(s,{kind='btb',dropped=false,paper=false,meter=false,id='ph'}={}){
- const ind=indicator(kind,s.pH),paperInd=indicator('universal',s.pH);
- let body=beaker(id,270,157,225,188,dropped&&!['red','blue'].includes(kind)?ind.color:'#c1d8ce',.66);
- body+=`<path d="M180 73l47 22-17 38-47-22Z" fill="#dcc8a0" stroke="#a58c62"/><path d="M169 113l36 17-7 16-31-14Z" fill="#8e9d91"/><path d="M192 146l-6 20" stroke="#95aaa2" stroke-width="5"/>${dropped?'<circle class="drop-fall" cx="184" cy="179" r="5" fill="'+ind.color+'"/>':''}${label(166,59,'指示劑',14)}<rect x="537" y="62" width="166" height="94" rx="12" fill="#446351"/><rect x="550" y="78" width="139" height="47" rx="5" fill="#edf1cc"/>${label(619,108,meter?'pH '+fmt(s.pH):'pH —',25)}${label(618,145,'25°C 參考讀值',11,'#f2f4df')}<path d="M537 111Q476 69 458 125V${meter?280:145}" fill="none" stroke="#687d70" stroke-width="5"/><rect x="447" y="${meter?209:116}" width="21" height="81" rx="6" fill="#d8e1d7" stroke="#849d8d"/><path d="M458 ${meter?266:173}v19" stroke="#394a40" stroke-width="6"/><rect x="81" y="213" width="36" height="109" rx="3" fill="#ede1c2" stroke="#b5a68a"/><rect x="81" y="271" width="36" height="51" fill="${paper?paperInd.color:'#ede1c2'}"/>${label(100,350,'pH 試紙',13)}${label(382,388,dropped?ind.label:'滴加後，觀察顏色',15)}`;
- if(dropped&&['red','blue'].includes(kind))body+=`<rect x="220" y="166" width="25" height="116" fill="${kind==='red'?'#d06b79':'#677fc5'}"/><rect x="220" y="235" width="25" height="47" fill="${ind.color}"/>`;
- return svg(body,'指示劑、試紙與 pH 計同步觀察',id);
-}
-function neutralScene(s,{v=0,reverse=false,pouring=false,id='neutral'}={}){
- const col=indicator('btb',s.pH).color;
- return svg(`<path d="M110 336H229M168 337V42H380" fill="none" stroke="#8a998c" stroke-width="8"/><rect x="347" y="47" width="36" height="152" rx="5" fill="url(#${id}-glass)" stroke="#789b8d" stroke-width="2"/><rect x="352" y="${59+Math.min(v,100)}" width="26" height="${Math.max(5,125-Math.min(v,100))}" fill="#b2d2cc"/><path d="M364 199V229M350 205H381" stroke="#6c7f70" stroke-width="5"/>${[0,1,2,3,4].map(i=>'<path d="M347 '+(70+i*25)+'h12" stroke="#789b8d"/>').join('')}${label(438,89,reverse?'滴入 HCl':'滴入 NaOH',16)}${label(438,116,fmt(v)+' mL',17)}${beaker(id,267,248,202,106,col,.54)}${pouring?'<circle class="drop-fall" cx="365" cy="239" r="4" fill="#a3c4ba"/>':''}<rect x="537" y="184" width="168" height="113" rx="13" fill="#4a6251"/>${label(621,220,'pH '+fmt(s.pH),27,'#f8f4df')}${label(621,252,fmt(s.temperature)+' °C',21,'#e1dab2')}${label(621,281,'理想絕熱升溫',12,'#edf1df')}${label(375,392,s.acidLeft>1e-12?'酸過量':s.baseLeft>1e-12?'鹼過量':'酸鹼當量相等',18)}`,'滴定器與反應燒杯',id);
-}
-function precipScene(s,{mixed=false,filtered=false,id='precip'}={}){
- const body=beaker(id,70,159,155,177,'#bfd7cc',mixed?0:.64)+beaker(id,280,159,155,177,mixed&&s.mass?'#edf0df':'#bdd5cb',filtered?0:.64,mixed&&!filtered?s.mass*13:0)+`<path d="M495 139H681L602 233V267H577V233Z" fill="#eff4e9" stroke="#8f9f8b" stroke-width="3"/><path d="M505 147H670L589 225Z" fill="#fffdf2"/>${filtered&&s.mass?'<ellipse cx="589" cy="175" rx="37" ry="9" fill="#d8d6bd"/>':''}${beaker(id,523,280,136,67,'#bfd7cc',filtered?.55:0)}${label(147,129,'Na₂CO₃(aq)',15)}${label(357,129,mixed?'混合後':'第二份溶液',15)}${label(589,111,filtered?'濾紙上：CaCO₃ '+fmt(s.mass,3)+' g':'濾紙與漏斗',15)}${label(147,377,mixed?'原料已移入':'反應前',13)}${label(357,377,filtered?'已倒入漏斗':mixed?'CaCO₃ '+fmt(s.mass,3)+' g':'先混合觀察',13)}${label(589,377,filtered?'濾液仍含溶解離子':'固液分離',13)}`;
- return svg(body,'混合沉澱及過濾裝置',id);
-}
-function crystalScene(s,{mode='pure',filtered=false,settled=false,weather='sun',running=false,id='crystal'}={}){
- let crystals='';for(let i=0;i<Math.min(65,Math.ceil(s.crystalMass*2));i++){const x=205+(i*47)%334,y=220+(i*29)%73;crystals+=`<path d="M${x} ${y}l10-5 9 5v12l-9 5-10-5Z" fill="#fffcdf" stroke="#bbc5b4"/>`;}
- let mud='';if(s.dirtLeft)for(let i=0;i<15;i++)mud+=`<circle cx="${220+i*20}" cy="${257+(i%3)*13}" r="3" fill="#8e7655"/>`;
- const body=`${weather==='sun'?'<circle cx="639" cy="63" r="27" fill="#e6c77a"/>':'<path d="M577 75q-15-30 20-38 20-35 50 0 40-1 36 38Z" fill="#b9c9be"/>'}<path d="M0 136Q100 56 212 134T420 124T760 140V192H0Z" fill="#c7d2bc"/><path d="M109 231L265 169H618L686 282 511 352H169Z" fill="#b7aa8d" stroke="#8f8f74" stroke-width="3"/><path d="M130 233L276 183H605L664 277 505 332H185Z" fill="#c8ded3"/><path d="M159 240L285 199H592L640 275 499 314H196Z" fill="#8eb7af" opacity="${.25+.6*s.waterLeft/Math.max(1,s.waterLeft+s.evaporated)}"/>${crystals}${mud}${running?'<g class="vapor" fill="none" stroke="#f8fff3" stroke-width="3"><path d="M308 208q-20-25 0-50t0-37M389 194q-20-25 0-50t0-37M476 204q-20-25 0-50t0-37"/></g>':''}${label(215,66,mode==='pure'?'A · 純氯化鈉水溶液':'B · 天然鹵水簡化模型',18)}${label(215,95,filtered?'已過濾懸浮物':settled?'已沉降、傾取上清液':'尚未前處理',13)}${label(384,386,'剩水 '+fmt(s.waterLeft)+' g　｜　析晶 '+fmt(s.crystalMass)+' g',18)}`;
- return svg(body,'蒸發池與依質量守恆析出的晶體',id);
-}
-function landscape(scene='saltfield'){
- if(scene==='saltfield')return crystalScene({waterLeft:100,evaporated:35,crystalMass:14,dirtLeft:0},{id:'hero-field'});
- if(scene==='well')return svg('<path d="M0 160Q150 60 300 164T760 140V350H0Z" fill="#c8d0b9"/><ellipse cx="380" cy="284" rx="145" ry="42" fill="#887e69"/><path d="M235 260V319Q380 370 525 319V260" fill="#c5b595" stroke="#8a8069" stroke-width="4"/><ellipse cx="380" cy="260" rx="145" ry="42" fill="#776e5c"/><ellipse cx="380" cy="264" rx="119" ry="28" fill="#8eaea3"/><path d="M255 250V80H505V250M380 80V213" fill="none" stroke="#887351" stroke-width="13"/><path d="M347 204H411L400 253H358Z" fill="#b19e7c"/>'+label(380,389,'鹽井：成分要測量，不能靠外觀',17),'古代鹽井示意','well');
- if(scene==='home')return svg('<path d="M150 300H610M215 300V370M547 300V370" fill="none" stroke="#826f50" stroke-width="14"/><ellipse cx="385" cy="238" rx="142" ry="89" fill="#c1d2cb" stroke="#7c9590" stroke-width="5"/><ellipse cx="385" cy="238" rx="87" ry="62" fill="#81b9c8"/><ellipse cx="385" cy="238" rx="57" ry="43" fill="#c5f3ef"/><path d="M320 162L342 197M451 163L429 197M319 311L342 278M452 311L429 278" stroke="#839893" stroke-width="10"/>'+label(380,71,'熟悉的時空裝置，再次亮起',22)+label(380,391,'承諾已兌現，帶著證據回家',16),'銀白機身與藍色核心的既有時空裝置','home');
- return svg('<path d="M80 103L380 33 680 103H80Z" fill="#7a8467"/><path d="M120 111H640V139H120Z" fill="#b6a27e"/><path d="M151 139V337M609 139V337" stroke="#967c59" stroke-width="32"/><path d="M218 139H542V334H218Z" fill="#d8cba8"/><path d="M237 151H523V304H237Z" fill="#566b53"/><path d="M339 268V195H421V268M327 270H433" fill="#bca26e" stroke="#dec78d" stroke-width="9"/><path d="M82 346H678M61 366H699" stroke="#b8ae94" stroke-width="17"/>'+label(380,184,'信',31,'#efe2b0')+label(380,397,'皇帝的承諾，與自願留下的最後一份幫助',16),'皇宮大殿示意','palace');
-}
-function phScale(pH){return '<div class="ph-scale" aria-label="pH 色階 0 到 14"><div class="ph-colors">'+Array.from({length:15},(_,i)=>'<span style="background:'+indicator('universal',i).color+'">'+i+'</span>').join('')+'</div><i style="left:'+Math.max(0,Math.min(100,pH/14*100))+'%"></i><div class="scale-labels"><span>酸性</span><span>中性</span><span>鹼性</span></div></div>';}
-
-
-return {svg,label,beaker,ionsView,conductScene,phScene,neutralScene,precipScene,crystalScene,landscape,phScale};
+return {conductivityLabel,qualitativeRecord};
 })();
 __modules["electrolytes/apparatus.js"]=(()=>{
+const { conductivityLabel }=__modules["electrolytes/conductivity-feedback.js"];
 const { svg, beaker, label }=__modules["electrolytes/art.js"];
 const { fmt, indicator, solutions }=__modules["electrolytes/core.js"];
 
@@ -2212,19 +2345,22 @@ function shadow(x,y,w){return '<ellipse cx="'+x+'" cy="'+y+'" rx="'+w+'" ry="10"
 function meter(x,y,w,title,value,sub){return shadow(x+w/2,y+101,w*.5)+'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="99" rx="12" fill="#345c4b" stroke="#254638"/><path d="M'+(x+8)+' '+(y+9)+'h'+(w-16)+'" stroke="#a6c1a3" opacity=".3"/><rect x="'+(x+13)+'" y="'+(y+17)+'" width="'+(w-26)+'" height="48" rx="4" fill="#e4eccd"/>'+label(x+w/2,y+10,title,9,'#cedac5')+label(x+w/2,y+49,value,25,'#304e3a')+label(x+w/2,y+84,sub,10,'#d8e1cd');}
 
 function conductScene(r,{loaded=false,immersed=false,powered=false,sample='nacl',id='conduct'}={}){
- const angle=(-70+r.score*1.4)*Math.PI/180,x=150+65*Math.sin(angle),y=144-65*Math.cos(angle),ey=immersed?160:100;
- let body='<rect x="36" y="43" width="222" height="157" rx="14" fill="#f9f7ec" stroke="#b8c6b2" filter="url(#'+id+'-shadow)"/><rect x="48" y="55" width="198" height="109" rx="8" fill="#e8eddd"/>'+label(150,67,'導電比較計',12);
- body+='<path d="M78 141A72 72 0 0 1 222 141" fill="none" stroke="#c5d3ba" stroke-width="9"/>';
- for(let i=0;i<=10;i++){const a=(-70+i*14)*Math.PI/180;body+='<path d="M'+(150+61*Math.sin(a))+' '+(144-61*Math.cos(a))+'L'+(150+71*Math.sin(a))+' '+(144-71*Math.cos(a))+'" stroke="#647e60" stroke-width="'+(i%5?1:2)+'"/>';}
- body+='<path d="M150 144L'+x+' '+y+'" stroke="#ae714f" stroke-width="3" stroke-linecap="round"/><circle cx="150" cy="144" r="6" fill="#56724f"/>'+label(76,157,'0',10)+label(224,157,'100',10)+label(150,185,fmt(r.score,r.score>=1?2:4)+' / 100',17);
- body+='<path d="M258 142C294 146 286 90 320 '+ey+'M568 123C507 91 450 93 433 '+ey+'" fill="none" stroke="#354c44" stroke-width="6"/><path d="M568 123C507 91 450 93 433 '+ey+'" fill="none" stroke="#b66752" stroke-width="3"/>';
- body+=meter(559,45,153,'低電壓檢測',powered?'ON':'OFF','教學比較分數');
- body+='<circle cx="487" cy="84" r="26" fill="#d8e1ce" stroke="#bdcbb3"/><circle cx="487" cy="84" r="17" fill="'+(r.score>.1?'#efd27c':'#aab9a0')+'" opacity="'+(.4+r.lamp*.6)+'"/>'+(r.score>10?'<circle cx="487" cy="84" r="24" fill="#f8d779" opacity="'+(r.lamp*.25)+'"/>':'')+label(487,125,'指示燈',10);
- body+=beaker(id,273,190,210,157,'#9ecbbb',loaded&&sample!=='solid'?.67:0,loaded&&sample==='solid'?18:0);
- body+='<g><rect x="312" y="'+ey+'" width="18" height="125" rx="5" fill="url(#'+id+'-metal)" stroke="#799386"/><rect x="424" y="'+ey+'" width="18" height="125" rx="5" fill="url(#'+id+'-metal)" stroke="#799386"/>'+label(321,ey-10,'−',20,'#527da1')+label(433,ey-10,'＋',20,'#a46550')+'</g>';
- body+=plaque(51,266,167,loaded?solutions[sample].name:'待放入樣品',loaded?solutions[sample].formula:'選擇右側的材料瓶');
- body+=label(377,395,loaded?(sample==='solid'?'晶格中的離子不能自由移動':'兩電極接觸溶液，才形成檢測迴路'):'把樣品放進燒杯，開始找線索',12);
- return svg(body,'可操作的導電實驗桌；'+(powered?'導電分數 '+fmt(r.score,r.score>=1?2:4):'電源關閉，尚未檢測'),id);
+ const result=conductivityLabel(r,powered),lit=powered&&r.score>.1,ey=immersed?211:179;
+ let body='<defs><radialGradient id="'+id+'-glow"><stop stop-color="#ffe7a0" stop-opacity=".7"/><stop offset="1" stop-color="#ffe7a0" stop-opacity="0"/></radialGradient></defs>';
+ // The two cells, lamp, knife switch and immersed electrodes form one series circuit.
+ body+='<path d="M222 95H264Q285 95 285 126V158Q285 165 350 165M430 165H473Q495 165 495 136H546M650 136H699V218H425V'+ey+'M222 153H247V218H333V'+ey+'" fill="none" stroke="#344e47" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/><path d="M222 95H264Q285 95 285 126V158Q285 165 350 165M430 165H473Q495 165 495 136H546M650 136H699V218H425V'+ey+'" fill="none" stroke="#b66e58" stroke-width="3" stroke-linejoin="round"/>';
+ body+='<g filter="url(#'+id+'-shadow)"><rect x="42" y="60" width="180" height="126" rx="13" fill="#3e514b" stroke="#2d423b"/><rect x="51" y="71" width="160" height="100" rx="8" fill="#263d35"/>';
+ for(let i=0;i<2;i++){const y=79+i*43;body+='<rect x="65" y="'+y+'" width="132" height="34" rx="8" fill="url(#'+id+'-metal)" stroke="#8b9b91"/><rect x="'+(i?159:66)+'" y="'+(y+1)+'" width="37" height="32" rx="6" fill="#b78355"/><path d="M'+(i?202:58)+' '+(y+10)+'v14" stroke="#dce2d5" stroke-width="4"/>'+label(129,y+22,'AA · 1.5 V',11,'#f5f4df')+label(i?181:81,y+22,'＋',12,'#fff6e8');}
+ body+='</g><circle cx="222" cy="95" r="6" fill="#b47155"/><circle cx="222" cy="153" r="6" fill="#253e36"/>'+label(132,43,'電池盒 · 3 V',14)+label(237,94,'＋',12,'#ad6750')+label(235,171,'−',15,'#536c64');
+ if(lit)body+='<circle cx="390" cy="103" r="65" fill="url(#'+id+'-glow)" opacity="'+(.3+r.lamp*.65)+'"/>';
+ body+='<path d="M377 128C375 113 359 112 359 92A31 31 0 1 1 421 92C421 111 406 115 403 128Z" fill="'+(lit?'#f6dfa0':'#e1ebe0')+'" fill-opacity=".78" stroke="#8d9e8e" stroke-width="2"/><path d="M375 76Q367 86 370 97" fill="none" stroke="#fffdf5" stroke-width="5" stroke-linecap="round"/><path d="M382 127V105l5-7 6 6 6-6 3 7v22" fill="none" stroke="'+(lit?'#ce873a':'#8c8a72')+'" stroke-width="2"/><rect x="376" y="127" width="28" height="22" rx="3" fill="url(#'+id+'-metal)" stroke="#8e9b8d"/><path d="M377 133h26m-26 7h26" stroke="#74877a"/><rect x="349" y="150" width="82" height="33" rx="8" fill="#eee9d8" stroke="#b8b49c"/><circle cx="350" cy="165" r="5" fill="#a28a65"/><circle cx="430" cy="165" r="5" fill="#a28a65"/>'+label(390,43,'小燈泡與燈座',14);
+ body+='<g class="physical-switch"><rect x="523" y="89" width="164" height="94" rx="10" fill="#e4d4b3" stroke="#ad9876" stroke-width="2" filter="url(#'+id+'-shadow)"/><path d="M530 98h149" stroke="#f9efd9" stroke-width="2"/>';
+ for(const x of [535,675])for(const y of [100,172])body+='<circle cx="'+x+'" cy="'+y+'" r="3" fill="#988b73"/><path d="M'+(x-2)+' '+y+'h4" stroke="#d8ccb2"/>';
+ body+='<rect x="536" y="126" width="20" height="22" rx="3" fill="#b7924b" stroke="#937334"/><rect x="640" y="126" width="20" height="22" rx="3" fill="#b7924b" stroke="#937334"/><path class="switch-lever" d="M546 136L'+(powered?'650 136':'626 105')+'" stroke="url(#'+id+'-metal)" stroke-width="9" stroke-linecap="round"/><path d="M'+(powered?'592 136h30':'582 122l29-11')+'" stroke="#436150" stroke-width="13" stroke-linecap="round"/><circle cx="546" cy="136" r="6" fill="#c6af72" stroke="#927941"/>'+label(605,77,'刀閘開關',14)+label(605,204,powered?'已接通 · 點此斷開':'點擊開關，接通電路',13,'#456b4b')+'</g>';
+ body+=beaker(id,277,247,204,134,'#9ecbbb',loaded&&sample!=='solid'?.67:0,loaded&&sample==='solid'?18:0);
+ body+='<rect x="325" y="'+ey+'" width="16" height="137" rx="4" fill="url(#'+id+'-metal)" stroke="#799386"/><rect x="417" y="'+ey+'" width="16" height="137" rx="4" fill="url(#'+id+'-metal)" stroke="#799386"/>'+label(310,246,'−',17,'#527da1')+label(449,246,'＋',17,'#ad6852');
+ body+=plaque(46,281,170,solutions[sample].name,solutions[sample].formula)+label(609,294,'導電結果',12,'#7b8a77')+label(609,324,result,22,powered&&r.score>.1?'#3c704b':'#6f7f6a')+label(379,409,'電池 → 燈泡 → 開關 → 電極與樣品 → 電池',12,'#718570');
+ return svg(body,'電池、燈泡、刀閘開關與電極串聯的導電裝置；'+result,id,435);
 }
 
 function phScene(r,{kind='btb',dropped=false,paper=false,meter:measured=false,id='ph'}={}){
@@ -2300,8 +2436,8 @@ function labWorkflow(type, s, running=false) {
  if(type==='conduct') {
   const r=conductivity(s.sample,s.C,true,s.powered);
   out.steps=[];out.next='power';
-  out.title=!s.powered?'樣本已就位，開啟電源看看':s.sample==='solid'?'離子被固定在晶格中':r.score<.1?'導電非常微弱':'指針有變化，找到線索了';
-  out.detail=!s.powered?'選取樣本，再開啟電源。樣本與電極會自動準備好。':s.sample==='solid'?'固態食鹽的離子不能自由移動；換成食鹽水比較。':s.sample==='sugar'?'糖分子不解離成離子。水本身的微量離子仍可能導電。':s.sample==='water'?'蒸餾水仍有極少量離子，所以不是「絕對不導電」。':'換一種樣本，再開電源比較；每次開啟電源會自動記錄。導電不代表可食用。';
+  out.title=!s.powered?'樣本已就位，接通開關看看':s.sample==='solid'?'離子被固定在晶格中':r.score<.1?'導電非常微弱':'能導電，電路中有電流通過';
+  out.detail=!s.powered?'選取樣本，再點擊刀閘開關。金屬片接上另一端，就能接通電路。':s.sample==='solid'?'固態食鹽的離子不能自由移動；換成食鹽水比較。':s.sample==='sugar'?'糖分子不解離成離子。水本身的微量離子仍可能導電。':s.sample==='water'?'蒸餾水仍有極少量離子，所以不是「絕對不導電」。':'換一種樣本，再接通刀閘開關比較；每次接通都會自動記錄。導電不代表可食用。';
  }
  if(type==='indicator') {
   const r=speciate(s.sample,s.C,s.dilution),seen=s.dropped||s.paper||s.meter;
@@ -2355,7 +2491,7 @@ function setupWorkbench(root,type,api) {
  root.prepend(head);
  const steps=document.createElement('ol');steps.className='bench-steps';steps.setAttribute('aria-label','實驗操作順序');if(type!=='conduct')head.after(steps);
  $('.lab-guide').setAttribute('aria-live','off');
- $('.bench-label>span').textContent=type==='conduct'?'選取樣本 → 開啟電源 → 觀察結果':'直接點器材操作 · 也可用右側按鈕';
+ $('.bench-label>span').textContent=type==='conduct'?'選取樣本 → 點擊刀閘開關 → 觀察燈泡':'直接點器材操作 · 也可用右側按鈕';
  $('.bench-label button').textContent='⤢ 專注操作';
  const note=$('.model-note'),noteDetails=document.createElement('details');noteDetails.className='model-assumptions';
  note.before(noteDetails);noteDetails.innerHTML='<summary>查看模型假設與適用限制</summary>';noteDetails.append(note);
@@ -2373,6 +2509,11 @@ function setupWorkbench(root,type,api) {
   rack.innerHTML=Array.from(sample.options).map(o=>'<button type="button" data-sample="'+o.value+'" aria-pressed="false"><i class="mini-vial '+(o.value==='solid'?'solid-vial':'')+'" aria-hidden="true"><span></span></i><span>'+escapeHTML(solutions[o.value].name.replace('水溶液',''))+'<small>'+escapeHTML(solutions[o.value].formula.replace('(aq)',''))+'</small></span></button>').join('');
   sample.closest('label').hidden=true;sample.closest('label').after(rack);
  }
+ for(const select of root.querySelectorAll('[data-select]:not([data-select="sample"])')){
+  const key=select.dataset.select,label=select.closest('label'),group=document.createElement('div');group.className='tool-picker';group.dataset.picker=key;group.setAttribute('data-glossary-skip','');
+  group.innerHTML='<span>'+label.firstChild.textContent+'</span><div class="tool-choice" role="group" aria-label="'+label.firstChild.textContent+'">'+Array.from(select.options).map(o=>'<button type="button" data-choice="'+key+'" data-value="'+o.value+'">'+escapeHTML(o.textContent)+'</button>').join('')+'</div>';label.hidden=true;label.after(group);
+ }
+ const reason=document.createElement('p');reason.className='disabled-reason';controls.append(reason);
  if(type==='indicator') {
   const dilution=document.createElement('div');dilution.className='quick-dilution';
   dilution.innerHTML='<span>稀釋比較</span><div><button data-ui="dilute">＋ 水，稀釋 10 倍</button><button data-ui="undilute">還原濃度</button></div><small class="dilution-summary"></small>';details.before(dilution);
@@ -2383,6 +2524,7 @@ function setupWorkbench(root,type,api) {
  }
  const notice=document.createElement('p');notice.className='lab-announcement';notice.setAttribute('role','status');notice.setAttribute('aria-live','polite');controls.append(notice);
  root.addEventListener('click',e=>{
+  const choice=e.target.closest('[data-choice]');if(choice)api.change(choice.dataset.choice,choice.dataset.value);
   const sampleButton=e.target.closest('[data-sample]'),dose=e.target.closest('[data-dose]'),ui=e.target.closest('[data-ui]');
   if(sampleButton)api.change('sample',sampleButton.dataset.sample);
   if(dose)api.change('step',Number(dose.dataset.dose));
@@ -2394,14 +2536,16 @@ function setupWorkbench(root,type,api) {
  let lastRecords=api.state().records.length;
  function update(s,running) {
   const flow=labWorkflow(type,s,running);root.dataset.running=String(running);
+  root.querySelectorAll('[data-choice]').forEach(b=>b.setAttribute('aria-pressed',String(String(s[b.dataset.choice])===b.dataset.value)));
+  reason.textContent=type==='indicator'&&!s.meter?'先插入 pH 計取得讀值，才能記錄比較。':type==='precip'&&!s.mixed?'先倒入混合，才能過濾與記錄。':type==='crystal'&&!s.pooled?'先送入蒸發池，才會開放蒸發操作。':type==='crystal'&&flow.disabled.includes('separate')&&!s.separated?'晶體析出後，就能收集。':'';
   const stepsHTML=flow.steps.map((t,i)=>'<li class="'+(i<flow.step?'done':i===flow.step?'current':'')+'" '+(i===flow.step?'aria-current="step"':'')+'><span>'+(i<flow.step?'✓':String(i+1).padStart(2,'0'))+'</span>'+t+'</li>').join('');
   if(steps.innerHTML!==stepsHTML)steps.innerHTML=stepsHTML;
   $('.lab-guide').innerHTML='<span class="step-chip">'+(type==='conduct'?'操作提示':'現在做這一步')+'</span><strong>'+flow.detail+'</strong>';
   insight.innerHTML='<span class="observation-icon" aria-hidden="true">◎</span><div><small>看見了什麼？</small><strong>'+flow.title+'</strong></div>';
-  const labels={load:s.loaded?'重新放入樣品':'放入樣品',electrode:s.immersed?'提起電極':'放下電極',power:s.powered?'關閉電源':'開啟電源',record:'記錄這次結果',drop:type==='neutral'?'加入 '+fmt(s.step)+' mL':s.dropped?'重新使用指示劑':'使用指示劑',paper:s.paper?'重新測試紙':'蘸取 pH 試紙',meter:s.meter?'重新量測 pH':'插入 pH 計',mix:'倒入並混合',filter:s.filtered?'已完成過濾':'過濾分離',play:type==='crystal'?'開始蒸發':'連續滴加',pause:'暫停',replay:'從零重播',settle:s.settled?'已完成沉降':'沉降泥沙',pool:'送入蒸發池',separate:s.separated?'已收集晶體':'收集晶體'};
+  const labels={load:s.loaded?'重新放入樣品':'放入樣品',electrode:s.immersed?'提起電極':'放下電極',power:s.powered?'斷開電路':'接通電路',record:'記錄這次結果',drop:type==='neutral'?'加入 '+fmt(s.step)+' mL':s.dropped?'重新使用指示劑':'使用指示劑',paper:s.paper?'重新測試紙':'蘸取 pH 試紙',meter:s.meter?'重新量測 pH':'插入 pH 計',mix:'倒入並混合',filter:s.filtered?'已完成過濾':'過濾分離',play:type==='crystal'?'開始蒸發':'連續滴加',pause:'暫停',replay:'從零重播',settle:s.settled?'已完成沉降':'沉降泥沙',pool:'送入蒸發池',separate:s.separated?'已收集晶體':'收集晶體'};
   root.querySelectorAll('.salt-controls [data-action]').forEach(button=>{
    const a=button.dataset.action;button.textContent=labels[a]||button.textContent;button.dataset.icon=icons[a]||'';
-   button.disabled=flow.disabled.includes(a);button.classList.toggle('next-action',a===flow.next&&!button.disabled);
+   button.disabled=flow.disabled.includes(a);button.title=button.disabled?(reason.textContent||'這個步驟尚未就緒，請依上方提示操作。'):'';button.classList.toggle('next-action',a===flow.next&&!button.disabled);
    if(['meter','paper','drop','filter','settle','separate'].includes(a))button.classList.toggle('tool-used',!!({meter:s.meter,paper:s.paper,drop:type==='indicator'&&s.dropped,filter:s.filtered,settle:s.settled,separate:s.separated}[a]));
   });
   if(type==='conduct'){$('[data-action="power"]').setAttribute('aria-pressed',String(s.powered));}
@@ -2413,7 +2557,7 @@ function setupWorkbench(root,type,api) {
   root.querySelectorAll('[data-preset]').forEach(b=>{b.disabled=!!root.querySelector('[data-range="'+b.dataset.preset+'"]').disabled;b.setAttribute('aria-pressed',String(Number(b.dataset.value)===s[b.dataset.preset]));});
   root.querySelectorAll('[data-range]').forEach(r=>{r.style.setProperty('--range-fill',((Number(r.value)-Number(r.min))/(Number(r.max)-Number(r.min))*100)+'%');});
   const targets=type==='conduct'?[
-   ['power',82,39,s.powered?'關閉電源':'開啟電源']
+   ['power',79.7,31.3,s.powered?'斷開電路':'接通電路']
   ]:type==='indicator'?[
    ['drop',18,48,['red','blue'].includes(s.kind)?'蘸取石蕊試紙':'滴加指示劑'],['paper',16,88,'蘸取 pH 試紙'],['meter',81,45,'插入探棒']
   ]:type==='neutral'?[
@@ -2425,6 +2569,7 @@ function setupWorkbench(root,type,api) {
   ];
   const layer=document.createElement('div');layer.className='apparatus-layer';
   layer.innerHTML=targets.map(([a,x,y,t])=>'<button type="button" class="apparatus-control '+(a===flow.next?'suggested':'')+'" data-action="'+a+'" style="left:'+x+'%;top:'+y+'%" '+(flow.disabled.includes(a)?'disabled':'')+' aria-label="器材：'+t+'">'+t+'</button>').join('');
+  if(type==='conduct')layer.innerHTML='<button type="button" class="apparatus-control circuit-switch" data-action="power" aria-label="刀閘開關：'+(s.powered?'斷開電路':'接通電路')+'" aria-pressed="'+s.powered+'" title="點擊刀閘開關，'+(s.powered?'斷開':'接通')+'電路"><span class="sr-only">'+(s.powered?'斷開電路':'接通電路')+'</span></button>';
   $('.salt-scene').append(layer);
   if(s.records.length>lastRecords)notice.textContent='✓ '+(type==='conduct'?'已自動記錄':'已存入')+'第 '+s.records.length+' 筆結果。換一個條件，再做比較。';
   lastRecords=s.records.length;
@@ -2436,6 +2581,7 @@ function setupWorkbench(root,type,api) {
 return {setupWorkbench};
 })();
 __modules["electrolytes/labs.js"]=(()=>{
+const { conductivityLabel, qualitativeRecord }=__modules["electrolytes/conductivity-feedback.js"];
 const { conductivity, speciate, solutions, indicator, neutralize, precipitate, crystallize, fmt, sci, bounded, ionInfo }=__modules["electrolytes/core.js"];
 const { ionsView, phScale, label, svg }=__modules["electrolytes/art.js"];
 const { conductScene, phScene, neutralScene, precipScene, crystalScene }=__modules["electrolytes/apparatus.js"];
@@ -2460,7 +2606,7 @@ function cleanLab(type,raw){
   else if(typeof d[k]==='string'&&enums[k]?.includes(raw[k]))d[k]=raw[k];
  }
  d.records=Array.isArray(raw.records)?raw.records.filter(x=>x&&typeof x==='object'&&typeof x.text==='string').slice(-20).map(x=>({text:x.text.slice(0,350),category:typeof x.category==='string'?x.category.slice(0,25):''})):[];
- if(type==='conduct'){d.loaded=true;d.immersed=true;}
+ if(type==='conduct'){d.loaded=true;d.immersed=true;d.records=d.records.map(qualitativeRecord);}
  if(type==='indicator'&&d.sample==='solid')d.sample='hcl';
  if(type==='crystal'&&!d.pooled){d.evap=0;d.separated=false;}
  return d;
@@ -2485,7 +2631,7 @@ function mountLab(root,type,ctx){
  const save=()=>{ctx.save(s);};
  const guide=t=>{if($('.lab-guide').textContent!==t)$('.lab-guide').textContent=t;};
  const record=(text,category='')=>{s.records.push({text,category});s.records=s.records.slice(-20);save();drawRecords();};
- function drawRecords(){$('.record-list').innerHTML=s.records.length?s.records.map((r,i)=>'<p><span>'+String(i+1).padStart(2,'0')+'</span>'+escapeHTML(r.text)+'</p>').join(''):'<p class="muted">'+(type==='conduct'?'選取樣本並開啟電源，檢測結果會自動記錄在這裡。':'還沒有紀錄。完成一次操作，再把證據記下來。')+'</p>';}
+ function drawRecords(){const list=$('.record-list'),open=!!list.querySelector('details[open]'),row=(r,i)=>'<p><span>'+String(i+1).padStart(2,'0')+'</span>'+escapeHTML(r.text)+'</p>',older=s.records.slice(0,-2),recent=s.records.slice(-2);list.innerHTML=s.records.length?(older.length?'<details class="record-history" '+(open?'open':'')+'><summary>查看先前 '+older.length+' 筆紀錄</summary>'+older.map(row).join('')+'</details>':'')+'<div class="recent-records"><span class="record-caption">最近兩次觀察 · 放在一起比較</span>'+recent.map((r,i)=>row(r,older.length+i)).join('')+'</div>':'<p class="muted">'+(type==='conduct'?'選取樣本並接通刀閘開關，結果會自動記錄在這裡。':'還沒有紀錄。完成一次操作，再把證據記下來。')+'</p>';}
  function bind(onChange){
   changeHandler=onChange;
 
@@ -2507,20 +2653,20 @@ function mountLab(root,type,ctx){
  const opts=ids=>ids.map(id=>[id,solutions[id].name+' · '+solutions[id].formula]);
  let draw,act;
  if(type==='conduct'){
-  labFrame(root,'鹽場工作台 / 導電比較',select('sample','選擇樣品',opts(['water','nacl','sugar','acetic','hcl','naoh','solid']),s.sample)+field('C','溶質濃度',s.C,.000001,.1,.001,'mol/L')+buttons([['power','開啟電源','primary']]),'導電分數為教學模型：Σ（濃度 × 電荷絕對值 × 相對遷移能力），再壓縮到 0～100；不是實測電導率或安培。燈亮度與讀數同步；微量導電未必足以使燈可見地發亮。粒子數量為示意，不按顆數讀濃度；不模擬電極反應。');
+  labFrame(root,'鹽場工作台 / 導電比較',select('sample','選擇樣品',opts(['water','nacl','sugar','acetic','hcl','naoh','solid']),s.sample)+field('C','溶質濃度',s.C,.000001,.1,.001,'mol/L')+buttons([['power','開啟電源','primary']]),'低電壓電路的教學模擬。點擊刀閘開關，接通或斷開電路。結果只呈現導電狀態；蒸餾水與糖水仍可能有微量導電，但未必足以讓燈泡發亮。粒子數量為示意，不模擬電極反應。');
   draw=()=>{
    const r=conductivity(s.sample,s.C,s.loaded&&s.immersed,s.powered);
    $('.salt-scene').innerHTML=conductScene(r,{...s,id:'conductor'});
-   $('.readouts').innerHTML=metric('導電比較分數',s.powered?fmt(r.score,r.score>=1?2:4):'尚未開電源',s.powered?'/ 100':'')+metric('樣品',s.loaded?solutions[s.sample].formula:'尚未放入')+metric('溶質形成離子比例',s.loaded&&r.mobile?fmt(r.alpha*100):'—','%');
+   $('.readouts').innerHTML=metric('導電結果',conductivityLabel(r,s.powered))+metric('樣品',solutions[s.sample].formula);
    $('.micro-view').innerHTML=ionsView(s.sample==='solid'?[{label:'Na⁺',charge:1,c:1},{label:'Cl⁻',charge:-1,c:1}]:r.ions,{solid:s.sample==='solid',on:s.loaded&&s.immersed&&s.powered,id:'conduct-micro',neutral:s.sample==='sugar'?'糖仍以中性分子存在，微量 H⁺、OH⁻ 來自水':s.sample==='acetic'?'多數醋酸分子仍未游離；圖中粒子數不按比例':''});
    if(!s.loaded)$('.micro-view').innerHTML='<p>先放入樣品，再觀察其中的粒子。</p>';
    $('[data-action="power"]').setAttribute('aria-pressed',String(s.powered));
    $('[data-num="C"]').disabled=['water','solid'].includes(s.sample);$('[data-range="C"]').disabled=['water','solid'].includes(s.sample);
-   guide(s.powered?'觀察讀數與燈亮度，結果已自動記錄。':'選取樣本，再開啟電源，看看能不能導電。');
+   guide(s.powered?'觀察導電結果與燈泡反應，結果已自動記錄。':'選取樣本，點擊刀閘開關，看看能不能導電。');
   };
   act=a=>{if(a==='power'){
    s.powered=!s.powered;
-   if(s.powered){const r=conductivity(s.sample,s.C);record(solutions[s.sample].name+'｜'+(s.sample==='solid'?'固態':s.sample==='water'?'純水':s.C+' mol/L')+'｜導電分數 '+fmt(r.score,r.score>=1?2:4),s.sample);if(new Set(s.records.map(x=>x.category)).size>=2)ctx.mark();}
+   if(s.powered){const r=conductivity(s.sample,s.C);record(solutions[s.sample].name+'｜'+(s.sample==='solid'?'固態':s.sample==='water'?'純水':s.C+' mol/L')+'｜'+conductivityLabel(r),s.sample);if(new Set(s.records.map(x=>x.category)).size>=2)ctx.mark();}
   }draw();};
   bind(k=>{if(k==='sample'){s.loaded=true;s.immersed=true;s.powered=false;}draw();});
  }
@@ -2615,6 +2761,8 @@ function mountLab(root,type,ctx){
 return {defaults,cleanLab,mountLab};
 })();
 __modules["electrolytes/app.js"]=(()=>{
+const { learningRoute }=__modules["electrolytes/learning-route.js"];
+const { reactionIllustration, saltSpecimen }=__modules["electrolytes/lesson-art.js"];
 const { TermPrimer, mountTerminology }=__modules["electrolytes/terminology.js"];
 const { cards, chemicals, salts }=__modules["electrolytes/data.js"];
 const { speciate, solutions, fmt, sci }=__modules["electrolytes/core.js"];
@@ -2623,9 +2771,10 @@ const { mountLab, cleanLab, defaults }=__modules["electrolytes/labs.js"];
 const { escapeHTML }=__modules["chemistry/components.js"];
 const KEY='k12-electrolytes-salt-v1',allQuestions=cards.map(c=>c.quiz);
 function cleanState(raw){
- const fresh={version:1,predictions:{},answers:{},attempts:{},observed:[],labs:{},notes:{},steps:{}};
+ const fresh={version:1,predictions:{},answers:{},attempts:{},observed:[],labs:{},notes:{},steps:{},explored:{}};
  if(!raw||raw.version!==1)return fresh;
  for(const c of cards){const p=raw.predictions?.[c.id];if(Number.isInteger(p)&&p>=0&&p<c.choices.length)fresh.predictions[c.id]=p;const n=raw.notes?.[c.id];if(typeof n==='string')fresh.notes[c.id]=n.slice(0,1000);const st=raw.steps?.[c.id];if(Number.isInteger(st)&&st>=0&&st<=10)fresh.steps[c.id]=st;}
+ for(const c of cards){const max={story:3,ions:6,reactions:4,strength:4,salts:5}[c.type]||0,xs=raw.explored?.[c.id];if(Array.isArray(xs)&&max)fresh.explored[c.id]=[...new Set(xs.filter(v=>Number.isInteger(v)&&v>=0&&v<max))];}
  for(const q of allQuestions){const a=raw.answers?.[q.id];if(Number.isInteger(a)&&a>=0&&a<q.options.length)fresh.answers[q.id]=a;fresh.attempts[q.id]=Array.isArray(raw.attempts?.[q.id])?raw.attempts[q.id].filter(x=>Number.isInteger(x)&&x>=0&&x<q.options.length).slice(-20):[];}
  fresh.observed=Array.isArray(raw.observed)?raw.observed.filter(x=>cards.some(c=>c.id===x)):[];
  for(const type of Object.keys(defaults))fresh.labs[type]=cleanLab(type,raw.labs?.[type]);
@@ -2641,14 +2790,15 @@ function mastered(c){return cardMastered(c,state);}
 function refresh(){
  const count=cards.filter(mastered).length;document.querySelector('#progress-count').textContent=count+' / 12';document.querySelector('#top-progress').textContent=count+' / 12';document.querySelector('#chapter-progress').value=count;
  for(const c of cards){const a=document.querySelector('[data-nav="'+c.id+'"]');a.classList.toggle('mastered',mastered(c));a.querySelector('.nav-state').textContent=mastered(c)?'✓':'○';const status=document.querySelector('#salt-'+c.id+' .card-status');if(status)status.textContent=mastered(c)?'✓ 本站已掌握':(state.predictions[c.id]===undefined?'○ 先留下預測':'✓ 已預測')+' · '+(state.observed.includes(c.id)?'✓ 已完成觀察':'○ 完成操作／圖解')+' · '+(isCorrect(c.quiz)?'✓ 小試身手答對':'○ 小試身手');}
+ for(const c of cards){const section=document.querySelector('#salt-'+c.id);if(!section)continue;const done=[state.predictions[c.id]!==undefined,state.observed.includes(c.id),isCorrect(c.quiz)],next=done.indexOf(false);section.dataset.mastered=String(done.every(Boolean));const route=learningRoute(c,state);section.querySelector('.route-copy strong').textContent=route.title;section.querySelector('.route-copy small').textContent=route.detail;section.querySelector('[data-continue]').textContent=route.action;section.querySelector('.card-progress-label').textContent=done.filter(Boolean).length+' / 3 完成';section.querySelector('.card-progress-track i').style.width=(done.filter(Boolean).length/3*100)+'%';const checkpoint=section.querySelector('.activity-checkpoint');checkpoint.dataset.done=String(done[1]);checkpoint.querySelector('strong').textContent=done[1]?'✓ 已完成本卡觀察':'探索中 · 留意上方的完成條件';section.querySelectorAll('[data-journey]').forEach((b,i)=>{b.dataset.done=String(done[i]);b.querySelector('span').textContent=done[i]?'✓':String(i+1).padStart(2,'0');if(i===next)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});}
  const certificate=document.querySelector('#certificate');if(certificate){const passed=count===12;certificate.hidden=!passed;document.querySelector('#final-score').textContent='十二站調查成果：'+count+' / 12 站已掌握。每站只需完成一題小試身手。';}
  document.querySelector('#completion-banner').hidden=count!==12;
 }
 function mark(id){if(!state.observed.includes(id))state.observed.push(id);save();refresh();}
 function dialogue(c){return '<div class="story-dialogue">'+c.dialogue.map(([who,expression,text])=>'<div class="story-speech story-speech--'+who+'"><div class="story-portrait story-portrait--'+who+'" data-expression="'+expression+'" role="img" aria-label="'+(who==='kui'?'小葵':'阿公')+'的'+({excited:'興奮',thinking:'思考',curious:'好奇',surprised:'驚訝',determined:'堅定',wonder:'驚喜',gentle:'溫和',mentor:'引導',idea:'靈光一現',thoughtful:'思索',encourage:'鼓勵'}[expression])+'表情"></div><p><b>'+(who==='kui'?'小葵':'阿公')+'</b>'+text+'</p></div>').join('')+'</div>';}
 function quizMarkup(q){return '<form class="salt-quiz" data-quiz="'+q.id+'"><fieldset><legend>'+q.prompt+'</legend>'+q.options.map((o,i)=>'<label><input type="radio" name="'+q.id+'" value="'+i+'"> <span><b>'+String.fromCharCode(65+i)+'</b> '+o+'</span></label>').join('')+'</fieldset><div class="salt-actions"><button class="primary" type="submit">送出判斷，查看解析</button><details><summary>給我一個提示</summary><p>'+q.hint+'</p></details></div><div class="quiz-feedback" role="status"></div></form>';}
-function paintFeedback(form,q){const a=state.answers[q.id];if(a===undefined)return;form.querySelector('[value="'+a+'"]').checked=true;const right=a===q.answer;form.querySelector('.quiz-feedback').innerHTML='<p class="'+(right?'correct':'retry')+'"><b>'+(right?'✓ 有證據的判斷':'再想一想')+'</b> '+q.explanations[a]+'</p>'+(!right?'<p>正確判斷：'+q.options[q.answer]+'。'+q.explanations[q.answer]+' 可以重新選擇並送出。</p>':'');}
-function mountQuizzes(root){root.querySelectorAll('[data-quiz]').forEach(form=>{const q=allQuestions.find(x=>x.id===form.dataset.quiz);paintFeedback(form,q);form.onsubmit=e=>{e.preventDefault();const chosen=form.querySelector('input:checked');if(!chosen){form.querySelector('.quiz-feedback').textContent='先選一個答案，再送出。';return;}const a=Number(chosen.value);state.answers[q.id]=a;state.attempts[q.id]??=[];state.attempts[q.id].push(a);state.attempts[q.id]=state.attempts[q.id].slice(-20);paintFeedback(form,q);save();refresh();};});}
+function paintFeedback(form,q){const a=state.answers[q.id];if(a===undefined)return;form.querySelector('[value="'+a+'"]').checked=true;const right=a===q.answer;form.querySelectorAll('fieldset>label').forEach((el,i)=>{el.classList.toggle('answer-right',i===q.answer);el.classList.toggle('answer-wrong',i===a&&!right);});form.querySelector('.quiz-feedback').innerHTML='<p class="'+(right?'correct':'retry')+'"><b>'+(right?'✓ 有證據的判斷':'再想一想')+'</b> '+q.explanations[a]+'</p>'+(!right?'<p>正確判斷：'+q.options[q.answer]+'。'+q.explanations[q.answer]+' 可以重新選擇並送出。</p>':'');}
+function mountQuizzes(root){root.querySelectorAll('[data-quiz]').forEach(form=>{const q=allQuestions.find(x=>x.id===form.dataset.quiz);paintFeedback(form,q);form.addEventListener('change',()=>{delete state.answers[q.id];form.querySelectorAll('fieldset>label').forEach(el=>el.classList.remove('answer-right','answer-wrong'));form.querySelector('.quiz-feedback').textContent='已選好答案。送出判斷，看看證據是否支持你的想法。';save();refresh();});form.onsubmit=e=>{e.preventDefault();const chosen=form.querySelector('input:checked');if(!chosen){form.querySelector('.quiz-feedback').textContent='先選一個答案，再送出。';return;}const a=Number(chosen.value);state.answers[q.id]=a;state.attempts[q.id]??=[];state.attempts[q.id].push(a);state.attempts[q.id]=state.attempts[q.id].slice(-20);paintFeedback(form,q);save();refresh();};});}
 function table(head,rows){return '<div class="table-scroll"><table><thead><tr>'+head.map(x=>'<th>'+x+'</th>').join('')+'</tr></thead><tbody>'+rows.map(row=>'<tr>'+row.map((x,i)=>'<'+(i?'td':'th')+'>'+x+'</'+(i?'td':'th')+'>').join('')+'</tr>').join('')+'</tbody></table></div>';}
 const reactionSteps=[
  ['石灰岩 + 稀鹽酸','CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂↑','碳酸鈣表面溶蝕，二氧化碳形成氣泡。不是所有冒泡都是氫氣。','CO₂'],
@@ -2658,35 +2808,41 @@ const reactionSteps=[
 ];
 function mountStory(root,c){
  let step=state.steps[c.id]||0,playing=false,timer=null;
- const stop=()=>{if(timer)clearInterval(timer);timer=null;playing=false;};
+ const stop=()=>{if(timer)clearInterval(timer);timer=null;playing=false;const b=root.querySelector('[data-play]');if(b){b.textContent='自動瀏覽';b.setAttribute('aria-pressed','false');}};
  if(c.type==='story'){
+  step=-1;
   root.innerHTML='<div class="bottle-line">'+['甲','乙','丙'].map((x,i)=>'<button data-bottle="'+i+'"><span class="bottle"><i></i></span><b>樣品'+x+'</b><span>透明、無色</span><small>點擊查看紀錄</small></button>').join('')+'</div><div class="observation-result" role="status">不品嚐、不碰未知液體。先看三份採樣紀錄。</div>';
-  const seen=new Set();root.querySelectorAll('[data-bottle]').forEach(b=>b.onclick=()=>{seen.add(b.dataset.bottle);b.classList.add('seen');root.querySelector('.observation-result').textContent=['樣品甲：來自鹽井，蒸乾留白色晶體。成分仍待確認。','樣品乙：來自工匠材料庫，蒸乾也留白色晶體。不可當成食鹽。','樣品丙：採樣來源不明。即使透明，也不能判定安全。'][Number(b.dataset.bottle)]+' 已查看 '+seen.size+'/3。';if(seen.size===3)mark(c.id);});return{destroy:stop};
+  root.insertAdjacentHTML('beforeend','<p class="explore-status" role="status"></p>');const seen=new Set(state.explored[c.id]||[]);const progress=()=>{root.querySelector('.explore-status').textContent='已查看 '+seen.size+' / 3 份採樣紀錄';root.querySelectorAll('[data-bottle]').forEach(b=>{b.classList.toggle('seen',seen.has(Number(b.dataset.bottle)));b.setAttribute('aria-pressed',String(Number(b.dataset.bottle)===step));});};progress();root.querySelectorAll('[data-bottle]').forEach(b=>b.onclick=()=>{step=Number(b.dataset.bottle);seen.add(step);state.explored[c.id]=[...seen];save();progress();b.classList.add('seen');root.querySelector('.observation-result').textContent=['樣品甲：來自鹽井，蒸乾留白色晶體。成分仍待確認。','樣品乙：來自工匠材料庫，蒸乾也留白色晶體。不可當成食鹽。','樣品丙：採樣來源不明。即使透明，也不能判定安全。'][Number(b.dataset.bottle)]+' 已查看 '+seen.size+'/3。';if(seen.size===3)mark(c.id);});return{destroy:stop};
  }
  if(c.type==='ions'){
   let sample='nacl',on=false;
   root.innerHTML='<div class="model-tabs" role="group" aria-label="微觀樣品">'+['solid','nacl','sugar','hcl','naoh','acetic'].map(id=>'<button class="secondary" data-sample="'+id+'">'+solutions[id].name+'</button>').join('')+'</div><div class="micro-stage"></div><div class="salt-actions"><button class="primary" data-electric>開啟電場</button><button class="secondary" data-motion>暫停粒子動畫</button></div><p class="ion-explanation"></p><p class="model-note">粒子數目、位置與移動速度經視覺簡化，不代表實際粒子個數。電場下同時存在隨機熱運動；外電路由電子搬運電荷。</p>';
-  const seen=new Set();
-  const draw=()=>{const r=speciate(sample,.01);root.querySelector('.micro-stage').innerHTML=ionsView(r.ions,{solid:sample==='solid',on,id:'story-ions',neutral:sample==='sugar'?'大量中性糖分子留在水中；微量 H⁺、OH⁻ 來自水':sample==='acetic'?'大部分醋酸分子仍未游離':''});root.querySelector('.ion-explanation').textContent={solid:'NaCl 晶格已有正負離子，但位置固定。',nacl:'NaCl 解離：Na⁺ + Cl⁻，正負電荷總量相等。',sugar:'糖保留中性分子，沒有像 NaCl 一樣解離；水仍有微量離子。',hcl:'HCl 分子在水中游離，主要形成 H⁺、Cl⁻，不是 Na⁺。',naoh:'NaOH 解離：Na⁺ + OH⁻，不是所有陰離子都叫 Cl⁻。',acetic:'CH₃COOH ⇌ H⁺ + CH₃COO⁻；仍有大量未游離分子。'}[sample];root.querySelectorAll('[data-sample]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.sample===sample)));};
-  root.querySelectorAll('[data-sample]').forEach(b=>b.onclick=()=>{sample=b.dataset.sample;seen.add(sample);draw();if(seen.size>=3&&on)mark(c.id);});
-  root.querySelector('[data-electric]').onclick=e=>{on=!on;e.target.textContent=on?'關閉電場':'開啟電場';draw();if(on&&seen.size>=3)mark(c.id);};
-  root.querySelector('[data-motion]').onclick=e=>{root.classList.toggle('paused');e.target.textContent=root.classList.contains('paused')?'繼續粒子動畫':'暫停粒子動畫';};draw();return{destroy:stop};
+  root.insertAdjacentHTML('beforeend','<div class="particle-key" data-glossary-skip><span><i></i>陽離子</span><span><i></i>陰離子</span></div><p class="explore-status" role="status"></p>');const samples=['solid','nacl','sugar','hcl','naoh','acetic'],seen=new Set(state.explored[c.id]||[]);
+  const draw=()=>{const r=speciate(sample,.01);root.querySelector('.micro-stage').innerHTML=ionsView(r.ions,{solid:sample==='solid',on,id:'story-ions',neutral:sample==='sugar'?'大量中性糖分子留在水中；微量 H⁺、OH⁻ 來自水':sample==='acetic'?'大部分醋酸分子仍未游離':''});root.querySelector('.ion-explanation').textContent={solid:'NaCl 晶格已有正負離子，但位置固定。',nacl:'NaCl 解離：Na⁺ + Cl⁻，正負電荷總量相等。',sugar:'糖保留中性分子，沒有像 NaCl 一樣解離；水仍有微量離子。',hcl:'HCl 分子在水中游離，主要形成 H⁺、Cl⁻，不是 Na⁺。',naoh:'NaOH 解離：Na⁺ + OH⁻，不是所有陰離子都叫 Cl⁻。',acetic:'CH₃COOH ⇌ H⁺ + CH₃COO⁻；仍有大量未游離分子。'}[sample];seen.add(samples.indexOf(sample));root.querySelectorAll('[data-sample]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.sample===sample));b.dataset.seen=String(seen.has(samples.indexOf(b.dataset.sample)));});state.explored[c.id]=[...seen];save();root.querySelector('.explore-status').textContent='已比較 '+seen.size+' / 6 種樣品'+(on?' · 電場已開啟':' · 開啟電場，觀察離子移動方向');root.querySelector('[data-electric]').setAttribute('aria-pressed',String(on));};
+  root.querySelectorAll('[data-sample]').forEach(b=>b.onclick=()=>{sample=b.dataset.sample;draw();if(seen.size>=6&&on)mark(c.id);});
+  root.querySelector('[data-electric]').onclick=e=>{on=!on;e.target.textContent=on?'關閉電場':'開啟電場';draw();if(on&&seen.size>=6)mark(c.id);};
+  root.querySelector('[data-motion]').onclick=e=>{root.classList.toggle('paused');e.target.textContent=root.classList.contains('paused')?'繼續粒子動畫':'暫停粒子動畫';e.target.setAttribute('aria-pressed',String(root.classList.contains('paused')));};draw();return{destroy:stop};
  }
  if(['reactions','strength','salts'].includes(c.type)){
   const length=c.type==='reactions'?4:c.type==='strength'?4:5;step=Math.min(step,length-1);
-  root.innerHTML='<div class="guided-content"></div><div class="salt-actions"><button class="secondary" data-back>← 上一格</button><span class="step-counter"></span><button class="primary" data-next>下一格 →</button><button class="secondary" data-play>播放／暫停</button><button class="text-button" data-restart>重播</button></div>';
+  const labels=c.type==='reactions'?['石灰岩＋酸','鋅＋酸','生石灰＋水','CO₂＋水']:c.type==='strength'?['同濃度酸比較','改變濃度','強弱鹼比較','計算與歸納']:salts.map(s=>s[0]);
+  const seen=new Set(state.explored[c.id]||[]);let reacted=false;
+  root.innerHTML='<div class="study-selector" role="group" aria-label="選擇比較情境">'+labels.map((t,i)=>'<button type="button" data-study="'+i+'">'+t+'</button>').join('')+'</div><div class="guided-content"></div><p class="explore-status" role="status"></p><div class="salt-actions study-controls"><button class="secondary" data-back>← 上一格</button><span class="step-counter"></span><button class="primary" data-next>下一格 →</button><button class="secondary" data-play aria-pressed="false">自動瀏覽</button><button class="text-button" data-restart>重播</button></div>';
   function draw(){
    let html='';
-   if(c.type==='reactions'){const [title,eq,note,particle]=reactionSteps[step];html='<div class="reaction-plate"><span class="eyebrow">已知試劑的虛擬對照</span><h3>'+title+'</h3>'+svg('<path d="M265 100V289Q265 316 294 316H461Q490 316 490 289V100" fill="#b7d5c4" fill-opacity=".45" stroke="#86a094" stroke-width="3"/><path d="M294 289l38-42 47 6 18 38Z" fill="'+(step===1?'#8c9b96':'#e9e6d7')+'" stroke="#a4aa99"/>'+[0,1,2,3,4].map(i=>'<g class="reaction-particle" style="animation-delay:-'+i*.4+'s"><circle cx="'+(340+(i*31)%105)+'" cy="'+(231-i*22)+'" r="17" fill="#f6fbeb" stroke="#b0c5b5"/>'+label(340+(i*31)%105,236-i*22,particle,10)+'</g>').join('')+label(380,365,step<2?'氣泡顯示氣體生成':'顯示溶液中增加的代表離子',14),'反應證據示意','rx'+step,390)+'<p class="equation">'+eq+'</p><p>'+note+'</p></div>';}
+   if(c.type==='reactions'){const [title,eq,note]=reactionSteps[step];html='<div class="reaction-plate"><span class="eyebrow">已知試劑的虛擬對照</span><h3>'+title+'</h3><div class="state-switch" role="group" aria-label="反應前後比較"><button type="button" data-reaction-state="before" aria-pressed="'+!reacted+'">反應前</button><button type="button" data-reaction-state="after" aria-pressed="'+reacted+'">'+(reacted?'✓ 反應後':['滴入稀鹽酸 →','滴入稀鹽酸 →','加入水 →','通入 CO₂ →'][step])+'</button></div>'+reactionIllustration(step,reacted)+'<p class="equation">'+eq+'</p><p>'+note+'</p></div>';}
+
    if(c.type==='strength'){
     const examples=[['同濃度，比游離比例','hcl',.01,'acetic',.01],['濃度不同，強酸不一定 pH 較低','hcl',.00001,'acetic',.1],['強鹼、弱鹼，同樣也分濃淡','naoh',.01,'ammonia',.01]];
     if(step<3){const [title,a,ca,b,cb]=examples[step],x=speciate(a,ca),y=speciate(b,cb);html='<h3>'+title+'</h3><div class="compare-solutions">'+[[a,ca,x],[b,cb,y]].map(([id,C,r])=>'<section><span>'+solutions[id].kind+'</span><h4>'+solutions[id].formula+'</h4><p>'+C+' mol/L</p><strong>pH '+fmt(r.pH)+'</strong><div class="fraction-bar"><i style="width:'+r.alpha*100+'%"></i></div><p>形成離子比例約 '+fmt(r.alpha*100)+'%</p><small>[H⁺] = '+sci(r.H)+' mol/L</small></section>').join('')+'</div>';}else html='<div class="calculation-steps"><h3>兩條分步計算</h3><ol><li>100 mL = 0.100 L。</li><li>0.010 mol ÷ 0.100 L = <b>0.10 mol/L</b>。</li><li>pH 2 → [H⁺] = 10⁻²；pH 4 → 10⁻⁴。</li><li>10⁻² ÷ 10⁻⁴ = <b>100 倍</b>。</li></ol><p>同一種酸稀釋後仍是原來的強／弱酸；每公升的溶質變少。</p></div>';
    }
-   if(c.type==='salts'){const [name,formula,ions,sol,use]=salts[step];html='<div class="salt-specimen"><div class="specimen-crystal" aria-hidden="true">◇<span>◇</span></div><div><span class="eyebrow">材料庫 / '+String(step+1).padStart(2,'0')+'</span><h3>'+name+'</h3><strong>'+formula+'</strong><p>'+ions+'</p><p>'+sol+'</p><p>'+use+'</p></div></div><p class="model-note">外觀只作示意，不能憑白色鑑定物質。</p>';}
-   root.querySelector('.guided-content').innerHTML=html;root.querySelector('.step-counter').textContent=(step+1)+' / '+length;root.querySelector('[data-back]').disabled=step===0;root.querySelector('[data-next]').disabled=step===length-1;state.steps[c.id]=step;save();if(step===length-1)mark(c.id);
+   if(c.type==='salts'){const [name,formula,ions,sol,use]=salts[step];html='<div class="salt-specimen"><div class="specimen-display">'+saltSpecimen(step,name,formula)+'</div><div><span class="eyebrow">材料庫 / '+String(step+1).padStart(2,'0')+'</span><h3>'+name+'</h3><strong>'+formula+'</strong><div class="specimen-facts"><p><small>離子組成</small>'+ions+'</p><p><small>溶解與酸鹼性</small>'+sol+'</p><p><small>用途與限制</small>'+use+'</p></div></div></div><p class="model-note">外觀只作示意，不能憑白色鑑定物質。</p>';}
+
+   root.querySelector('.guided-content').innerHTML=html;root.querySelector('.step-counter').textContent=(step+1)+' / '+length;root.querySelector('[data-back]').disabled=step===0;root.querySelector('[data-next]').disabled=step===length-1;state.steps[c.id]=step;if(c.type!=='reactions'||reacted)seen.add(step);state.explored[c.id]=[...seen];root.querySelectorAll('[data-study]').forEach(b=>{b.setAttribute('aria-pressed',String(Number(b.dataset.study)===step));b.dataset.seen=String(seen.has(Number(b.dataset.study)));});root.querySelector('.explore-status').textContent='已查看 '+seen.size+' / '+length+' 個情境'+(seen.size===length?' · 比較完成，可往下驗證想法':' · 點上方即可切換比較');save();if(seen.size===length)mark(c.id);
   }
-  root.querySelector('[data-back]').onclick=()=>{stop();step=Math.max(0,step-1);draw();};root.querySelector('[data-next]').onclick=()=>{stop();step=Math.min(length-1,step+1);draw();};root.querySelector('[data-restart]').onclick=()=>{stop();step=0;draw();};
-  root.querySelector('[data-play]').onclick=()=>{if(playing){stop();return;}if(step===length-1)step=0;playing=true;draw();timer=setInterval(()=>{step=Math.min(length-1,step+1);draw();if(step===length-1)stop();},4000);};draw();
+  root.querySelectorAll('[data-study]').forEach(b=>b.onclick=()=>{stop();step=Number(b.dataset.study);reacted=false;draw();});root.addEventListener('click',e=>{const b=e.target.closest('[data-reaction-state]');if(b){reacted=b.dataset.reactionState==='after';draw();}});
+  root.querySelector('[data-back]').onclick=()=>{stop();step=Math.max(0,step-1);reacted=false;draw();};root.querySelector('[data-next]').onclick=()=>{stop();step=Math.min(length-1,step+1);reacted=false;draw();};root.querySelector('[data-restart]').onclick=()=>{stop();step=0;reacted=false;draw();};
+  root.querySelector('[data-play]').onclick=()=>{if(playing){stop();return;}if(step===length-1)step=0;reacted=true;playing=true;root.querySelector('[data-play]').textContent='暫停瀏覽';root.querySelector('[data-play]').setAttribute('aria-pressed','true');draw();timer=setInterval(()=>{step=Math.min(length-1,step+1);draw();if(step===length-1)stop();},4000);};draw();
   if(c.type==='reactions')root.insertAdjacentHTML('beforeend','<details class="reference-table"><summary>打開常見酸、鹼的用途與危險性（7 種）</summary>'+table(['物質','化學式','性質與用途','安全'],chemicals)+'</details>');return{destroy:stop};
  }
 
@@ -2698,7 +2854,7 @@ function mountStory(root,c){
   ];
   let seen=state.steps[c.id]||0;
   root.innerHTML='<div class="report-intro"><span class="eyebrow">皇家鹽場 / 三份驗收紀錄</span><h3>先核對證據，再下結論</h3><p>點開每份紀錄的核對說明。這裡不用答題，重點是找到資料中的問題。</p></div><div class="audit-reviews">'+reports.map((r,i)=>'<article class="audit-review"><span class="report-number">0'+(i+1)+'</span><h4>'+r[0]+'</h4><p>'+r[1]+'</p><details data-report="'+i+'"><summary>查看核對說明</summary><div><p><b>證據怎麼說</b>'+r[2]+'</p><p class="report-conclusion">'+r[3]+'</p></div></details></article>').join('')+'</div><p class="report-status" role="status"></p>';
-  const status=()=>{root.querySelector('.report-status').textContent='已核對 '+[1,2,4].filter(bit=>seen&bit).length+' / 3 份紀錄';};
+  const status=()=>{root.querySelectorAll('.audit-review').forEach((el,i)=>el.dataset.seen=String(!!(seen&(1<<i))));root.querySelector('.report-status').textContent='已核對 '+[1,2,4].filter(bit=>seen&bit).length+' / 3 份紀錄';};
   root.querySelectorAll('[data-report]').forEach(d=>d.addEventListener('toggle',()=>{if(d.open){seen|=1<<Number(d.dataset.report);state.steps[c.id]=seen;save();status();if(seen===7)mark(c.id);}}));status();return{destroy:stop};
  }
  if(c.type==='final'){
@@ -2713,14 +2869,23 @@ function renderCard(c){
  const section=document.createElement('section');section.className='learning-card salt-card';section.id='salt-'+c.id;section.setAttribute('aria-labelledby','title-'+c.id);
  section.innerHTML='<header class="card-header"><div class="card-kicker"><span>'+['','第一幕 · 皇帝最後的委託','第二幕 · 酸與鹼的祕密','第三幕 · 中和與鹽的誕生','第四幕 · 皇帝的製鹽挑戰'][c.act]+'</span><span>'+String(c.id).padStart(2,'0')+' / 12 · '+(defaults[c.type]?'動手探索':'故事與證據')+'</span></div><h2 id="title-'+c.id+'">'+c.title+'</h2><p class="core-question">'+c.question+'</p></header><div class="card-body"><p class="story-opening">'+c.opening+'</p>'+dialogue(c)+TermPrimer(c.id)+'<fieldset class="prediction"><legend>先猜一猜 · '+c.prediction+'</legend>'+c.choices.map((t,i)=>'<label><input type="radio" name="prediction-'+c.id+'" value="'+i+'"><span class="prediction-letter">'+String.fromCharCode(65+i)+'</span><span>'+t+'</span></label>').join('')+'<p class="prediction-status" role="status">先留下想法，之後用證據回頭檢查。</p></fieldset><div class="task"><span>這次的任務</span><p>'+c.task+'</p></div><div class="card-activity" id="activity-'+c.id+'"></div><div class="concept-panels"><h3>把剛剛的證據說清楚</h3>'+c.panels.map(([t,h])=>'<details><summary>'+t+'</summary><div>'+h+'</div></details>').join('')+'</div><div class="challenge-heading"><span class="eyebrow">小試身手 / 檢查我的理解</span></div>'+quizMarkup(c.quiz)+'<div class="next-clue"><span class="eyebrow">帶著線索往下走</span><p>'+c.next+'</p></div></div><footer class="card-footer"><span class="card-status"></span><div>'+(c.id>1?'<a href="#salt-'+(c.id-1)+'">← 上一站</a>':'')+'<button class="text-button reset-card">重設本卡</button>'+(c.id<12?'<a class="secondary" href="#salt-'+(c.id+1)+'">下一站 →</a>':'<a class="secondary" href="#chapter-top">回到起點 ↑</a>')+'</div></footer>';
  document.querySelector('#lesson').append(section);
+ const activityLabel={story:'查採樣紀錄',ions:'追蹤離子',reactions:'比較反應',strength:'比較酸鹼',salts:'翻樣品卡',audit:'核對報告',final:'交出報告'}[c.type]||'動手實驗';
+ section.querySelector('.card-header').dataset.station=String(c.id).padStart(2,'0');
+ section.querySelector('.card-header').insertAdjacentHTML('afterend','<nav class="card-journey" aria-label="本卡學習路線" data-glossary-skip>'+['先猜一猜',activityLabel,'驗證想法'].map((t,i)=>'<button type="button" data-journey="'+i+'"><span>0'+(i+1)+'</span>'+t+'</button>').join('')+'</nav>');
+ section.querySelector('.card-header').insertAdjacentHTML('beforeend','<div class="card-route" data-glossary-skip><div class="route-copy"><strong></strong><small></small></div><div class="card-progress"><span class="card-progress-label"></span><span class="card-progress-track"><i></i></span></div><button type="button" class="primary" data-continue></button></div>');
+ function jumpTo(target){activateStation(c.id);target.scrollIntoView({block:'start',behavior:'instant'});target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}
+ section.querySelector('[data-continue]').onclick=()=>{const route=learningRoute(c,state);if(route.step===3){document.querySelector('#salt-'+(c.id+1))?.scrollIntoView({block:'start',behavior:'instant'});return;}jumpTo(section.querySelector(['.prediction','.task','.salt-quiz'][route.step]));};
+ const activitySection=section.querySelector('.card-activity');activitySection.insertAdjacentHTML('afterend','<div class="activity-checkpoint" data-glossary-skip><div><small>接下來</small><strong></strong></div><button type="button" class="secondary" data-check-understanding>用一題驗證想法 →</button></div>');section.querySelector('[data-check-understanding]').onclick=()=>jumpTo(section.querySelector('.salt-quiz'));
+  section.querySelectorAll('[data-journey]').forEach(b=>b.onclick=()=>{activateStation(c.id);const target=section.querySelector(['.prediction','.task','.salt-quiz'][Number(b.dataset.journey)]);target.scrollIntoView({block:'start',behavior:'instant'});target.setAttribute('tabindex','-1');target.focus({preventScroll:true});});
  if(c.id===12)section.querySelector('.card-body').insertAdjacentHTML('beforeend',"<section data-glossary-skip class=\"homecoming-ending\" id=\"homecoming\" aria-labelledby=\"homecoming-title\"><header><span class=\"eyebrow\">旅程終點 · 回到現代</span><h3 id=\"homecoming-title\">阿公，我們回家了！</h3><p>銀白色的時空裝置亮起藍光。再次睜開眼，小葵與阿公已站在熟悉的現代實驗室裡。</p></header><figure><div class=\"homecoming-artwork\" role=\"img\" aria-label=\"小葵抱著調查筆記，與阿公微笑著回到現代實驗室；桌上是銀白機身、藍色核心的時空裝置，窗外可見現代城市。\"></div><figcaption>皇帝守住了諾言，而他們帶回的，是一整段用證據解開謎題的回憶。</figcaption></figure><div class=\"homecoming-dialogue\"><p><strong>小葵</strong>「原來看起來一樣的水，藏著這麼不一樣的世界！」</p><p><strong>阿公</strong>「把好奇心帶回家，下次遇到問題，記得讓證據說話。」</p></div><p class=\"homecoming-finish\">這一段冒險，到這裡圓滿落幕。</p></section>");
  const pred=state.predictions[c.id];if(pred!==undefined){section.querySelector('.prediction input[value="'+pred+'"]').checked=true;section.querySelector('.prediction-status').textContent='已記下預測。完成探索後，可回來修正想法。';}
  section.querySelectorAll('.prediction input').forEach(el=>el.onchange=()=>{state.predictions[c.id]=Number(el.value);section.querySelector('.prediction-status').textContent='已記下預測。完成探索後，可回來修正想法。';save();refresh();});
  const activity=section.querySelector('.card-activity');
  const ctrl=defaults[c.type]?mountLab(activity,c.type,{data:state.labs[c.type],save:v=>{state.labs[c.type]=v;save();},mark:()=>mark(c.id)}):mountStory(activity,c);controllers.set(c.id,ctrl);
  mountQuizzes(section);
- section.querySelector('.reset-card').onclick=()=>{controllers.get(c.id)?.destroy();delete state.predictions[c.id];delete state.notes[c.id];delete state.steps[c.id];state.observed=state.observed.filter(id=>id!==c.id);for(const q of [c.quiz]){delete state.answers[q.id];delete state.attempts[q.id];}if(defaults[c.type])state.labs[c.type]=structuredClone(defaults[c.type]);save();const next=section.nextSibling;section.remove();renderCard(c);const replacement=document.querySelector('#salt-'+c.id);if(next)document.querySelector('#lesson').insertBefore(replacement,next);refresh();replacement.scrollIntoView({block:'start'});};
+ section.querySelector('.reset-card').onclick=()=>{controllers.get(c.id)?.destroy();delete state.predictions[c.id];delete state.notes[c.id];delete state.steps[c.id];delete state.explored[c.id];state.observed=state.observed.filter(id=>id!==c.id);for(const q of [c.quiz]){delete state.answers[q.id];delete state.attempts[q.id];}if(defaults[c.type])state.labs[c.type]=structuredClone(defaults[c.type]);save();const next=section.nextSibling;section.remove();renderCard(c);const replacement=document.querySelector('#salt-'+c.id);if(next)document.querySelector('#lesson').insertBefore(replacement,next);refresh();replacement.scrollIntoView({block:'start'});};
 }
+function activateStation(id){document.querySelectorAll('[data-nav]').forEach(a=>{const active=Number(a.dataset.nav)===id;a.classList.toggle('active',active);if(active){a.setAttribute('aria-current','step');const nav=a.closest('nav'),top=a.getBoundingClientRect().top-nav.getBoundingClientRect().top+nav.scrollTop;if(top<nav.scrollTop||top+a.offsetHeight>nav.scrollTop+nav.clientHeight)nav.scrollTop=Math.max(0,top-nav.clientHeight/2+a.offsetHeight/2);}else a.removeAttribute('aria-current');});}
 function init(){
  document.querySelector('#chapter-route').innerHTML=cards.map(c=>'<a href="#salt-'+c.id+'" data-nav="'+c.id+'"><span>'+String(c.id).padStart(2,'0')+'</span><span>'+c.title+'</span><span class="nav-state">○</span></a>').join('');
  cards.forEach(renderCard);
@@ -2729,11 +2894,11 @@ function init(){
  document.querySelector('#export-progress').onclick=()=>{const payload={chapter:'皇帝最後的製鹽委託',exportedAt:new Date().toISOString(),mastered:cards.filter(mastered).map(c=>c.id),...state};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='salt-adventure-learning-record.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
  function route(){document.querySelectorAll('[data-nav]').forEach(a=>{const active=a.hash===location.hash.replace(/^#activity-/,'#salt-');a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});}
  addEventListener('hashchange',route);route();save();refresh();
+ const tracker=new IntersectionObserver(entries=>{for(const entry of entries)if(entry.isIntersecting)activateStation(Number(entry.target.closest('.salt-card').id.replace('salt-','')));},{rootMargin:'-5% 0px -65% 0px',threshold:0});document.querySelectorAll('.salt-card .card-header').forEach(h=>tracker.observe(h));
  if(/^#(?:salt|activity)-\d+$/.test(location.hash))requestAnimationFrame(()=>document.querySelector(location.hash)?.scrollIntoView({block:'start'}));
  addEventListener('pagehide',()=>{for(const ctrl of controllers.values())ctrl.destroy();});
 }
 if(typeof document!=='undefined')init();
-
 
 return {cleanState,cardMastered};
 })();</script></body></html>

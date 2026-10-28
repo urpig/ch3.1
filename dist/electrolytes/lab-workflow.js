@@ -7,8 +7,8 @@ export function labWorkflow(type, s, running=false) {
  if(type==='conduct') {
   const r=conductivity(s.sample,s.C,true,s.powered);
   out.steps=[];out.next='power';
-  out.title=!s.powered?'樣本已就位，開啟電源看看':s.sample==='solid'?'離子被固定在晶格中':r.score<.1?'導電非常微弱':'指針有變化，找到線索了';
-  out.detail=!s.powered?'選取樣本，再開啟電源。樣本與電極會自動準備好。':s.sample==='solid'?'固態食鹽的離子不能自由移動；換成食鹽水比較。':s.sample==='sugar'?'糖分子不解離成離子。水本身的微量離子仍可能導電。':s.sample==='water'?'蒸餾水仍有極少量離子，所以不是「絕對不導電」。':'換一種樣本，再開電源比較；每次開啟電源會自動記錄。導電不代表可食用。';
+  out.title=!s.powered?'樣本已就位，接通開關看看':s.sample==='solid'?'離子被固定在晶格中':r.score<.1?'導電非常微弱':'能導電，電路中有電流通過';
+  out.detail=!s.powered?'選取樣本，再點擊刀閘開關。金屬片接上另一端，就能接通電路。':s.sample==='solid'?'固態食鹽的離子不能自由移動；換成食鹽水比較。':s.sample==='sugar'?'糖分子不解離成離子。水本身的微量離子仍可能導電。':s.sample==='water'?'蒸餾水仍有極少量離子，所以不是「絕對不導電」。':'換一種樣本，再接通刀閘開關比較；每次接通都會自動記錄。導電不代表可食用。';
  }
  if(type==='indicator') {
   const r=speciate(s.sample,s.C,s.dilution),seen=s.dropped||s.paper||s.meter;

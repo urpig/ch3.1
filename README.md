@@ -19,7 +19,7 @@ node build.mjs
 node --test tests/electrolytes/*.test.mjs
 ```
 
-2026-10-26 本機互動升級版：74 項自動測試通過。模組原始碼在 dist/electrolytes/；共用角色與樣式在 dist/assets/、dist/chemistry/。知識點覆蓋、模型限制與歷次品質檢查見 docs/electrolytes/。
+2026-10-28 互動卡精修版：86 項自動測試通過。模組原始碼在 dist/electrolytes/；共用角色與樣式在 dist/assets/、dist/chemistry/。知識點覆蓋、模型限制與歷次品質檢查見 docs/electrolytes/。
 
 GitHub Pages 使用 main 分支根目錄的 index.html。
 
@@ -30,3 +30,6 @@ GitHub Pages 使用 main 分支根目錄的 index.html。
 依最新要求：每張卡的「先猜一猜」固定四選項，每卡只顯示一題小試身手；原階段、驗收及最終額外題組不再出現在學生介面。三份驗收資料改為點閱證據說明，十二站完成後解鎖證書。所有打字欄位已移除；實驗參數使用滑桿和快捷設定，小字典以點選卡片篩選。舊版書面筆記保留於既有儲存格式與匯出資料，畫面不再要求輸入。
 
 本版包含以上修改；GitHub Pages 由 main 分支根目錄提供網站。docs/electrolytes/ 中的檢查紀錄保留各次修改當時的測試與發布狀態。
+
+本次更新十二張卡片的下一步入口、三步進度、閱讀層次與操作回饋。反應卡由學生點擊加入試劑，實驗紀錄並列最近兩次結果。第 02 卡採用電池、燈泡、刀閘開關與電極的導電裝置，僅呈現定性導電結果。
+

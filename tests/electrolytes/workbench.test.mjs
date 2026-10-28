@@ -18,7 +18,7 @@ test('Legacy partial preparation becomes ready without losing comparisons',()=>{
 });
 test('Powered off apparatus says unmeasured instead of an insulating sample',()=>{
  const s=fresh('conduct');assert.match(conductScene(conductivity(s.sample,s.C,true,false),s),/尚未檢測/);
- s.powered=true;assert.match(conductScene(conductivity(s.sample,s.C,true,true),s),/導電分數/);
+ s.powered=true;assert.match(conductScene(conductivity(s.sample,s.C,true,true),s),/能導電/);
 });
 test('Sugar and solid salt receive distinct scientific observation feedback',()=>{
  const s={...fresh('conduct'),loaded:true,immersed:true,powered:true,sample:'sugar'};
