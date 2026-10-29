@@ -179,7 +179,7 @@
 .homecoming-ending h3{font-size:clamp(25px,3vw,34px);margin:10px 0;color:#315c4a}
 .homecoming-ending header p{line-height:1.9;color:#6b7865}
 .homecoming-ending figure{margin:0;border-radius:18px;overflow:hidden;background:#f3f2e7;border:1px solid #e1e2d2}
-.homecoming-artwork{aspect-ratio:1672/941;width:100%;background:#e5e9df url('../assets/story/palace-farewell.webp') center/cover no-repeat}
+.homecoming-artwork{aspect-ratio:1672/941;width:100%;background:#e5e9df url('../assets/story/palace-home-portal.webp') center/cover no-repeat}
 .homecoming-ending figcaption{padding:14px 22px;font-size:14px;line-height:1.8;text-align:center;color:#69765f}
 .homecoming-dialogue{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0}
 .homecoming-dialogue p{margin:0;padding:19px 22px;border:1px solid #dfe4d4;border-radius:12px;background:#f4f6ed;line-height:1.9;color:#405943}
