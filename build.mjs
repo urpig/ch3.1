@@ -21,7 +21,8 @@ html=html.replace(/<link rel="stylesheet" href="([^"]+)">/g,(_,href)=>{
  css=css.replace(/url\(['"]?([^)'"]+)['"]?\)/g,(match,url)=>{
   if(url.startsWith('data:')||url.startsWith('http'))return match;
   const file=path.resolve(path.dirname(cssFile),url),data=fs.readFileSync(file);
-  return 'url("data:image/png;base64,'+data.toString('base64')+'")';
+  const mime=path.extname(file)==='.webp'?'image/webp':'image/png';
+  return 'url("data:'+mime+';base64,'+data.toString('base64')+'")';
  });
  return '<style>'+css+'</style>';
 });
