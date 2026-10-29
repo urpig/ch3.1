@@ -1,3 +1,4 @@
+import { labProgress } from './student-guide.js';
 import { conductivityLabel, qualitativeRecord } from './conductivity-feedback.js';
 import { conductivity, speciate, solutions, indicator, neutralize, precipitate, crystallize, fmt, sci, bounded, ionInfo } from './core.js';
 import { ionsView, phScale, label, svg } from './art.js';
@@ -22,7 +23,7 @@ export function cleanLab(type,raw){
   else if(typeof d[k]==='boolean')d[k]=raw[k]===true;
   else if(typeof d[k]==='string'&&enums[k]?.includes(raw[k]))d[k]=raw[k];
  }
- d.records=Array.isArray(raw.records)?raw.records.filter(x=>x&&typeof x==='object'&&typeof x.text==='string').slice(-20).map(x=>({text:x.text.slice(0,350),category:typeof x.category==='string'?x.category.slice(0,25):''})):[];
+ d.records=Array.isArray(raw.records)?raw.records.filter(x=>x&&typeof x==='object'&&typeof x.text==='string').slice(-20).map(x=>({text:x.text.slice(0,350),category:typeof x.category==='string'?x.category.slice(0,25):'',...(typeof x.key==='string'?{key:x.key.slice(0,200)}:{}),...(typeof x.complete==='boolean'?{complete:x.complete}:{})})):[];
  if(type==='conduct'){d.loaded=true;d.immersed=true;d.records=d.records.map(qualitativeRecord);}
  if(type==='indicator'&&d.sample==='solid')d.sample='hcl';
  if(type==='crystal'&&!d.pooled){d.evap=0;d.separated=false;}
@@ -47,8 +48,14 @@ export function mountLab(root,type,ctx){
  const stop=()=>{if(timer)clearInterval(timer);timer=null;running=false;};
  const save=()=>{ctx.save(s);};
  const guide=t=>{if($('.lab-guide').textContent!==t)$('.lab-guide').textContent=t;};
- const record=(text,category='')=>{s.records.push({text,category});s.records=s.records.slice(-20);save();drawRecords();};
- function drawRecords(){const list=$('.record-list'),open=!!list.querySelector('details[open]'),row=(r,i)=>'<p><span>'+String(i+1).padStart(2,'0')+'</span>'+escapeHTML(r.text)+'</p>',older=s.records.slice(0,-2),recent=s.records.slice(-2);list.innerHTML=s.records.length?(older.length?'<details class="record-history" '+(open?'open':'')+'><summary>查看先前 '+older.length+' 筆紀錄</summary>'+older.map(row).join('')+'</details>':'')+'<div class="recent-records"><span class="record-caption">最近兩次觀察 · 放在一起比較</span>'+recent.map((r,i)=>row(r,older.length+i)).join('')+'</div>':'<p class="muted">'+(type==='conduct'?'選取樣本並接通刀閘開關，結果會自動記錄在這裡。':'還沒有紀錄。完成一次操作，再把證據記下來。')+'</p>';}
+ const record=(text,category='',key='',complete=false)=>{
+  const entry={text,category,...(key?{key,complete}:{})};
+  const existing=key?s.records.findIndex(r=>r.key===key):-1;
+  if(existing>=0)s.records[existing]=entry;else s.records.push(entry);
+  s.records=s.records.slice(-20);save();drawRecords();
+  if(labProgress(type,s).done)ctx.mark();
+ };
+ function drawRecords(){const list=$('.record-list'),open=!!list.querySelector('details[open]'),row=(r,i)=>'<p><span>'+String(i+1).padStart(2,'0')+'</span>'+escapeHTML(r.text)+'</p>',older=s.records.slice(0,-2),recent=s.records.slice(-2);list.innerHTML=s.records.length?(older.length?'<details class="record-history" '+(open?'open':'')+'><summary>查看先前 '+older.length+' 筆紀錄</summary>'+older.map(row).join('')+'</details>':'')+'<div class="recent-records"><span class="record-caption">最近兩次觀察 · 放在一起比較</span>'+recent.map((r,i)=>row(r,older.length+i)).join('')+'</div>':'<p class="muted">'+(type==='conduct'?'選取樣本並接通刀閘開關，結果會自動記錄在這裡。':'完成操作後會自動記錄，不用另外按儲存。')+'</p>';}
  function bind(onChange){
   changeHandler=onChange;
 
@@ -83,24 +90,38 @@ export function mountLab(root,type,ctx){
   };
   act=a=>{if(a==='power'){
    s.powered=!s.powered;
-   if(s.powered){const r=conductivity(s.sample,s.C);record(solutions[s.sample].name+'｜'+(s.sample==='solid'?'固態':s.sample==='water'?'純水':s.C+' mol/L')+'｜'+conductivityLabel(r),s.sample);if(new Set(s.records.map(x=>x.category)).size>=2)ctx.mark();}
+   if(s.powered){const r=conductivity(s.sample,s.C);record(solutions[s.sample].name+'｜'+(s.sample==='solid'?'固態':s.sample==='water'?'純水':s.C+' mol/L')+'｜'+conductivityLabel(r),s.sample);}
   }draw();};
-  bind(k=>{if(k==='sample'){s.loaded=true;s.immersed=true;s.powered=false;}draw();});
+  bind(k=>{if(k==='sample'||k==='C'){s.loaded=true;s.immersed=true;s.powered=false;}draw();});
  }
  if(type==='indicator'){
   labFrame(root,'鹵水檢測室 / 酸鹼鑑定',select('sample','已知對照溶液',opts(['water','nacl','sugar','hcl','acetic','naoh','ammonia','carbonate']),s.sample)+field('C','原始濃度',s.C,.000001,.1,.001,'mol/L')+field('dilution','稀釋倍數',s.dilution,1,10000,1,'原體積的倍數')+select('kind','選擇指示劑',[['red','紅色石蕊試紙'],['blue','藍色石蕊試紙'],['phenol','酚酞'],['btb','BTB'],['universal','廣用指示劑']],s.kind)+buttons([['drop','滴加／蘸取指示劑','primary'],['paper','用 pH 試紙蘸取'],['meter','插入 pH 計'],['record','記錄並比較']]),'同一套 25°C 理想平衡資料驅動 pH、H⁺、OH⁻、顏色。醋酸 Ka=1.8×10⁻⁵；氨 Kb=1.8×10⁻⁵。假設指示劑量很少、不改變樣品 pH；試紙用另一份等同樣品。');
   draw=()=>{const r=speciate(s.sample,s.C,s.dilution),ind=indicator(s.kind,r.pH);
    $('.salt-scene').innerHTML=phScene(r,{...s,id:'indicator'});
-   $('.readouts').innerHTML=metric('pH 計',s.meter?fmt(r.pH):'未測量')+metric('試紙約讀',s.paper?Math.round(r.pH):'未蘸取')+metric('有效濃度',s.sample==='water'?'純水':sci(r.C),'mol/L');
+   $('.readouts').innerHTML=metric('pH 計',s.meter?fmt(r.pH):'未測量')+metric('試紙約讀',s.paper?Math.round(r.pH):'未蘸取')+metric('酸鹼判讀',s.meter?(Math.abs(r.pH-7)<1e-7?'中性':r.pH<7?'酸性':'鹼性'):'待量測');
    $('.lab-chart').innerHTML=(s.dropped||s.paper||s.meter?phScale(r.pH):'')+'<p class="range-note">'+(s.dropped?ind.range+' · '+ind.label:'選擇並使用工具後，比較三種證據。')+'</p>';
-   $('.micro-view').innerHTML='<div class="readouts">'+metric('[H⁺]',sci(r.H),'mol/L')+metric('[OH⁻]',sci(r.OH),'mol/L')+metric('比較',Math.abs(r.pH-7)<1e-7?'相等：中性':r.pH<7?'H⁺ > OH⁻：酸性':'H⁺ < OH⁻：鹼性')+'</div><p>水溶液中兩種離子都存在；圖與數值為理想模型。</p>';
+   $('.micro-view').innerHTML='<div class="readouts">'+metric('有效濃度',s.sample==='water'?'純水':sci(r.C),'mol/L')+metric('[H⁺]',sci(r.H),'mol/L')+metric('[OH⁻]',sci(r.OH),'mol/L')+metric('比較',Math.abs(r.pH-7)<1e-7?'相等：中性':r.pH<7?'H⁺ > OH⁻：酸性':'H⁺ < OH⁻：鹼性')+'</div><p>水溶液中兩種離子都存在；圖與數值為理想模型。</p>';
    guide(!s.dropped?'① 先選一種指示劑，滴加或蘸取樣品。':!s.paper?'② 用另一份樣品測 pH 試紙。':!s.meter?'③ 插入 pH 計，核對顏色估讀。':'④ 改變濃度或稀釋倍數，記錄比較。');
   };
-  act=a=>{if(a==='drop')s.dropped=true;if(a==='paper')s.paper=true;if(a==='meter')s.meter=true;if(a==='record'){if(!s.meter){guide('先插入 pH 計取得讀值。');return;}const r=speciate(s.sample,s.C,s.dilution);record(solutions[s.sample].name+'｜'+sci(r.C)+' mol/L｜pH '+fmt(r.pH)+'｜'+(s.dropped?indicator(s.kind,r.pH).label:'尚未觀察指示劑'),s.sample+'-'+s.dilution);if(s.dropped&&s.paper&&s.meter&&s.records.length>=2)ctx.mark();}draw();};
-  bind(k=>{if(k==='sample')s.dropped=s.paper=s.meter=false;if(k==='kind')s.dropped=false;draw();});
+  act=a=>{
+   if(a==='drop')s.dropped=true;if(a==='paper')s.paper=true;if(a==='meter')s.meter=true;
+   if(s.dropped&&s.paper&&s.meter){
+    const r=speciate(s.sample,s.C,s.dilution),key=[s.sample,s.C,s.dilution,s.kind].join('|');
+    record(solutions[s.sample].name+'｜稀釋 '+s.dilution+' 倍｜pH '+fmt(r.pH)+'｜'+indicator(s.kind,r.pH).label,s.sample+'-'+s.dilution,key,true);
+   }
+   draw();
+  };
+  bind(k=>{if(['sample','C','dilution'].includes(k))s.dropped=s.paper=s.meter=false;if(k==='kind')s.dropped=false;draw();});
  }
  if(type==='neutral'){
   const calc=(added=s.added)=>s.reverse?neutralize(s.Ct,added,s.C0,s.V0):neutralize(s.C0,s.V0,s.Ct,added);
+  const capture=()=>{const r=calc(),cat=r.acidLeft>1e-10?'acid':r.baseLeft>1e-10?'base':'equal';
+   record(({acid:'酸過量',equal:'恰好中和',base:'鹼過量'}[cat])+'｜加入 '+fmt(s.added)+' mL｜pH '+fmt(r.pH)+'｜'+fmt(r.temperature)+' °C',cat,[s.reverse,s.C0,s.V0,s.Ct,s.added].join('|'),true);
+  };
+  const advance=()=>{const eq=s.C0*s.V0/s.Ct,next=Math.min(200,Number((s.added+s.step).toFixed(3)));
+   s.added=next;if(Math.abs(s.added-eq)<1e-9)stop();
+   capture();
+  };
   labFrame(root,'精準工作台 / 酸鹼滴定',select('reverse','滴定方向',[['false','燒杯 HCl ← 滴入 NaOH'],['true','燒杯 NaOH ← 滴入 HCl']],String(s.reverse))+field('C0','燒杯濃度',s.C0,.001,.2,.001,'mol/L')+field('V0','燒杯初始體積',s.V0,5,100,1,'mL')+field('Ct','滴管濃度',s.Ct,.001,.2,.001,'mol/L')+field('step','每次加入體積',s.step,.1,10,.1,'mL')+field('added','累計加入體積',s.added,0,200,.1,'mL')+buttons([['drop','滴管加入一次','primary'],['play','連續滴加'],['pause','暫停'],['replay','從零重播'],['record','記錄此刻證據']]),'反應按 1：1 莫耳數計算，總體積可相加。pH 使用含水離子積的穩定公式、25°C 參考值；溫度另假設兩液初溫 25°C、密度 1 g/mL、比熱 4.18 J/(g·°C)、無散熱，放熱 57.3 kJ/mol。不模擬升溫對 Kw 的改變。');
   draw=()=>{const r=calc();
    $('.salt-scene').innerHTML=neutralScene(r,{v:s.added,reverse:s.reverse,pouring:running,id:'titration'});
@@ -112,12 +133,12 @@ export function mountLab(root,type,ctx){
    guide(r.acidLeft>1e-10?'酸仍過量。觀察加入下一滴後的 pH。':r.baseLeft>1e-10?'鹼已過量。比較它與剛好等莫耳時的數據。':'等莫耳點：本例 HCl、NaOH 在 25°C 近似中性。');
    $('[data-action="play"]').disabled=running;$('[data-action="pause"]').disabled=!running;
   };
-  act=a=>{if(a==='drop'){stop();s.added=Math.min(200,Number((s.added+s.step).toFixed(3)));}
-   if(a==='play'||a==='replay'){stop();if(a==='replay')s.added=0;running=true;timer=setInterval(()=>{if(disposed)return;if(root.querySelector('input:invalid')){stop();draw();return;}s.added=Math.min(200,Number((s.added+s.step).toFixed(3)));if(s.added>=200)stop();draw();save();},500);}
+  act=a=>{if(a==='drop'){stop();advance();}
+   if(a==='play'||a==='replay'){stop();if(a==='replay')s.added=0;running=true;timer=setInterval(()=>{if(disposed)return;if(root.querySelector('input:invalid')){stop();draw();return;}advance();if(s.added>=200)stop();draw();save();},500);}
    if(a==='pause')stop();
-   if(a==='record'){const r=calc(),cat=r.acidLeft>1e-10?'acid':r.baseLeft>1e-10?'base':'equal';record('HCl '+fmt(r.a*1000,3)+' mmol；NaOH '+fmt(r.b*1000,3)+' mmol｜pH '+fmt(r.pH)+'｜'+fmt(r.temperature)+' °C',cat);if(new Set(s.records.map(x=>x.category)).size>=3)ctx.mark();}draw();
+   if(a==='record'||a==='pause')capture();draw();
   };
-  bind(k=>{stop();if(k==='reverse')s.reverse=s.reverse==='true';if(['C0','V0','Ct','reverse'].includes(k))s.added=0;draw();});
+  bind(k=>{stop();if(k==='reverse')s.reverse=s.reverse==='true';if(['C0','V0','Ct','reverse'].includes(k))s.added=0;if(k==='added')capture();draw();});
  }
  if(type==='precip'){
   const calc=()=>precipitate(s.C1,s.V1,s.C2,s.V2,s.partner);
@@ -129,7 +150,9 @@ export function mountLab(root,type,ctx){
    $('[data-num="C2"]').disabled=s.partner==='water';$('[data-range="C2"]').disabled=s.partner==='water';
    guide(!s.mixed?'① 先預測用量少的一方，再混合。':!s.filtered?'② 觀察杯底後，放入濾紙分離。':'③ 記錄濾紙與濾液，再改用量或換對照溶液。');
   };
-  act=a=>{if(a==='mix')s.mixed=true;if(a==='filter'&&s.mixed)s.filtered=true;if(a==='record'){if(!s.mixed){guide('先混合，再記錄觀察。');return;}const r=calc();record((s.partner==='calcium'?'CaCl₂':s.partner==='nacl'?'NaCl':'水')+' 對照｜CaCO₃ '+fmt(r.mass,4)+' g｜Na⁺ '+sci(r.Na)+' mol；Cl⁻ '+sci(r.Cl)+' mol｜'+(s.filtered?'已過濾':'未過濾'),s.partner);if(s.filtered&&s.records.length>=2)ctx.mark();}draw();};
+  act=a=>{if(a==='mix')s.mixed=true;if(a==='filter'&&s.mixed)s.filtered=true;
+   if(s.mixed&&s.filtered){const r=calc();record((s.partner==='calcium'?'CaCl₂':s.partner==='nacl'?'NaCl':'水')+' 對照｜CaCO₃ '+fmt(r.mass,4)+' g｜已過濾；溶解離子仍可留在濾液',s.partner,[s.partner,s.C1,s.V1,s.C2,s.V2].join('|'),true);}draw();
+  };
   bind(()=>{s.mixed=s.filtered=false;draw();});
  }
  if(type==='crystal'){
@@ -150,7 +173,7 @@ export function mountLab(root,type,ctx){
   act=a=>{if(a==='settle'&&!s.pooled)s.settled=true;if(a==='filter'&&!s.pooled)s.filtered=true;if(a==='pool')s.pooled=true;
    if(a==='play'||a==='replay'){if(!s.pooled){guide('先把原料送入蒸發池。');return;}stop();if(a==='replay')s.evap=0;s.separated=false;running=true;timer=setInterval(()=>{if(root.querySelector('input:invalid')){stop();draw();return;}s.evap=Math.min(100,s.evap+(s.weather==='sun'?1:.4));if(s.evap>=100)stop();draw();save();},300);}
    if(a==='pause')stop();if(a==='separate'&&s.pooled&&calc().crystalMass>0){stop();s.separated=true;}
-   if(a==='record'){if(!s.pooled){guide('先完成原料處理與蒸發流程。');return;}const r=calc();record((s.mode==='pure'?'純 NaCl':'天然鹵水')+'｜蒸水 '+fmt(r.evaporated)+' g｜NaCl晶體 '+fmt(r.crystalSalt)+' g；其他晶體 '+fmt(r.crystalOther)+' g｜'+(s.separated?'已分離':'未分離')+'；食品證據不足',s.mode);if(s.separated&&s.evap>0)ctx.mark();}draw();
+   if(a==='separate'||a==='record'){if(!s.pooled){guide('先完成原料處理與蒸發流程。');return;}const r=calc();record((s.mode==='pure'?'純 NaCl':'天然鹵水')+'｜蒸水 '+fmt(r.evaporated)+' g｜NaCl晶體 '+fmt(r.crystalSalt)+' g；其他晶體 '+fmt(r.crystalOther)+' g｜'+(s.separated?'已分離':'未分離')+'；食品證據不足',s.mode,[s.mode,s.water,s.salt,s.other,s.dirt,s.evap,s.filtered,s.settled,s.separated].join('|'),s.separated&&s.evap>0);}draw();
   };
   bind(k=>{stop();if(['mode','water','salt','other','dirt'].includes(k)){s.pooled=false;s.evap=0;s.filtered=s.settled=false;}if(k!=='weather')s.separated=false;draw();});
  }
@@ -161,6 +184,7 @@ export function mountLab(root,type,ctx){
  }
  const ui=setupWorkbench(root,type,{
   state:()=>s,
+  completed:()=>ctx.completed?.()||false,
   change:(key,value)=>{stop();s[key]=value;syncControls();changeHandler(key);save();},
   reset:()=>{stop();const records=s.records;s=structuredClone(defaults[type]);s.records=records;syncControls();draw();drawRecords();save();}
  });

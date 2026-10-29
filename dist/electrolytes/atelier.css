@@ -78,3 +78,33 @@ html:has(body.salt-chapter){scroll-behavior:auto}
 @media(max-width:1100px){.card-route{flex-wrap:wrap;gap:16px}.route-copy{flex-basis:calc(100% - 110px)}.card-route .primary{width:100%}.salt-card .model-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:700px){.salt-chapter #lesson{padding-left:12px;padding-right:12px;gap:28px}.salt-card .card-route{margin-top:18px;padding-top:16px;gap:13px}.route-copy strong{font-size:14px}.route-copy small{font-size:12px}.salt-card .card-journey{padding:0 5px}.salt-card .card-journey button{font-size:12px;gap:5px}.activity-checkpoint{display:block;padding:16px}.activity-checkpoint .secondary{width:100%;margin-top:13px}.salt-card .study-selector{grid-template-columns:repeat(2,minmax(0,1fr))}.salt-card .study-selector button{padding:11px 8px}.salt-card .bottle-line button{min-height:215px}.salt-card .salt-quiz fieldset>label{font-size:14px;padding:13px 12px}.salt-card .salt-quiz .salt-actions{align-items:stretch;flex-direction:column}.salt-card .salt-quiz .primary{width:100%}.salt-card .prediction{grid-template-columns:1fr}.precision-lab .workbench-heading{align-items:start}.precision-lab .bench-utilities{flex-direction:column;gap:5px}.precision-lab .virtual-badge{display:none}.precision-lab .salt-controls{display:flex}.precision-lab .sample-rack{grid-template-columns:repeat(2,minmax(0,1fr))}.precision-lab .tool-choice button{font-size:13px}.salt-card .card-footer>div{display:flex;flex-wrap:wrap;width:100%;justify-content:space-between}.salt-card .card-footer .reset-card{order:3;width:100%;text-align:center;min-height:40px}}
 @media print{.card-route,.activity-checkpoint{display:none!important}.salt-card .card-journey{display:none!important}.record-history{display:block}}
+/* Student route: one action, visible evidence, optional reference material. */
+.salt-card .story-context{margin:0 0 14px;border-bottom:1px solid #e3e7dc;padding-bottom:12px;color:#637353;font-size:13px}
+.story-context summary,.optional-terms>summary,.advanced-reading>summary,.study-navigation>summary,.alternate-controls>summary{cursor:pointer;min-height:44px;display:flex;align-items:center;gap:8px;line-height:1.7}
+.story-context summary:before,.optional-terms>summary:before,.advanced-reading>summary:before,.study-navigation>summary:before,.alternate-controls>summary:before{content:'＋';font-size:17px;color:#66835b}
+details[open]>summary:before{content:'−'}
+.salt-card .story-dialogue{margin-top:8px;margin-bottom:18px}
+.salt-card .prediction{margin:18px 0;padding:16px 20px}
+.salt-card .prediction label{min-height:48px;padding:10px 12px}
+.kui-notebook{position:relative;background:#faf5e6;border:1px solid #e7ddbd;border-left:4px solid #b8995b;border-radius:0 13px 13px 0;padding:23px 26px;margin:28px 0 18px;color:#4c5944}
+.kui-notebook h3{font-size:20px;margin:7px 0 12px;color:#576344}
+.kui-notebook .eyebrow{color:#9b7b47;font-size:10px}
+.kui-notebook ul{padding-left:21px;margin:0;display:grid;gap:8px}
+.kui-notebook li{font-size:15px;line-height:1.95;padding-left:3px}
+.optional-terms{border-bottom:1px solid #e2e7d9;margin:12px 0;color:#526e4a;font-size:14px}
+.optional-terms .term-primer{margin:4px 0 18px}
+.prediction-recall{padding:16px 20px;background:#f6f2e6;border-radius:10px;border:1px solid #e5dcc5;color:#74603f;font-size:14px;line-height:1.9}
+.salt-chapter #chapter-route .nav-act{font-size:11px;font-weight:500;letter-spacing:.08em;color:#d0b77f;padding:13px 9px 4px;margin:0;border-top:1px solid #ffffff17}
+.salt-chapter #chapter-route .nav-act:first-child{border-top:0}
+.salt-chapter #chapter-route a{min-height:48px;padding:9px 10px}
+.experiment-goal{margin:0 0 16px;padding:12px 16px;border:1px solid #dae3cd;border-radius:10px;background:#f0f5e7;color:#526e43;font-size:13px;line-height:1.8}
+.experiment-goal[data-done=true]{background:#e7f1e1;border-color:#b5cba5;color:#345d3b}
+.precision-lab .alternate-controls{padding:0 4px;color:#617753;font-size:12px;border-top:1px solid #dde5d5}
+.precision-lab [hidden],.salt-card [hidden]{display:none!important}
+.precision-lab .quick-dilution .next-action{background:#e6efd9;border:2px solid #789662;color:#325737;box-shadow:0 0 0 3px #8fa6751a}
+.precision-lab .lab-guide{margin-bottom:16px}
+.study-navigation{border-top:1px solid #dfe6d7;margin:15px 0;color:#647854;font-size:12px}
+.advanced-reading{font-size:13px;color:#60724e;border-top:1px solid #dce4d1;margin-top:12px}
+.salt-card .card-activity{scroll-margin-top:72px}
+@media(max-width:700px){.kui-notebook{padding:18px}.kui-notebook li{font-size:14px}.experiment-goal{padding:11px 13px}.salt-chapter #chapter-route .nav-act{flex-basis:100%;white-space:nowrap}.salt-card .prediction{padding:15px}}
+@media print{.optional-terms,.alternate-controls,.study-navigation,.story-context{display:none}.kui-notebook{break-inside:avoid}}

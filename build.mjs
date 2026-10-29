@@ -28,7 +28,14 @@ html=html.replace(/<link rel="stylesheet" href="([^"]+)">/g,(_,href)=>{
 html=html.replace('<script type="module" src="./app.js"></script>',()=>'<script>'+script.replaceAll('</script','<\\/script')+'</script>');
 // Offline sibling entries are relative to the existing workspace outputs folder.
 html=html.replaceAll('href="../index.html"','href="#chapter-top"').replaceAll('href="../chemistry/index.html"','href="https://urpig.github.io/1-1/dist/chemistry/index.html"');
-const out=path.resolve('index.html');fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,html);
+// Hosted entry uses the same modules with cacheable external images and styles.
+const out=path.resolve('index.html');
+const online=fs.readFileSync(path.join(root,'electrolytes/index.html'),'utf8')
+ .replace(/(<link rel="stylesheet" href=")([^"]+)(")/g,(_,a,href,b)=>a+'./dist/'+path.posix.normalize(path.posix.join('electrolytes',href))+b)
+ .replace('src="./app.js"','src="./dist/electrolytes/app.js"')
+ .replaceAll('href="../index.html"','href="#chapter-top"')
+ .replaceAll('href="../chemistry/index.html"','href="https://urpig.github.io/1-1/dist/chemistry/index.html"');
+fs.writeFileSync(out,online);
 fs.mkdirSync('release',{recursive:true});fs.writeFileSync('release/salt-adventure.html',html.replaceAll('href="./失落的神兵-拖曳探索版.html"','href="./index.html"').replaceAll('href="./chemistry-adventure.html"','href="./chemistry.html"'));
-console.log(JSON.stringify({modules:visited.size,bytes:Buffer.byteLength(html),output:out}));
+console.log(JSON.stringify({modules:visited.size,bytes:Buffer.byteLength(online),offlineBytes:Buffer.byteLength(html),output:out}));
 

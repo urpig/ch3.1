@@ -30,7 +30,7 @@ test('Indicator workflow follows used instruments and requires a measured pH',()
  const s=fresh('indicator');assert.ok(labWorkflow('indicator',s).disabled.includes('record'));
  s.dropped=true;assert.equal(labWorkflow('indicator',s).next,'paper');
  s.paper=true;assert.equal(labWorkflow('indicator',s).next,'meter');
- s.meter=true;assert.equal(labWorkflow('indicator',s).next,'record');
+ s.meter=true;assert.equal(labWorkflow('indicator',s).next,'dilute');
  s.dilution=10;assert.match(labWorkflow('indicator',s).detail,/pH 3[。]/);
 });
 test('Indicator observation distinguishes acid, neutral salt, and carbonate base',()=>{
@@ -55,7 +55,7 @@ test('Precipitation requires mixing before filtration and cannot pour twice',()=
  const s=fresh('precip');assert.ok(labWorkflow('precip',s).disabled.includes('filter'));
  s.mixed=true;assert.equal(labWorkflow('precip',s).next,'filter');assert.ok(labWorkflow('precip',s).disabled.includes('mix'));
  s.filtered=true;assert.match(labWorkflow('precip',s).detail,/濾液仍含/);
- assert.equal(labWorkflow('precip',s).next,'record');
+ assert.equal(labWorkflow('precip',s).next,'compare');
 });
 test('A sodium chloride control does not claim a calcium carbonate precipitate',()=>{
  const s={...fresh('precip'),mixed:true,partner:'nacl'};
@@ -65,7 +65,7 @@ test('Saltfield cannot evaporate an unloaded pond or collect absent crystals',()
  const s=fresh('crystal');assert.ok(labWorkflow('crystal',s).disabled.includes('play'));
  s.pooled=true;assert.ok(labWorkflow('crystal',s).disabled.includes('separate'));
  s.evap=50;assert.equal(labWorkflow('crystal',s).next,'separate');assert.match(labWorkflow('crystal',s).detail,/12 g/);
- s.separated=true;assert.equal(labWorkflow('crystal',s).next,'record');assert.match(labWorkflow('crystal',s).detail,/不能證明食品安全/);
+ s.separated=true;assert.equal(labWorkflow('crystal',s).next,'compare');assert.match(labWorkflow('crystal',s).detail,/不能證明食品安全/);
 });
 test('Natural brine asks for pretreatment; zero-salt water does not promise crystals',()=>{
  const s={...fresh('crystal'),mode:'natural'};assert.equal(labWorkflow('crystal',s).next,'filter');

@@ -37,7 +37,7 @@ test('Misconception pairs and all specified reagents are available',()=>{
  for(const id of ['neutrality','neutral','dissociation','ionization','concentration','strong-acid','weak-acid','precipitation','settling','filtration','mother-liquor','hcl','sulfuric','nitric','acetic','naoh','calcium-hydroxide','ammonia','table-salt','sodium-carbonate','baking-soda','calcium-carbonate','calcium-sulfate'])assert.ok(ids.has(id),id);
 });
 test('Local offline build includes dictionary, glossary CSS and initialization',()=>{
- const html=fs.readFileSync('index.html','utf8');
+ const html=fs.readFileSync('release/salt-adventure.html','utf8');
  assert.ok(html.includes('科學名詞小字典'));assert.ok(html.includes('水離子積'));assert.ok(html.includes('mountTerminology();'));
  assert.ok(html.includes('.science-dictionary::backdrop'));assert.ok(!/<script[^>]+src=/.test(html));
  assert.ok(!html.includes('\uFFFD'));
