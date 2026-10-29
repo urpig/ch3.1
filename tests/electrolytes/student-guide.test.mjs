@@ -39,5 +39,5 @@ test('Hosted entry keeps anchors local and all script and stylesheet paths resol
  const html=fs.readFileSync('index.html','utf8');
  assert.ok(Buffer.byteLength(html)<20000);assert.doesNotMatch(html,/<base /);
  const files=[...html.matchAll(/(?:src|href)="(\.\/dist\/[^"]+)"/g)].map(m=>m[1]);
- assert.ok(files.length>=7);for(const file of files)assert.ok(fs.existsSync(file),file);
+ assert.ok(files.length>=7);for(const file of files)assert.ok(fs.existsSync(file.split('?')[0]),file);
 });

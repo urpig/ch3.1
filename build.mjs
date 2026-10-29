@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import {createHash} from 'node:crypto';
 const root=path.resolve('dist'),visited=new Set(),modules=[];
 function visit(file){
  if(visited.has(file))return;visited.add(file);
@@ -35,7 +36,8 @@ const online=fs.readFileSync(path.join(root,'electrolytes/index.html'),'utf8')
  .replace(/(<link rel="stylesheet" href=")([^"]+)(")/g,(_,a,href,b)=>a+'./dist/'+path.posix.normalize(path.posix.join('electrolytes',href))+b)
  .replace('src="./app.js"','src="./dist/electrolytes/app.js"')
  .replaceAll('href="../index.html"','href="#chapter-top"')
- .replaceAll('href="../chemistry/index.html"','href="https://urpig.github.io/1-1/dist/chemistry/index.html"');
+ .replaceAll('href="../chemistry/index.html"','href="https://urpig.github.io/1-1/dist/chemistry/index.html"')
+ .replace(/((?:src|href)=")(\.\/dist\/[^"]+)(")/g,(_,a,file,b)=>a+file+'?v='+createHash('sha256').update(fs.readFileSync(file)).digest('hex').slice(0,12)+b);
 fs.writeFileSync(out,online);
 fs.mkdirSync('release',{recursive:true});fs.writeFileSync('release/salt-adventure.html',html.replaceAll('href="./失落的神兵-拖曳探索版.html"','href="./index.html"').replaceAll('href="./chemistry-adventure.html"','href="./chemistry.html"'));
 console.log(JSON.stringify({modules:visited.size,bytes:Buffer.byteLength(online),offlineBytes:Buffer.byteLength(html),output:out}));
