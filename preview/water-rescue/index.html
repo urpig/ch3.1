@@ -724,7 +724,25 @@ details[open]>summary:before{content:'−'}
 @media(max-width:700px){.kui-notebook{padding:18px}.kui-notebook li{font-size:14px}.experiment-goal{padding:11px 13px}.salt-chapter #chapter-route .nav-act{flex-basis:100%;white-space:nowrap}}
 @media print{.optional-terms,.alternate-controls,.study-navigation,.story-context{display:none}.kui-notebook{break-inside:avoid}}
 </style><style>/* Water rescue shares the established paper journal and character portraits. */
-.salt-chapter .water-hero-art{aspect-ratio:760/480;background:#e7ebdc;overflow:hidden}
+.salt-chapter .water-hero-art{aspect-ratio:4/3;background:#eee4d1;overflow:hidden;border:1px solid #d7cfba;box-shadow:0 16px 45px #62462918}
+.salt-chapter .water-hero-art #hero-artwork{height:100%;padding:0}
+.water-route-art,.water-route-art>.water-story-scene{height:100%;margin:0}
+.water-story-scene{margin:0 0 22px;border:1px solid #dfd4ba;border-radius:15px;overflow:hidden;background:#f9f3e5;box-shadow:0 6px 20px #77573608}
+.water-story-picture{width:100%;aspect-ratio:4/3;background-color:#e9dfc9;background-position:center;background-size:cover;background-repeat:no-repeat}
+.water-story-picture--investigation{background-image:url("../../dist/assets/story/water-investigation-v1.webp")}
+.water-story-picture--workshop{background-image:url("../../dist/assets/story/water-workshop-v1.webp")}
+.water-story-picture--restored{background-image:url("../../dist/assets/story/water-restored-v1.webp")}
+.water-route-art .water-story-picture{height:100%}
+.water-story-scene figcaption{padding:16px 21px;background:linear-gradient(110deg,#faf3e3,#fffdf5);border-top:1px solid #e5d9c0}
+.water-story-scene figcaption>span{font-size:10px;letter-spacing:.1em;color:#9b7846}
+.water-story-scene figcaption p{font-size:14px;line-height:1.85;color:#5c654d;margin:7px 0 0}
+.water-story-scene--compact{display:grid;grid-template-columns:minmax(175px,240px) 1fr;align-items:stretch;margin:0 0 22px}
+.water-story-scene--compact figcaption{display:flex;flex-direction:column;justify-content:center;border-top:0;border-left:1px solid #e5d9c0;padding:18px 23px}
+.water-story-scene--compact .water-story-picture{min-height:160px;height:100%}
+.water-result-map .water-story-scene{margin-bottom:0}
+.water-route-details{margin-top:15px;border:1px solid #e0ddc9;border-radius:11px;background:#fffdf5;overflow:hidden}
+.water-route-details>summary{cursor:pointer;padding:16px 18px;font-size:13px;color:#5d7153;line-height:1.7;min-height:44px}
+.water-route-details>p{padding:0 18px;font-size:12px}
 .water-route-art svg,.water-result-map svg{display:block;width:100%;height:auto}
 .water-evidence{margin:24px 0;padding:20px 24px;border:1px solid #d4dfd4;border-left:3px solid #71988c;border-radius:0 12px 12px 0;background:#eef5ee;color:#476657}
 .water-evidence .eyebrow{color:#6f8b73}.water-evidence ul{margin:10px 0 0;padding-left:20px;display:grid;gap:7px}.water-evidence li{font-size:14px;line-height:1.9}
@@ -734,6 +752,8 @@ details[open]>summary:before{content:'−'}
 .water-resolution[data-open=true] .water-current{stroke-dasharray:13 5;animation:water-current 3s linear infinite}@keyframes water-current{to{stroke-dashoffset:-72}}
 .salt-card .final-report button:disabled{opacity:.55;cursor:not-allowed}
 @media(max-width:700px){.water-evidence,.water-resolution{padding:18px}.water-resolution h3{font-size:21px}.water-treatment-chain li{flex:1 1 40%;font-size:11px}}
+@media(max-width:600px){.water-story-scene--compact{grid-template-columns:minmax(135px,40%) 1fr}.water-story-scene--compact figcaption{padding:13px 15px}.water-story-scene--compact .water-story-picture{min-height:150px}.water-story-scene figcaption p{font-size:12px}.water-story-scene figcaption>span{font-size:9px;letter-spacing:.04em}}
+@media(max-width:420px){.water-story-scene--compact{display:block}.water-story-scene--compact .water-story-picture{aspect-ratio:4/3;max-height:240px}.water-story-scene--compact figcaption{border-left:0;border-top:1px solid #e5d9c0}}
 @media(prefers-reduced-motion:reduce){.water-resolution .water-current{animation:none!important}}
 </style></head>
 <body class="salt-chapter">
@@ -884,13 +904,88 @@ function phScale(pH){return '<div class="ph-scale" aria-label="pH 色階 0 到 1
 
 return {svg,label,beaker,ionsView,conductScene,phScene,neutralScene,precipScene,crystalScene,landscape,phScale};
 })();
+__modules["chemistry/components.js"]=(()=>{
+function escapeHTML(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function metric(label,value,unit=''){return '<div class="metric"><span>'+label+'</span><strong>'+value+' <small>'+unit+'</small></strong></div>';}
+function ExplorationWorkbench(scene,controls,note=''){return '<div class="workbench"><div class="model-column"><div class="scene">'+scene+'</div><p class="model-note">'+note+'</p></div><aside class="experiment-controls">'+controls+'</aside></div>';}
+function numberField(id,label,value,min,max,step,unit){return '<div class="number-field"><label for="'+id+'">'+label+' <span>'+unit+'</span></label><div class="number-pair"><input id="'+id+'" type="number" min="'+min+'" max="'+max+'" step="any" value="'+value+'" inputmode="decimal" aria-describedby="'+id+'-error"><input aria-label="'+label+'滑桿" type="range" min="'+min+'" max="'+max+'" step="any" data-step="'+step+'" value="'+value+'" data-pair="'+id+'"></div><span class="field-error" id="'+id+'-error" role="status"></span></div>';}
+function bindNumber(root,id,callback){
+ const input=root.querySelector('#'+id),range=root.querySelector('[data-pair="'+id+'"]'),error=root.querySelector('#'+id+'-error');
+ const min=Number(input.min),max=Number(input.max),step=Number(range.dataset.step)||1;
+ const exact=n=>Number(n.toPrecision(12));
+ function commit(n){input.value=String(n);range.value=String(n);input.setCustomValidity('');error.textContent='';callback(n);const other=root.querySelector('input:invalid');if(other){root.querySelectorAll('[data-run],.step').forEach(b=>b.disabled=true);guideStep(root,'還有一個數字需要修正','把標示的欄位改好，再繼續操作。','#'+other.id);}}
+ function invalid(){input.setCustomValidity('請輸入範圍內的數字');error.textContent='請輸入 '+min+'～'+max+'；材料用量暫時保持原來的設定。';root.querySelectorAll('[data-run],.step').forEach(b=>b.disabled=true);guideStep(root,'先修正輸入的數字',error.textContent,'#'+id);}
+ function handler(event){const raw=event.target.value,n=Number(raw);if(raw===''||!Number.isFinite(n)||n<min||n>max){invalid();return;}commit(event.target===range?exact(Math.max(min,Math.min(max,min+Math.round((n-min)/step)*step))):n);}
+ input.addEventListener('input',handler);range.addEventListener('input',handler);
+ range.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowDown','ArrowUp','Home','End'].includes(e.key))return;e.preventDefault();const current=Number(range.value),next=e.key==='Home'?min:e.key==='End'?max:current+(['ArrowRight','ArrowUp'].includes(e.key)?step:-step);commit(exact(Math.max(min,Math.min(max,next))));});
+ return v=>{input.value=String(v);range.value=String(v);input.setCustomValidity('');error.textContent='';};
+}
+function makeDraggable(button,target,onDrop,status){
+ let gesture=null,suppress=false;
+ const inside=(x,y,r)=>x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom;
+ const hits=e=>{const r=target.getBoundingClientRect();return inside(e.clientX,e.clientY,r)||(gesture&&inside(e.clientX+gesture.offsetX,e.clientY+gesture.offsetY,r));};
+ const reset=()=>{button.style.transform='';button.classList.remove('dragging');target.classList.remove('drop-active');target.classList.remove('drop-ready');target.removeAttribute?.('data-drop-hint');gesture=null;};
+ const cancel=()=>{if(!gesture)return;suppress=true;reset();if(status)status.textContent='已取消拿取，材料放回原位。';};
+ button.addEventListener('pointerdown',e=>{if(e.button!==0||button.disabled)return;const r=button.getBoundingClientRect?.();suppress=false;gesture={x:e.clientX,y:e.clientY,pointer:e.pointerId,moved:false,offsetX:r?(r.left+r.right)/2-e.clientX:0,offsetY:r?(r.top+r.bottom)/2-e.clientY:0};button.focus?.({preventScroll:true});button.setPointerCapture(e.pointerId);});
+ button.addEventListener('pointermove',e=>{if(!gesture)return;const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;if(Math.hypot(dx,dy)>5)gesture.moved=true;if(gesture.moved){e.preventDefault?.();button.classList.add('dragging');target.classList.add('drop-active');const hit=hits(e);if(hit)target.classList.add('drop-ready');else target.classList.remove('drop-ready');target.setAttribute?.('data-drop-hint',hit?'放手就能放入':'把材料移到這裡 · Esc 可取消');button.style.transform='translate('+dx+'px,'+dy+'px)';}});
+ button.addEventListener('pointerup',e=>{if(!gesture)return;const moved=gesture.moved,hit=hits(e);suppress=moved;reset();if(moved){if(hit)onDrop();else if(status)status.textContent='沒有放入，材料已回到原位。拖進標示區再放手，或直接點材料。';}});
+ button.addEventListener('pointercancel',cancel);button.addEventListener('lostpointercapture',cancel);
+ button.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')suppress=false;if(e.key==='Escape'&&gesture){e.preventDefault?.();cancel();}});
+ button.addEventListener('click',e=>{if(suppress){suppress=false;e.preventDefault();return;}if(!button.disabled)onDrop();});
+}
+function reactionClock(update,finish){let progress=0,timer=null,last=0;const stop=()=>{if(timer)clearInterval(timer);timer=null;};return{start(){if(progress>=1)progress=0;if(timer)return;last=performance.now();timer=setInterval(()=>{const t=performance.now();progress=Math.min(1,progress+Math.max(0,t-last)/5000);last=t;update(progress,true);if(progress===1){stop();update(progress,false);finish();}},60);},pause(){stop();update(progress,false);},step(){stop();const before=progress;progress=Math.min(1,Math.round((progress+.1)*1e9)/1e9);update(progress,false);if(before<1&&progress===1)finish();},reset(){stop();progress=0;update(0,false);},get running(){return timer!==null;},get progress(){return progress;}};}
+function notice(root,text){root.querySelector('.activity-status').textContent=text;}
+
+
+function WorkflowSteps(labels,step){return '<ol class="workflow-steps" aria-label="實驗步驟">'+labels.map((label,i)=>'<li class="'+(i<step?'done':i===step?'current':'')+'"><span>'+(i<step?'✓':i+1)+'</span>'+label+'</li>').join('')+'</ol>';}
+function matchedMassPair(records){for(const closed of [...records].reverse().filter(r=>r.closed)){const open=[...records].reverse().find(r=>!r.closed&&Math.abs(r.soda-closed.soda)<1e-8&&Math.abs(r.acid-closed.acid)<1e-8);if(open)return{open,closed};}return null;}
+function massTrace(initial,reading,progress){
+ const delta=reading-initial,x=55+600*progress,y=42-delta*14;
+ return '<div class="mass-trace"><svg viewBox="0 0 720 225" role="img" aria-label="目前實驗的質量變化 '+delta.toFixed(3)+' 公克"><text x="55" y="23" font-size="12" fill="#536e62">和反應前相比，變重或變輕多少（g）</text>'+[0,5,10].map(v=>'<path d="M55 '+(42+v*14)+'H655" stroke="#dbe4d8" stroke-dasharray="3 5"/><text x="41" y="'+(46+v*14)+'" text-anchor="end" font-size="11" fill="#718473">'+(-v)+'</text>').join('')+'<path d="M55 42V183H655" fill="none" stroke="#9dae9e"/><path d="M55 42L'+x+' '+y+'" fill="none" stroke="#527d64" stroke-width="3"/><circle cx="'+x+'" cy="'+y+'" r="5" fill="#b99657" stroke="#fff" stroke-width="2"/><text x="55" y="204" font-size="11" fill="#718473">0%</text><text x="655" y="204" text-anchor="end" font-size="11" fill="#718473">100% 觀察進度</text></svg><p>本次質量變化 <strong>'+Number(delta.toFixed(3))+' g</strong>；負數表示天平比反應前更輕。</p></div>';
+}
+
+
+// One short next action; repeated animation frames do not re-announce unchanged guidance.
+function guideStep(root,title,detail,selector=''){
+ let guide=root.querySelector('.interaction-guide');
+ if(!guide){guide=document.createElement('div');guide.className='interaction-guide';guide.setAttribute('role','status');guide.setAttribute('aria-live','polite');guide.innerHTML='<span class="guide-icon" aria-hidden="true">↗</span><div><b class="guide-title"></b><p class="guide-detail"></p></div><span class="guide-label">操作小提示</span>';root.prepend(guide);}
+ if(guide.querySelector('.guide-title').textContent!==title)guide.querySelector('.guide-title').textContent=title;
+ if(guide.querySelector('.guide-detail').textContent!==detail)guide.querySelector('.guide-detail').textContent=detail;
+ root.querySelectorAll('.next-action').forEach(x=>x.classList.remove('next-action'));
+ if(selector)root.querySelector(selector)?.classList.add('next-action');
+}
+
+return {escapeHTML,metric,ExplorationWorkbench,numberField,bindNumber,makeDraggable,reactionClock,notice,WorkflowSteps,matchedMassPair,massTrace,guideStep};
+})();
+__modules["electrolytes/story-scenes.js"]=(()=>{
+const { escapeHTML }=__modules["chemistry/components.js"];
+
+const descriptions={
+ investigation:'小葵拿著綠色筆記，與戴圓框眼鏡的白髮阿公沿著皇城灌溉渠調查，查看工坊排水與關閉的木製水閘。',
+ workshop:'小葵與阿公在古代木造工坊裡並肩研究三瓶密封水樣，小葵記筆記，阿公引導她比較證據。',
+ restored:'小葵與阿公一起轉動木製水閘，經驗收的清水流向綠色農田，工坊排水另行收集處理。'
+};
+
+function storyScene(scene,caption='',compact=false){
+ const name=Object.hasOwn(descriptions,scene)?scene:'workshop';
+ return '<figure class="water-story-scene'+(compact?' water-story-scene--compact':'')+'"><div class="water-story-picture water-story-picture--'+name+'" role="img" aria-label="'+descriptions[name]+'"></div>'+(caption?'<figcaption><span>小葵 × 阿公 · 怪水調查手札</span><p>'+escapeHTML(caption)+'</p></figcaption>':'')+'</figure>';
+}
+
+return {storyScene};
+})();
 __modules["electrolytes/water-story.js"]=(()=>{
 const { svg, label }=__modules["electrolytes/art.js"];
+const { storyScene }=__modules["electrolytes/story-scenes.js"];
 
-function waterMap(open=false,id='water-route'){
+function waterRouteDiagram(open=false,id='water-route'){
  let fields='';for(let r=0;r<4;r++)for(let c=0;c<3;c++)fields+='<path d="M'+(506+c*59)+' '+(280+r*37)+'l51-8v28l-51 8Z" fill="'+(open?'#bad09a':'#d3cfaa')+'" stroke="#f5f0dd" stroke-width="3"/>';
  const flow=open?'#82bbc1':'#a3b6ae';
  return svg('<path d="M0 144Q130 45 270 134T760 94V395H0Z" fill="#d7dfc6" opacity=".6"/>'+label(50,41,'皇城灌溉水路',21,'#345c4a','start')+label(50,68,open?'清水專線恢復供應 · 排水獨立管理':'三個採樣點 · 追查混入清水的排水',13,'#7e886f','start')+'<path d="M80 157H321V317H489" fill="none" stroke="#fbfcf4" stroke-width="34" stroke-linejoin="round"/><path class="water-current" d="M80 157H321V317H489" fill="none" stroke="'+flow+'" stroke-width="22" stroke-linejoin="round"/>'+fields+'<path d="M530 168H387V'+(open?'389H420':'232H321')+'" fill="none" stroke="#d4a68f" stroke-width="12" stroke-linejoin="round"/><path d="M654 204H423V'+(open?'366':'266H321')+'" fill="none" stroke="#c9bb81" stroke-width="12" stroke-linejoin="round"/>'+(open?'<rect x="420" y="366" width="91" height="47" rx="9" fill="#eef2e4" stroke="#8fa388"/>'+label(466,394,'分槽處理',13):'<path d="M306 248l30 25m-30 0 30-25" stroke="#a46e55" stroke-width="7" stroke-linecap="round"/>')+'<g><path d="M498 138l43-28 43 28Z" fill="#7d8d73"/><rect x="509" y="138" width="65" height="43" rx="3" fill="#d6c3a1"/>'+label(541,202,'礦料工坊',13)+'</g><g><path d="M614 161l43-28 43 28Z" fill="#9b9172"/><rect x="625" y="161" width="65" height="43" rx="3" fill="#dfd1b2"/>'+label(657,226,'洗滌工坊',13)+'</g><circle cx="122" cy="157" r="16" fill="#fcfaf0" stroke="#587f78" stroke-width="2"/>'+label(122,162,'甲',12)+label(122,121,'上游水',15)+'<circle cx="'+(open?387:351)+'" cy="232" r="16" fill="#fcfaf0" stroke="#a57e60" stroke-width="2"/>'+label(open?387:351,237,'乙',12)+label(351,207,'工坊出口',13)+'<rect x="463" y="286" width="18" height="58" rx="4" fill="'+(open?'#a2b58c':'#a18360')+'" stroke="#7b795b"/>'+label(469,274,open?'清水閘門已開':'先關閘，停止受影響取水',13)+'<circle cx="505" cy="317" r="16" fill="#fcfaf0" stroke="#587f78" stroke-width="2"/>'+label(505,322,'丙',12)+label(600,450,'農田 · '+(open?'恢復灌溉':'等待可靠供水'),17),open?'上游清水以獨立水路流入農田，工坊排水分流至處理設施':'上游水、工坊出口、農田閘門三個採樣點與破裂排水匯入處',id,480);
+}
+
+function waterMap(open=false,id='water-route'){
+ const caption=open?'小葵與阿公一起開啟清水閘門。清水進入農田，工坊排水留在獨立的處理水路。':'小葵與阿公回到水閘旁，核對採樣與交接紀錄；確認清水、處理水和固體各有去向。';
+ return storyScene(open?'restored':'investigation',caption)+'<details class="water-route-details"><summary>展開水路示意，核對清水與排水的去向</summary><p>對照故事場景的簡化示意；線條、位置與比例不代表實際工程。</p>'+waterRouteDiagram(open,id)+'</details>';
 }
 
 function mountWaterEnding(root,{mask=0,completed=false,onRead,onComplete}){
@@ -1142,59 +1237,6 @@ const scienceTerms=[
 const primerTerms={"1":["solution","solute","solvent"],"2":["electrolyte","nonelectrolyte","conductivity"],"3":["ion","dissociation","ionization"],"4":["acid","base","oxide"],"5":["acid","base","corrosive"],"6":["indicator","ph","transition"],"7":["molarity","strong-acid","weak-acid"],"8":["neutralization","titration","spectator"],"9":["salt","table-salt","sodium-carbonate"],"10":["precipitation","net-ionic","filtrate"],"11":["mass-percent","ppm","mother-liquor"],"12":["wastewater","water-quality","conservation"]};
 
 return {scienceTerms,primerTerms};
-})();
-__modules["chemistry/components.js"]=(()=>{
-function escapeHTML(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function metric(label,value,unit=''){return '<div class="metric"><span>'+label+'</span><strong>'+value+' <small>'+unit+'</small></strong></div>';}
-function ExplorationWorkbench(scene,controls,note=''){return '<div class="workbench"><div class="model-column"><div class="scene">'+scene+'</div><p class="model-note">'+note+'</p></div><aside class="experiment-controls">'+controls+'</aside></div>';}
-function numberField(id,label,value,min,max,step,unit){return '<div class="number-field"><label for="'+id+'">'+label+' <span>'+unit+'</span></label><div class="number-pair"><input id="'+id+'" type="number" min="'+min+'" max="'+max+'" step="any" value="'+value+'" inputmode="decimal" aria-describedby="'+id+'-error"><input aria-label="'+label+'滑桿" type="range" min="'+min+'" max="'+max+'" step="any" data-step="'+step+'" value="'+value+'" data-pair="'+id+'"></div><span class="field-error" id="'+id+'-error" role="status"></span></div>';}
-function bindNumber(root,id,callback){
- const input=root.querySelector('#'+id),range=root.querySelector('[data-pair="'+id+'"]'),error=root.querySelector('#'+id+'-error');
- const min=Number(input.min),max=Number(input.max),step=Number(range.dataset.step)||1;
- const exact=n=>Number(n.toPrecision(12));
- function commit(n){input.value=String(n);range.value=String(n);input.setCustomValidity('');error.textContent='';callback(n);const other=root.querySelector('input:invalid');if(other){root.querySelectorAll('[data-run],.step').forEach(b=>b.disabled=true);guideStep(root,'還有一個數字需要修正','把標示的欄位改好，再繼續操作。','#'+other.id);}}
- function invalid(){input.setCustomValidity('請輸入範圍內的數字');error.textContent='請輸入 '+min+'～'+max+'；材料用量暫時保持原來的設定。';root.querySelectorAll('[data-run],.step').forEach(b=>b.disabled=true);guideStep(root,'先修正輸入的數字',error.textContent,'#'+id);}
- function handler(event){const raw=event.target.value,n=Number(raw);if(raw===''||!Number.isFinite(n)||n<min||n>max){invalid();return;}commit(event.target===range?exact(Math.max(min,Math.min(max,min+Math.round((n-min)/step)*step))):n);}
- input.addEventListener('input',handler);range.addEventListener('input',handler);
- range.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowDown','ArrowUp','Home','End'].includes(e.key))return;e.preventDefault();const current=Number(range.value),next=e.key==='Home'?min:e.key==='End'?max:current+(['ArrowRight','ArrowUp'].includes(e.key)?step:-step);commit(exact(Math.max(min,Math.min(max,next))));});
- return v=>{input.value=String(v);range.value=String(v);input.setCustomValidity('');error.textContent='';};
-}
-function makeDraggable(button,target,onDrop,status){
- let gesture=null,suppress=false;
- const inside=(x,y,r)=>x>=r.left&&x<=r.right&&y>=r.top&&y<=r.bottom;
- const hits=e=>{const r=target.getBoundingClientRect();return inside(e.clientX,e.clientY,r)||(gesture&&inside(e.clientX+gesture.offsetX,e.clientY+gesture.offsetY,r));};
- const reset=()=>{button.style.transform='';button.classList.remove('dragging');target.classList.remove('drop-active');target.classList.remove('drop-ready');target.removeAttribute?.('data-drop-hint');gesture=null;};
- const cancel=()=>{if(!gesture)return;suppress=true;reset();if(status)status.textContent='已取消拿取，材料放回原位。';};
- button.addEventListener('pointerdown',e=>{if(e.button!==0||button.disabled)return;const r=button.getBoundingClientRect?.();suppress=false;gesture={x:e.clientX,y:e.clientY,pointer:e.pointerId,moved:false,offsetX:r?(r.left+r.right)/2-e.clientX:0,offsetY:r?(r.top+r.bottom)/2-e.clientY:0};button.focus?.({preventScroll:true});button.setPointerCapture(e.pointerId);});
- button.addEventListener('pointermove',e=>{if(!gesture)return;const dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;if(Math.hypot(dx,dy)>5)gesture.moved=true;if(gesture.moved){e.preventDefault?.();button.classList.add('dragging');target.classList.add('drop-active');const hit=hits(e);if(hit)target.classList.add('drop-ready');else target.classList.remove('drop-ready');target.setAttribute?.('data-drop-hint',hit?'放手就能放入':'把材料移到這裡 · Esc 可取消');button.style.transform='translate('+dx+'px,'+dy+'px)';}});
- button.addEventListener('pointerup',e=>{if(!gesture)return;const moved=gesture.moved,hit=hits(e);suppress=moved;reset();if(moved){if(hit)onDrop();else if(status)status.textContent='沒有放入，材料已回到原位。拖進標示區再放手，或直接點材料。';}});
- button.addEventListener('pointercancel',cancel);button.addEventListener('lostpointercapture',cancel);
- button.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')suppress=false;if(e.key==='Escape'&&gesture){e.preventDefault?.();cancel();}});
- button.addEventListener('click',e=>{if(suppress){suppress=false;e.preventDefault();return;}if(!button.disabled)onDrop();});
-}
-function reactionClock(update,finish){let progress=0,timer=null,last=0;const stop=()=>{if(timer)clearInterval(timer);timer=null;};return{start(){if(progress>=1)progress=0;if(timer)return;last=performance.now();timer=setInterval(()=>{const t=performance.now();progress=Math.min(1,progress+Math.max(0,t-last)/5000);last=t;update(progress,true);if(progress===1){stop();update(progress,false);finish();}},60);},pause(){stop();update(progress,false);},step(){stop();const before=progress;progress=Math.min(1,Math.round((progress+.1)*1e9)/1e9);update(progress,false);if(before<1&&progress===1)finish();},reset(){stop();progress=0;update(0,false);},get running(){return timer!==null;},get progress(){return progress;}};}
-function notice(root,text){root.querySelector('.activity-status').textContent=text;}
-
-
-function WorkflowSteps(labels,step){return '<ol class="workflow-steps" aria-label="實驗步驟">'+labels.map((label,i)=>'<li class="'+(i<step?'done':i===step?'current':'')+'"><span>'+(i<step?'✓':i+1)+'</span>'+label+'</li>').join('')+'</ol>';}
-function matchedMassPair(records){for(const closed of [...records].reverse().filter(r=>r.closed)){const open=[...records].reverse().find(r=>!r.closed&&Math.abs(r.soda-closed.soda)<1e-8&&Math.abs(r.acid-closed.acid)<1e-8);if(open)return{open,closed};}return null;}
-function massTrace(initial,reading,progress){
- const delta=reading-initial,x=55+600*progress,y=42-delta*14;
- return '<div class="mass-trace"><svg viewBox="0 0 720 225" role="img" aria-label="目前實驗的質量變化 '+delta.toFixed(3)+' 公克"><text x="55" y="23" font-size="12" fill="#536e62">和反應前相比，變重或變輕多少（g）</text>'+[0,5,10].map(v=>'<path d="M55 '+(42+v*14)+'H655" stroke="#dbe4d8" stroke-dasharray="3 5"/><text x="41" y="'+(46+v*14)+'" text-anchor="end" font-size="11" fill="#718473">'+(-v)+'</text>').join('')+'<path d="M55 42V183H655" fill="none" stroke="#9dae9e"/><path d="M55 42L'+x+' '+y+'" fill="none" stroke="#527d64" stroke-width="3"/><circle cx="'+x+'" cy="'+y+'" r="5" fill="#b99657" stroke="#fff" stroke-width="2"/><text x="55" y="204" font-size="11" fill="#718473">0%</text><text x="655" y="204" text-anchor="end" font-size="11" fill="#718473">100% 觀察進度</text></svg><p>本次質量變化 <strong>'+Number(delta.toFixed(3))+' g</strong>；負數表示天平比反應前更輕。</p></div>';
-}
-
-
-// One short next action; repeated animation frames do not re-announce unchanged guidance.
-function guideStep(root,title,detail,selector=''){
- let guide=root.querySelector('.interaction-guide');
- if(!guide){guide=document.createElement('div');guide.className='interaction-guide';guide.setAttribute('role','status');guide.setAttribute('aria-live','polite');guide.innerHTML='<span class="guide-icon" aria-hidden="true">↗</span><div><b class="guide-title"></b><p class="guide-detail"></p></div><span class="guide-label">操作小提示</span>';root.prepend(guide);}
- if(guide.querySelector('.guide-title').textContent!==title)guide.querySelector('.guide-title').textContent=title;
- if(guide.querySelector('.guide-detail').textContent!==detail)guide.querySelector('.guide-detail').textContent=detail;
- root.querySelectorAll('.next-action').forEach(x=>x.classList.remove('next-action'));
- if(selector)root.querySelector(selector)?.classList.add('next-action');
-}
-
-return {escapeHTML,metric,ExplorationWorkbench,numberField,bindNumber,makeDraggable,reactionClock,notice,WorkflowSteps,matchedMassPair,massTrace,guideStep};
 })();
 __modules["electrolytes/terminology.js"]=(()=>{
 const { scienceTerms, primerTerms }=__modules["electrolytes/terminology-data.js"];
@@ -2733,6 +2775,7 @@ function setupWorkbench(root,type,api) {
 return {setupWorkbench};
 })();
 __modules["electrolytes/labs.js"]=(()=>{
+const { storyScene }=__modules["electrolytes/story-scenes.js"];
 const { labProgress }=__modules["electrolytes/student-guide.js"];
 const { conductivityLabel, qualitativeRecord }=__modules["electrolytes/conductivity-feedback.js"];
 const { conductivity, speciate, solutions, indicator, neutralize, precipitate, crystallize, fmt, sci, bounded, ionInfo }=__modules["electrolytes/core.js"];
@@ -2775,7 +2818,7 @@ function field(key,title,value,min,max,step,unit=''){
 }
 function select(key,title,options,value){return '<label class="salt-select">'+title+'<select data-select="'+key+'">'+options.map(([v,t])=>'<option value="'+v+'" '+(v===value?'selected':'')+'>'+t+'</option>').join('')+'</select></label>';}
 function buttons(items){return '<div class="salt-actions">'+items.map(([key,text,cls])=>'<button type="button" class="'+(cls||'secondary')+'" data-action="'+key+'">'+text+'</button>').join('')+'</div>';}
-function labFrame(root,title,controls,note){root.innerHTML='<div class="lab-guide" role="status"></div><div class="salt-workbench"><div class="salt-stage"><div class="bench-label"><span>'+title+'</span><button class="text-button" data-action="zoom" aria-pressed="false">放大觀察 ⤢</button></div><div class="salt-scene"></div><div class="readouts" aria-live="off"></div><div class="lab-chart"></div><details class="micro-details"><summary>放大：追蹤看不見的粒子與物質</summary><div class="micro-view"></div></details><p class="model-note">'+note+'</p></div><aside class="salt-controls">'+controls+'<p class="action-error" role="status"></p></aside></div><div class="lab-records"><h3>我的實驗紀錄 <small>改一個條件，找出差別</small></h3><div class="record-list"></div></div>';}
+function labFrame(root,title,controls,note){root.innerHTML='<div class="lab-guide" role="status"></div>'+storyScene('workshop','小葵負責觀察與記錄，阿公陪你操作'+title+'，用每一次變化追查怪水。',true)+'<div class="salt-workbench"><div class="salt-stage"><div class="bench-label"><span>'+title+'</span><button class="text-button" data-action="zoom" aria-pressed="false">放大觀察 ⤢</button></div><div class="salt-scene"></div><div class="readouts" aria-live="off"></div><div class="lab-chart"></div><details class="micro-details"><summary>放大：追蹤看不見的粒子與物質</summary><div class="micro-view"></div></details><p class="model-note">'+note+'</p></div><aside class="salt-controls">'+controls+'<p class="action-error" role="status"></p></aside></div><div class="lab-records"><h3>我的實驗紀錄 <small>改一個條件，找出差別</small></h3><div class="record-list"></div></div>';}
 function ionRows(entries){return '<div class="ion-ledger">'+entries.map(([name,n])=>'<span><b>'+name+'</b> '+sci(n)+' mol</span>').join('')+'</div>';}
 function mountLab(root,type,ctx){
  let s=cleanLab(type,ctx.data),timer=null,running=false,disposed=false,changeHandler=null,motionTimer=null;
@@ -2937,7 +2980,8 @@ function mountLab(root,type,ctx){
 return {defaults,cleanLab,mountLab};
 })();
 __modules["electrolytes/app.js"]=(()=>{
-const { waterMap, mountWaterEnding }=__modules["electrolytes/water-story.js"];
+const { mountWaterEnding }=__modules["electrolytes/water-story.js"];
+const { storyScene }=__modules["electrolytes/story-scenes.js"];
 const { explorationHint, notebook }=__modules["electrolytes/student-guide.js"];
 const { learningRoute }=__modules["electrolytes/learning-route.js"];
 const { reactionIllustration, saltSpecimen }=__modules["electrolytes/lesson-art.js"];
@@ -2997,12 +3041,12 @@ function mountStory(root,c){
  const stop=()=>{if(timer)clearInterval(timer);timer=null;playing=false;const b=root.querySelector('[data-play]');if(b){b.textContent='自動瀏覽';b.setAttribute('aria-pressed','false');}};
  if(c.type==='story'){
   step=-1;
-  root.innerHTML='<div class="bottle-line">'+['甲','乙','丙'].map((x,i)=>'<button data-bottle="'+i+'"><span class="bottle"><i></i></span><b>樣品'+x+'</b><span>透明、無色</span><small>點擊查看紀錄</small></button>').join('')+'</div><div class="observation-result" role="status">不品嚐、不碰未知液體。先看三份採樣紀錄。</div>';
+  root.innerHTML=storyScene('investigation','小葵與阿公分別查看上游、工坊出口和農田閘門，帶回三份採樣紀錄。',true)+'<div class="bottle-line">'+['甲','乙','丙'].map((x,i)=>'<button data-bottle="'+i+'"><span class="bottle"><i></i></span><b>樣品'+x+'</b><span>透明、無色</span><small>點擊查看紀錄</small></button>').join('')+'</div><div class="observation-result" role="status">不品嚐、不碰未知液體。先看三份採樣紀錄。</div>';
   root.insertAdjacentHTML('beforeend','<p class="explore-status" role="status"></p>');const seen=new Set(state.explored[c.id]||[]);const progress=()=>{root.querySelector('.explore-status').textContent='已查看 '+seen.size+' / 3 份採樣紀錄';root.querySelectorAll('[data-bottle]').forEach(b=>{b.classList.toggle('seen',seen.has(Number(b.dataset.bottle)));b.setAttribute('aria-pressed',String(Number(b.dataset.bottle)===step));});};progress();root.querySelectorAll('[data-bottle]').forEach(b=>b.onclick=()=>{step=Number(b.dataset.bottle);seen.add(step);state.explored[c.id]=[...seen];save();refresh();progress();b.classList.add('seen');root.querySelector('.observation-result').textContent=c.samples[Number(b.dataset.bottle)]+' 已查看 '+seen.size+'/3。';if(seen.size===3)mark(c.id);});return{destroy:stop};
  }
  if(c.type==='ions'){
   let sample='nacl',on=state.steps[c.id]===1;
-  root.innerHTML='<div class="model-tabs" role="group" aria-label="微觀樣品">'+['solid','nacl','sugar','hcl','naoh','acetic'].map(id=>'<button class="secondary" data-sample="'+id+'">'+solutions[id].name+'</button>').join('')+'</div><div class="micro-stage"></div><div class="salt-actions"><button class="primary" data-electric>開啟電場</button><button class="secondary" data-motion>暫停粒子動畫</button></div><p class="ion-explanation"></p><p class="model-note">粒子數目、位置與移動速度經視覺簡化，不代表實際粒子個數。電場下同時存在隨機熱運動；外電路由電子搬運電荷。</p>';
+  root.innerHTML=storyScene('workshop','小葵追問：看起來都透明，為什麼只有部分水樣會導電？阿公帶她把視角縮小到離子。',true)+'<div class="model-tabs" role="group" aria-label="微觀樣品">'+['solid','nacl','sugar','hcl','naoh','acetic'].map(id=>'<button class="secondary" data-sample="'+id+'">'+solutions[id].name+'</button>').join('')+'</div><div class="micro-stage"></div><div class="salt-actions"><button class="primary" data-electric>開啟電場</button><button class="secondary" data-motion>暫停粒子動畫</button></div><p class="ion-explanation"></p><p class="model-note">粒子數目、位置與移動速度經視覺簡化，不代表實際粒子個數。電場下同時存在隨機熱運動；外電路由電子搬運電荷。</p>';
   root.insertAdjacentHTML('beforeend','<div class="particle-key" data-glossary-skip><span><i></i>陽離子</span><span><i></i>陰離子</span></div><p class="explore-status" role="status"></p>');const samples=['solid','nacl','sugar','hcl','naoh','acetic'],seen=new Set(state.explored[c.id]||[]);
   const draw=()=>{const r=speciate(sample,.01);root.querySelector('.micro-stage').innerHTML=ionsView(r.ions,{solid:sample==='solid',on,id:'story-ions',neutral:sample==='sugar'?'大量中性糖分子留在水中；微量 H⁺、OH⁻ 來自水':sample==='acetic'?'大部分醋酸分子仍未游離':''});root.querySelector('.ion-explanation').textContent={solid:'NaCl 晶格已有正負離子，但位置固定。',nacl:'NaCl 解離：Na⁺ + Cl⁻，正負電荷總量相等。',sugar:'糖保留中性分子，沒有像 NaCl 一樣解離；水仍有微量離子。',hcl:'HCl 分子在水中游離，主要形成 H⁺、Cl⁻，不是 Na⁺。',naoh:'NaOH 解離：Na⁺ + OH⁻，不是所有陰離子都叫 Cl⁻。',acetic:'CH₃COOH ⇌ H⁺ + CH₃COO⁻；仍有大量未游離分子。'}[sample];seen.add(samples.indexOf(sample));root.querySelectorAll('[data-sample]').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.sample===sample));b.dataset.seen=String(seen.has(samples.indexOf(b.dataset.sample)));});state.explored[c.id]=[...seen];state.steps[c.id]=on?1:0;save();refresh();root.querySelector('[data-electric]').textContent=on?'關閉電場':'開啟電場';root.querySelector('.explore-status').textContent='已比較 '+seen.size+' / 6 種樣品'+(on?' · 電場已開啟':' · 開啟電場，觀察離子移動方向');root.querySelector('[data-electric]').setAttribute('aria-pressed',String(on));};
   root.querySelectorAll('[data-sample]').forEach(b=>b.onclick=()=>{sample=b.dataset.sample;draw();if(seen.size>=6&&on)mark(c.id);});
@@ -3013,7 +3057,7 @@ function mountStory(root,c){
   const length=c.type==='reactions'?4:c.type==='materials'?chemicals.length:c.type==='strength'?4:5;step=Math.min(step,length-1);
   const labels=c.type==='reactions'?['石灰岩＋酸','鋅＋酸','生石灰＋水','CO₂＋水']:c.type==='materials'?chemicals.map(x=>x[0]):c.type==='strength'?['同濃度酸比較','改變濃度','強弱鹼比較','計算與歸納']:salts.map(s=>s[0]);
   const seen=new Set(state.explored[c.id]||[]);let reacted=false;
-  root.innerHTML='<div class="study-selector" role="group" aria-label="選擇比較情境">'+labels.map((t,i)=>'<button type="button" data-study="'+i+'">'+t+'</button>').join('')+'</div><div class="guided-content"></div><p class="explore-status" role="status"></p><details class="study-navigation"><summary>逐步瀏覽與重播</summary><div class="salt-actions study-controls"><button class="secondary" data-back>← 上一格</button><span class="step-counter"></span><button class="primary" data-next>下一格 →</button><button class="secondary" data-play aria-pressed="false">自動瀏覽</button><button class="text-button" data-restart>重播</button></div></details>';
+  root.innerHTML=storyScene('workshop',({reactions:'阿公用已知試劑重現反應，小葵把反應前後的差別記成調查線索。',materials:'小葵和阿公翻查已知材料的性質，逐一比對工坊可能帶來的線索。',strength:'小葵和阿公把條件放在一起比較，分清酸鹼的強弱與濃淡。',salts:'中和之後留下了什麼？小葵與阿公一起查看鹽類的組成、性質和用途。'})[c.type],true)+'<div class="study-selector" role="group" aria-label="選擇比較情境">'+labels.map((t,i)=>'<button type="button" data-study="'+i+'">'+t+'</button>').join('')+'</div><div class="guided-content"></div><p class="explore-status" role="status"></p><details class="study-navigation"><summary>逐步瀏覽與重播</summary><div class="salt-actions study-controls"><button class="secondary" data-back>← 上一格</button><span class="step-counter"></span><button class="primary" data-next>下一格 →</button><button class="secondary" data-play aria-pressed="false">自動瀏覽</button><button class="text-button" data-restart>重播</button></div></details>';
   function draw(){
    let html='';
    if(c.type==='reactions'){const [title,eq,note]=reactionSteps[step];html='<div class="reaction-plate"><span class="eyebrow">已知試劑的虛擬對照</span><h3>'+title+'</h3><div class="state-switch" role="group" aria-label="反應前後比較"><button type="button" data-reaction-state="before" aria-pressed="'+!reacted+'">反應前</button><button type="button" data-reaction-state="after" aria-pressed="'+reacted+'">'+(reacted?'✓ 反應後':['滴入稀鹽酸 →','滴入稀鹽酸 →','加入水 →','通入 CO₂ →'][step])+'</button></div>'+reactionIllustration(step,reacted)+'<p class="equation">'+eq+'</p><p>'+note+'</p></div>';}
@@ -3058,7 +3102,7 @@ function renderCard(c){
 function activateStation(id){document.querySelectorAll('[data-nav]').forEach(a=>{const active=Number(a.dataset.nav)===id;a.classList.toggle('active',active);if(active){a.setAttribute('aria-current','step');const nav=a.closest('nav'),top=a.getBoundingClientRect().top-nav.getBoundingClientRect().top+nav.scrollTop;if(top<nav.scrollTop||top+a.offsetHeight>nav.scrollTop+nav.clientHeight)nav.scrollTop=Math.max(0,top-nav.clientHeight/2+a.offsetHeight/2);}else a.removeAttribute('aria-current');});}
 function init(){
  document.querySelector('#chapter-route').innerHTML=cards.map((c,i)=>(i===0||cards[i-1].act!==c.act?'<h3 class="nav-act">'+['','第一幕 · 追查怪水','第二幕 · 看懂酸鹼','第三幕 · 驗證處理','第四幕 · 重開水路'][c.act]+'</h3>':'')+'<a href="#salt-'+c.id+'" data-nav="'+c.id+'"><span>'+String(c.id).padStart(2,'0')+'</span><span>'+c.title+'</span><span class="nav-state">○</span></a>').join('');
- document.querySelector('#hero-artwork').innerHTML=waterMap(false,'water-hero');
+ document.querySelector('#hero-artwork').innerHTML=storyScene('investigation');
  cards.forEach(renderCard);
  mountTerminology();
  document.querySelector('#clear-chapter-progress').onclick=()=>{for(const ctrl of controllers.values())ctrl.destroy();state=cleanState(null);save();document.querySelector('#lesson').innerHTML='';cards.forEach(renderCard);refresh();};
