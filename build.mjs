@@ -8,9 +8,9 @@ function visit(file){
  let source=fs.readFileSync(path.join(root,file),'utf8').replace(/^\uFEFF/,'');
  const pattern=/^import\s+\{([^}]+)\}\s+from\s+['"]([^'"]+)['"];?\r?$/gm;
  const imports=[...source.matchAll(pattern)];
- for(const m of imports)visit(path.posix.normalize(path.posix.join(path.posix.dirname(file),m[2])));
+ for(const m of imports)visit(path.posix.normalize(path.posix.join(path.posix.dirname(file),m[2].split('?')[0])));
  const exports=[...source.matchAll(/export\s+(?:const|let|function|class)\s+(\w+)/g)].map(m=>m[1]);
- source=source.replace(pattern,(_,names,dep)=>'const {'+names+'}=__modules['+JSON.stringify(path.posix.normalize(path.posix.join(path.posix.dirname(file),dep)))+'];').replace(/\bexport\s+(?=const|let|function|class)/g,'');
+ source=source.replace(pattern,(_,names,dep)=>'const {'+names+'}=__modules['+JSON.stringify(path.posix.normalize(path.posix.join(path.posix.dirname(file),dep.split('?')[0])))+'];').replace(/\bexport\s+(?=const|let|function|class)/g,'');
  modules.push('__modules['+JSON.stringify(file)+']=(()=>{\n'+source+'\nreturn {'+exports.join(',')+'};\n})();');
 }
 visit('electrolytes/app.js');

@@ -2,7 +2,7 @@ import { explorationHint, notebook } from './student-guide.js';
 import { learningRoute } from './learning-route.js';
 import { reactionIllustration, saltSpecimen } from './lesson-art.js';
 import { TermPrimer, mountTerminology } from './terminology.js';
-import { cards, chemicals, salts } from './data.js';
+import { cards, chemicals, salts } from './data.js?v=rain-salt-shortage-1';
 import { speciate, solutions, fmt, sci } from './core.js';
 import { landscape, ionsView, svg, label } from './art.js';
 import { mountLab, cleanLab, defaults } from './labs.js';
