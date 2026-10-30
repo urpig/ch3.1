@@ -24,7 +24,7 @@ export function explorationHint(card,state){
  const counts={story:3,ions:6,reactions:4,strength:4,salts:5};
  if(counts[card.type])return '已查看 '+(state.explored[card.id]||[]).length+' / '+counts[card.type]+(card.type==='ions'?' 種樣品；記得開啟電場。':card.type==='reactions'?' 組反應；每組都要點擊加入試劑。':' 個情境；點選尚未打勾的項目。');
  if(card.type==='audit')return '打開三份紀錄的「查看核對說明」，完成證據核對。';
- return '點擊「交出調查報告」，再完成下方的一題判斷。';
+ return '回看恢復供鹽的成果，點擊「確認鹽荒解除，向皇帝告別」，再完成下方的一題判斷。';
 }
 
 export const notebook={

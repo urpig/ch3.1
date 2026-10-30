@@ -186,3 +186,12 @@
 .homecoming-dialogue strong{display:block;margin-bottom:5px;color:#886a3f;font-size:13px;letter-spacing:.1em}
 .homecoming-finish{text-align:center;font-size:13px;letter-spacing:.14em;color:#7a866e;margin:26px 0 8px}
 @media(max-width:620px){.homecoming-dialogue{grid-template-columns:1fr;gap:10px}.homecoming-ending figcaption{padding:12px}.homecoming-ending header{text-align:left}}
+
+.saltfield-recovery{margin:24px 0;padding:28px;border:1px solid #cddcc8;border-radius:18px;background:#f1f6e9;color:#315c4a}
+.saltfield-recovery h3{margin:10px 0 22px;font-size:clamp(23px,2.5vw,30px)}
+.saltfield-recovery ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 30px;padding-left:24px;margin:0}
+.saltfield-recovery li::marker{color:#8b713e;font-weight:700}
+.saltfield-recovery li p{margin:7px 0 0;line-height:1.8;color:#5b6e59;font-size:14px}
+.saltfield-recovery .recovery-result{margin:22px 0 0;padding-top:18px;border-top:1px solid #cddcc8;line-height:1.8}
+.saltfield-recovery .recovery-result b{display:block}
+@media(max-width:620px){.saltfield-recovery{padding:20px}.saltfield-recovery ol{grid-template-columns:1fr}}
