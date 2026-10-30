@@ -20,11 +20,7 @@
 .salt-chapter .card-footer{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 30px;border-top:1px solid var(--line)}
 .salt-chapter .card-footer>div{display:flex;gap:18px;align-items:center}
 .card-status{font-size:12px;color:#61744f}
-.salt-chapter .prediction{border:1px solid #e0d9c3;border-radius:9px;padding:14px 18px;background:#f8f4e8;margin:20px 0}
-.prediction legend{font-size:14px;font-weight:650;padding:0 6px}
-.prediction label{display:inline-block;margin:7px 20px 7px 0;font-size:13px;cursor:pointer}
-.prediction input,.salt-quiz input{accent-color:var(--green)}
-.prediction-status{margin:4px 0 0!important;font-size:11px;color:#877654}
+.salt-quiz input{accent-color:var(--green)}
 .salt-chapter .task{display:flex;gap:16px;background:#edf2e5;border-radius:8px;padding:13px 18px;margin:16px 0}
 .salt-chapter .task>span{white-space:nowrap;font-size:12px;font-weight:700}
 .salt-chapter .task p{margin:0;font-size:13px}

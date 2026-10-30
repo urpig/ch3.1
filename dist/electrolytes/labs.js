@@ -148,7 +148,7 @@ export function mountLab(root,type,ctx){
    $('.micro-view').innerHTML='<p class="equation">Ca²⁺ + CO₃²⁻ → CaCO₃(s)</p>'+ionRows([['原 Ca²⁺',r.calcium],['原 CO₃²⁻',r.carbonate],['Na⁺ 旁觀',r.Na],['Cl⁻ 旁觀',r.Cl]])+(s.mixed?'<p>生成 '+sci(r.solid)+' mol CaCO₃。'+(s.filtered?'固體在濾紙上；旁觀與過量離子在濾液中。':'沉澱在杯底；其他離子仍在水中。')+'</p>':'<p>先算反應前的離子，再混合。</p>');
    $('[data-action="filter"]').disabled=!s.mixed;
    $('[data-num="C2"]').disabled=s.partner==='water';$('[data-range="C2"]').disabled=s.partner==='water';
-   guide(!s.mixed?'① 先預測用量少的一方，再混合。':!s.filtered?'② 觀察杯底後，放入濾紙分離。':'③ 記錄濾紙與濾液，再改用量或換對照溶液。');
+   guide(!s.mixed?'① 設定兩液用量，再混合。':!s.filtered?'② 觀察杯底後，放入濾紙分離。':'③ 記錄濾紙與濾液，再改用量或換對照溶液。');
   };
   act=a=>{if(a==='mix')s.mixed=true;if(a==='filter'&&s.mixed)s.filtered=true;
    if(s.mixed&&s.filtered){const r=calc();record((s.partner==='calcium'?'CaCl₂':s.partner==='nacl'?'NaCl':'水')+' 對照｜CaCO₃ '+fmt(r.mass,4)+' g｜已過濾；溶解離子仍可留在濾液',s.partner,[s.partner,s.C1,s.V1,s.C2,s.V2].join('|'),true);}draw();

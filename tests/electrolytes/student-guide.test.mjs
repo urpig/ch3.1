@@ -8,7 +8,7 @@ import { cleanLab, defaults } from '../../dist/electrolytes/labs.js';
 test('Legacy completed observations restore the checklist without erasing other progress',()=>{
  const s=cleanState({version:1,observed:[1,3,4,6,8,11],explored:{1:[],3:[0]},predictions:{1:1},answers:{q1:1}});
  for(const [id,n] of [[1,3],[3,6],[4,4],[6,4],[8,5]])assert.deepEqual(s.explored[id],Array.from({length:n},(_,i)=>i));
- assert.equal(s.steps[3],1);assert.equal(s.steps[11],7);assert.equal(s.predictions[1],1);assert.equal(s.answers.q1,1);
+ assert.equal(s.steps[3],1);assert.equal(s.steps[11],7);assert.equal('predictions' in s,false);assert.equal(s.answers.q1,1);
  assert.deepEqual(cleanState(JSON.parse(JSON.stringify(s))),s);
 });
 test('Incomplete observations are not silently upgraded by migration',()=>{

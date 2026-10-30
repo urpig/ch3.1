@@ -18,9 +18,12 @@ function click(b,s){const e=b.q(s);assert.notEqual(e.disabled,true,'Disabled '+s
 const action=(b,id,a)=>click(b,`#salt-${id} .salt-scene [data-action="${a}"]`);
 function measure(b){for(const a of ['drop','paper','meter'])action(b,5,a);}
 
-test('New student completes all twelve stations using controls and earns the certificate',()=>{
+test('New student completes all twelve stations without predictions and earns the certificate',()=>{
  const b=boot();try{
-  for(const c of cards)click(b,`#salt-${c.id} .prediction input[value="0"]`);
+  assert.equal(b.w.document.querySelectorAll('.prediction,.prediction-recall').length,0);
+  assert.doesNotMatch(b.q('#lesson').textContent,/先猜一猜|先留下預測|你原先猜/);
+  for(const c of cards){assert.equal(b.w.document.querySelectorAll(`#salt-${c.id} [data-journey]`).length,2);assert.equal(b.q(`#salt-${c.id} .card-progress-label`).textContent,'0 / 2 完成');}
+  click(b,'#salt-1 [data-continue]');assert.equal(b.w.document.activeElement,b.q('#salt-1 .task'));
   for(let i=0;i<3;i++)click(b,`#salt-1 [data-bottle="${i}"]`);
   action(b,2,'power');click(b,'#salt-2 [data-sample="sugar"]');action(b,2,'power');
   for(const id of ['solid','nacl','sugar','hcl','naoh','acetic'])click(b,`#salt-3 [data-sample="${id}"]`);
@@ -40,14 +43,15 @@ test('New student completes all twelve stations using controls and earns the cer
   assert.equal(b.state().labs.crystal.records.length,1);
   for(let i=0;i<3;i++){const d=b.q(`#salt-11 [data-report="${i}"]`);d.open=true;d.dispatchEvent(new b.w.Event('toggle'));}
   click(b,'#salt-12 [data-handover]');
-  for(const c of cards){click(b,`#salt-${c.id} .salt-quiz input[value="${c.quiz.answer}"]`);b.q(`#salt-${c.id} .salt-quiz`).dispatchEvent(new b.w.Event('submit',{bubbles:true,cancelable:true}));}
+  for(const c of cards){assert.equal(b.q(`#salt-${c.id} .card-progress-label`).textContent,'1 / 2 完成');click(b,`#salt-${c.id} [data-continue]`);assert.equal(b.w.document.activeElement,b.q(`#salt-${c.id} .salt-quiz`));click(b,`#salt-${c.id} .salt-quiz input[value="${c.quiz.answer}"]`);b.q(`#salt-${c.id} .salt-quiz`).dispatchEvent(new b.w.Event('submit',{bubbles:true,cancelable:true}));}
+  for(const c of cards)assert.equal(b.q(`#salt-${c.id} .card-progress-label`).textContent,'2 / 2 完成');
   assert.equal(b.state().observed.length,12);assert.equal(b.q('#progress-count').textContent,'12 / 12');assert.equal(b.q('#certificate').hidden,false);assert.deepEqual(b.errors,[]);
  }finally{b.close();}
 });
 
 test('Reload and legacy migration keep visible checklists and chapter progress consistent',()=>{
  const b=boot({version:1,observed:[1,3,7],predictions:{1:1},answers:{q1:1}});
- try{assert.equal(b.q('#salt-1 .explore-status').textContent,'已查看 3 / 3 份採樣紀錄');assert.equal(b.w.document.querySelectorAll('#salt-1 .bottle-line .seen').length,3);assert.equal(b.q('#salt-1 .card-progress-label').textContent,'3 / 3 完成');assert.equal(b.q('#salt-3 [data-electric]').textContent,'關閉電場');assert.equal(b.q('#salt-7 .experiment-goal').dataset.done,'true');assert.deepEqual(b.errors,[]);}finally{b.close();}
+ try{assert.equal(b.q('#salt-1 .explore-status').textContent,'已查看 3 / 3 份採樣紀錄');assert.equal(b.w.document.querySelectorAll('#salt-1 .bottle-line .seen').length,3);assert.equal(b.q('#salt-1 .card-progress-label').textContent,'2 / 2 完成');assert.equal(b.q('#progress-count').textContent,'1 / 12');assert.equal('predictions' in b.state(),false);assert.equal(b.q('#salt-3 [data-electric]').textContent,'關閉電場');assert.equal(b.q('#salt-7 .experiment-goal').dataset.done,'true');assert.deepEqual(b.errors,[]);}finally{b.close();}
 });
 
 test('Redo preserves comparisons, card reset clears only its own progress, and actions still work',()=>{
